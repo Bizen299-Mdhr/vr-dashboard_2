@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 let config = {
-    cmsTitle : process.env.CMSTITLE || "MY PLACE",
+    cmsTitle : process.env.CMSTITLE || "VR-Dashbord",
     nodeEnv : process.env.ENV_NODE || 'development',
     port : process.env.PORT || 3000,
     cmsUrl : process.env.CMSURL || 'http://localhost:3000/',
@@ -11,10 +11,10 @@ let config = {
     pageLimit: process.env.PAGELIMIT ? parseInt(process.env.PAGELIMIT) : 20,
     mail: {
         mailSender: process.env.MAIL_SENDER || 'mailgun',
-        mailEmail : process.env.MAIL_EMAIL || 'info@ekbana.com',
-        mailApiKey : process.env.MAIL_API_KEY || 'key-1443c655d9e02a4fa75a08974d0125e5',
-        mailApiDomain : process.env.MAIL_API_DOMAIN || 'mh.ekbana.net',
-        mailFrom : process.env.MAIL_FROM || 'info@ekbana.info'
+        mailEmail : process.env.MAIL_EMAIL || 'info@sendgrid.com',
+        mailApiKey : process.env.MAIL_API_KEY || 'key-1',
+        mailApiDomain : process.env.MAIL_API_DOMAIN || 'mh.sendgrid.net',
+        mailFrom : process.env.MAIL_FROM || 'info@sendgrid.info'
     },
     token: {
         expiry: parseInt(process.env.EXPIRY_TIME) || 36000,

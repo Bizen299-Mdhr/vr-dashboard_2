@@ -1,6 +1,6 @@
 module.exports = Object.freeze({
-    COPYRIGHT: 'Copyright 2020 EKbana Solutions',
-    COPYRIGHTEMAIL: 'info@ekbana.com ',
+    COPYRIGHT: 'Copyright 2020 Solutions',
+    COPYRIGHTEMAIL: 'info@sendgrid.com ',
     SOURCE:"pointer\":\"/data/attributes/",
     CODE:'code',
     VERSION:'1.1',

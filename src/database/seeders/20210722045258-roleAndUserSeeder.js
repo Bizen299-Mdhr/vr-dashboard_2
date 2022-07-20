@@ -28,7 +28,7 @@ module.exports = {
         let adminData = {
             '_id': MAINSUPERADMIN,
             'first_name': "Super Admin",
-            'last_name': "Ekbana",
+            'last_name': "SuperAdmin",
             'email': process.env.ADMIN_DEFAULT_EMAIL || "superadmin@mailinator.com",
             'username': 'admin',
             'password': bcryptPassword("123admin@", hashRound),

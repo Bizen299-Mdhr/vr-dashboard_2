@@ -31,7 +31,7 @@ module.exports = {
                                   <p>=============================================<br />
                                   <br />
                                   <br/>
-                                  Email: info@ekbana.info<br/>
+                                  Email: info@vrdashbord.info<br/>
                       =============================================</p>
                               </td>
                               </tr>
@@ -74,7 +74,7 @@ module.exports = {
                           <p>=============================================<br />
                           <br />
                           <br/>
-                          Email: info@ekbana.info<br/>
+                          Email: info@vrdashbord.info<br/>
                       =============================================</p>
                               </td>
                               </tr>
@@ -119,7 +119,7 @@ module.exports = {
                                   <p>=============================================<br />
                                   <br />
                                   <br/>
-                                  Email: iwi@ekbana.info<br/>
+                                  Email: vr.dashboard@mailinator<br/>
                       =============================================</p>
                               </td>
                               </tr>
@@ -161,7 +161,7 @@ module.exports = {
                                   <p>=============================================<br />
                                   <br />
                                   <br/>
-                                  Email: iwi@ekbana.info<br/>
+                                  Email: vr.dashboard@mailinator<br/>
                       =============================================</p>
                               </td>
                               </tr>
@@ -204,7 +204,7 @@ module.exports = {
                                   <p>=============================================<br />
                                   <br />
                                   <br/>
-                                  Email: iwi@ekbana.info<br/>
+                                  Email: vr.dashboard@mailinator.com<br/>
                       =============================================</p>
                               </td>
                               </tr>
