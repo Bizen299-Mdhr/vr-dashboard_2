@@ -1,0 +1,172 @@
+<!-- Main Content-->
+<div class="main-content side-content pt-5">
+    <div class="container-fluid">
+        <div class="inner-body">
+            <form action="/admin-roles" method="post">
+                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                <!-- Page Header -->
+                <div class="page-header sticky-header">
+                    <div>
+                        <h2 class="main-content-title tx-24 mg-b-5">
+                            <%= pageTitle %>
+                        </h2>
+                        <%- include('../partials/breadcrumb') %>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn main-save-btn btn-icon-text my-2 mr-2" type="submit">
+                            Save
+                        </button>
+
+                        <button class="btn main-cancel-btn btn-icon-text my-2 mr-2" type="button">
+                            <a href="/admin-roles" role="button">
+                                Cancel
+                            </a>
+                        </button>
+                    </div>
+                </div>
+                <!-- End Page Header -->
+                <!-- Row -->
+                <div class="row row-sm sticky-row">
+                    <div class="col-lg-12">
+                        <%- include('../partials/messages')  %>
+                    </div>
+                    <div class="col-lg-12">
+                            <div class="card custom-card">
+
+                                <div class="card-body">
+
+                                    <div class="inner__card_b1">
+                                        <div class="row align-items-baseline mt-3">
+                                            <div class="col-lg-6">
+                                                <div class="inner__border">
+                                                    <div class="form-group form-check d-flex align-items-baseline">
+                                                        <p class="inner__card">
+                                                            <b>
+                                                                Name
+                                                                    <span style="color:red;">*</span>
+                                                            </b>
+                                                        </p>
+                                                        <input required type="text"
+                                                            class="form-control form__inner__b1 name" id="name"
+                                                            name="name" <% if(inputData){ %> value="<%= inputData.name
+                                                            %>"
+                                                            <% } %>
+                                                                >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <div class="inner__border">
+                                                    <div class="form-group form-check d-flex align-items-baseline">
+                                                        <p class="inner__card">
+                                                            <b>
+                                                                Slug
+                                                            </b>
+                                                            <span style="color:red;">*</span></b>
+                                                        </p>
+                                                        </p>
+                                                        <input required type="text"
+                                                            class="form-control form__inner__b1 slug" id="slug"
+                                                            name="slug" <% if(inputData){ %> value="<%= inputData.slug
+                                                            %>"
+                                                            <% } %>
+                                                                readonly>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Row -->
+                                        <div class="row row-sm">
+                                            <div class="col-12">
+                                                <div class="card custom-card">
+                                                    <div class="card-body card__padding">
+                                                        <div aria-multiselectable="true" class="accordion"
+                                                            id="accordion" role="tablist">
+                                                            <div class="card">
+                                                                <div class="card-header" id="headingOne" role="tab">
+                                                                    <a aria-controls="collapseOne" aria-expanded="true"
+                                                                        data-toggle="collapse" href="#collapseOne"><b>▼
+                                                                            Permissions</b>
+                                                                        <span style="color:red;">*</span>
+                                                                    </a>
+                                                                </div>
+                                                                <div aria-labelledby="headingOne" class="collapse show"
+                                                                    id="collapseOne" role="tabpanel">
+                                                                    <div class="inner__border">
+                                                                        <div class="row">
+
+                                                                            <% for (const key in permission) { %>
+                                                                                <div class="col-sm-12 permission-title">
+                                                                                    <div class="form-group">
+                                                                                        <label id="<%= key  %>"
+                                                                                            class="checkbox checkbox-grey checkbox-primary font-bold capitalize ml-2">
+                                                                                            <input class="module"
+                                                                                                type="checkbox"
+                                                                                                value="<%=  key  %>"
+                                                                                                data-module="<%=  key  %>">
+                                                                                            <span
+                                                                                                class="input-span"></span>
+                                                                                            <%= (key).toUpperCase().replace(/-/g, ' '
+                                                                                                ); %>
+                                                                                        </label>
+
+
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <% for (const key1 in permission[key]) {
+                                                                                    %>
+                                                                                    <div class="col-sm-4 <%= permission[key][key1].module  %>"
+                                                                                        style="min-height: 32px;">
+                                                                                        <div class="form-group"
+                                                                                            style="margin-left: 24px;">
+                                                                                            <label
+                                                                                                class="checkbox checkbox-grey checkbox-primary sub-module permission">
+                                                                                                <input type="checkbox"
+                                                                                                    value="<%=  permission[key][key1].slug  %>"
+                                                                                                    name="permission"
+                                                                                                    class="permission"
+                                                                                                    data-module="<%=  permission[key][key1].module  %>">
+                                                                                                <span
+                                                                                                    class="input-span"></span>
+                                                                                                <%= permission[key][key1].name
+                                                                                                    %>
+                                                                                            </label>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <% } %>
+
+                                                                                        <% } %>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-12">
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <!-- accordion -->
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <!-- End Row -->
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- End Row -->
+
+    </div>
+
+</div>
+<!-- End Main Content-->

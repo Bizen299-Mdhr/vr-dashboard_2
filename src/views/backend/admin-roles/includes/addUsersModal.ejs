@@ -1,0 +1,36 @@
+  <!-- Modal -->
+  <div class="modal fade" id="addUserModal-<%= role.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><%= role.name %> - Add Admins</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="/admin-roles/<%= role.id %>/add-users" method="POST">
+          <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+          <div class="modal-body">
+            <div>
+              Select Admins
+            </div>
+            <% let userIds = getUserIds(role.roleUsers) %>
+            <select name="users" multiple class="form-control select2" id="">
+              <% userData.forEach(function(user) { %>
+                <option value="<%= user.id %>" 
+                <%if(userIds.includes(user.id)){%>
+                    selected
+                <%}%>
+                > <%= user.employee_name ? user.employee_name : user.first_name %></option>
+              <% }); %>
+            </select>
+          </div>
+          
+          <div class="modal-footer modal-btn">
+            <button type="submit" class="btn btn-primary pull-right">Save</button>
+            <button type="button" class="btn btn-default closed" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

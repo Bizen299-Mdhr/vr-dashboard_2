@@ -1,0 +1,95 @@
+appenders: 
+  consoleLog: 
+    type: console
+  applicationLog: 
+    type: dateFile
+    filename: "src/logs/application.log"
+    pattern: "yyyy-MM-dd"
+    numBackups : 5
+    compress: false
+    keepFileExt: true
+  cmsLog:
+    type: dateFile
+    filename: "src/logs/cms-logs/cms-error.log"
+    pattern: "yyyy-MM-dd"
+    numBackups : 5
+    compress: false
+    keepFileExt: true
+  apiLog: 
+    type: dateFile
+    filename: "src/logs/api-logs/api-error.log"
+    pattern: "yyyy-MM-dd"
+    numBackups : 5
+    compress: false
+    keepFileExt: true
+  apiLogInfo:
+    type: logLevelFilter
+    appender: applicationLog
+    level: INFO
+  sqlLog: 
+    type: dateFile
+    filename: "src/logs/sql-logs/sql.log"
+    pattern: "yyyy-MM-dd"
+    numBackups : 5
+    compress: false
+    keepFileExt: true
+  sqlLogInfo:
+    type: logLevelFilter
+    appender: applicationLog
+    level: INFO
+  errorLog:
+    type: dateFile
+    filename: "src/logs/error.log"
+    pattern: "yyyy-MM-dd"
+    numBackups : 5
+    compress: false
+    keepFileExt: true
+  applicationLogError:
+    type: logLevelFilter
+    appender: errorLog
+    level: ERROR
+  cmsLogError:
+    type: logLevelFilter
+    appender: errorLog
+    level: ERROR
+  apiLogError:
+    type: logLevelFilter
+    appender: errorLog
+    level: ERROR
+  sqlLogError:
+    type: logLevelFilter
+    appender: errorLog
+    level: ERROR
+    
+categories: 
+  default: 
+    appenders: 
+      - consoleLog
+    level: INFO
+  application: 
+    appenders: 
+      - consoleLog
+      - applicationLog
+      - applicationLogError
+    level: DEBUG
+  cms:
+    appenders:
+      - cmsLog
+      - cmsLogError
+    level: DEBUG
+  api:
+    appenders: 
+      - consoleLog
+      - apiLog
+      - apiLogInfo
+      - apiLogError
+    level: DEBUG
+  sql:
+    appenders: 
+      - consoleLog
+      - sqlLog
+      - sqlLogInfo
+      - sqlLogError
+    level: DEBUG
+
+

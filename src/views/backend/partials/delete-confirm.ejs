@@ -1,0 +1,24 @@
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="" method="post">
+                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                <div class="modal-body text-center">
+                    <input type="hidden" value="DELETE" name="method">
+                    <i class="fa fa-trash-alt fa-2x text-danger"></i>
+                    <p class="deleteDescription">Are you sure you want to delete?</p>
+                </div>
+                <div class="modal-footer modal-btn">
+                    <button class="btn main-save-btn" type="submit">Confirm</button>
+                    <button type="button" class="btn main-cancel-btn" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

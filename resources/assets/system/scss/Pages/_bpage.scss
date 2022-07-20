@@ -1,0 +1,88 @@
+
+//b1 page css start
+.inner-row{
+    padding-right: 10%;
+    label{
+        text-align: right;
+        margin-bottom: 8px;
+        padding-right: 0;
+        padding-left: 10px;
+    }
+
+    .input-field{
+        height: 30px;
+        font-size: 12px;
+        color: black;
+    }
+}
+
+.inner-form{
+    padding-right: 10%;
+    .check-form{
+        justify-content: end;
+    }
+}
+
+.modal-content-inner{
+    label{
+        margin-top: 5px;
+        text-align: left;
+    }
+}
+
+.ext-scrol {
+    width: fit-content;
+    min-width: 100%;
+}
+.close-field-btn{
+    position: absolute;
+    top: 8px;
+    right: 20px;
+    color: #999999;
+    cursor: pointer;
+}
+.input-text-field{
+    padding-right: 30px;
+}
+
+@media(max-width:1305px){
+    .inner-row{
+        padding-right: 5%;
+    }
+    .ext-respo {
+        font-size: 10px;
+    }
+
+}
+@media(max-width:1254px){
+    .inner-row{
+        padding-right: 2%;
+    }
+    .inner-form{
+        padding-right: 2%;
+        p{
+            text-align: start;
+        }
+        .check-form{
+            justify-content: start;
+        }
+    }
+    
+
+}
+@media (max-width:991px){
+    .inner-row{
+        label{
+            text-align: left;
+        }
+    }
+}
+.checkbox-class{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 15px;
+    .indiv-checkbox{
+        display: flex;
+    }
+}
+//b1 page css end

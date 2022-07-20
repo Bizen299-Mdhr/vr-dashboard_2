@@ -1,0 +1,148 @@
+<div class="main-content side-content pt-5">
+    <div class="container-fluid">
+        <div class="inner-body">
+            <!-- Page Header -->
+            <div class="page-header sticky-header">
+                <div>
+                    <h2 class="main-content-title tx-24 mg-b-5"><%= pageTitle %></h2>
+                    <%- include('../partials/breadcrumb') %>
+                </div>
+                <div class="page-title-actions">
+                    <% if(checkPermissions(user, "user-management.admins.create") == true) { %>
+                        <a class="btn main-pg-btn btn-icon-text mr-2 pull-right" href="/admins/create"
+                           role="button"><i
+                                    class="fa fa-plus"></i> Add New
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Row -->
+        </div>
+        <!-- End Row -->
+    </div>
+
+    <div class="container-fluid">
+        <div class="inner-body sticky-row">
+            <div class="mt-2 mb-2">
+                <%- include('../partials/messages')  %>
+            </div>
+            <%- include('./includes/searchForm') %>
+            <!-- Row -->
+            <div class="row row-sm">
+                <div class="col-lg-12">
+                    <div class="card custom-card ext-scrol">
+                        <div class="card-body">
+                            <div class="border">
+                                <table class="table text__bold text-nowrap text-md-nowrap table-striped mg-b-0">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            SN
+                                        </th>
+                                        <th>
+                                            Full name
+                                            <%- orderAndSort(url, 'employee_name', query) %>
+                                        </th>
+                                        <th>
+                                            Username
+                                            <%- orderAndSort(url, 'username', query) %>
+                                        </th>
+                                        <th>
+                                            Email
+                                            <%- orderAndSort(url, 'email', query) %>
+                                        <th>
+                                            Admin Role
+                                        </th>
+                                        <th>
+                                            Status
+                                            <%- orderAndSort(url, 'status', query) %>
+                                        </th>
+                                        <% if(checkPermissions(user, "user-management.admins.edit") == true || checkPermissions(user, "user-management.admins.delete") == true || checkPermissions(user, "user-management.admins.password") == true) { %>
+                                            <th>Action</th>
+                                        <% } %>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% if(docs.length > 0){
+                                        sn = (pageNum - 1) * pageLimit;
+                                    docs.forEach(function(admin) { %>
+                                        <tr>
+                                            <td><%= sn += 1 %></td>
+                                            <td>
+                                                <%= admin.first_name ? admin?.display_name : admin?.first_name %>
+                                            </td>
+                                            <td><%= admin.username ? admin.username : nil %></td>
+                                            
+                                            <td><%= admin.email ? admin.email : nil %></td>
+                                            <td>
+                                                <%if(admin.role_id && admin.role_id === 1) {%>
+                                                    <span class="text-uppercase statusBadge badge badge-secondary">SUPERADMIN</span>
+                                                <% } %>
+                                                <% admin.userRoles.forEach(function(userRoles){%>
+                                                    <span class="text-uppercase statusBadge badge badge-secondary"><%= userRoles.roleAdmin.name %></span>
+                                                <%})%>
+                                            </td>
+                                            <td>
+                                                <%
+                                                    let badgeType = 'badge-success';
+                                                    if (admin.status == "inactive") {
+                                                        badgeType = 'badge-danger';
+                                                    } else if (admin.status == "blocked") {
+                                                        badgeType = 'badge-danger';
+                                                    }
+                                                %>
+                                                <span class="text-uppercase statusBadge badge <%= badgeType %>"><%= admin.status %></span>
+                                            </td>
+                                            <% if(checkPermissions(user, "user-management.admins.edit") == true || checkPermissions(user, "user-management.admins.delete") == true || checkPermissions(user, "user-management.admins.password") == true) { %>
+                                                <td>
+                                                    <% if(checkPermissions(user, "user-management.admins.edit") == true) { %>
+                                                        <a class="btn btn-white mr-2" href="/admins/<%= admin._id %>"
+                                                            role="button"><i class="fa fa-edit"> </i> Edit</a>
+                                                    <% } %>
+                                                    <% if(checkPermissions(user, "user-management.admins.delete") == true) { %>
+                                                        <% if(admin._id != MAINSUPERADMIN){ %>
+                                                        <button type="button"
+                                                                class="btn btn-danger mr-2 btn-delete confirm-delete"
+                                                                data-toggle="modal" data-target="#confirmDeleteModal"
+                                                                data-href="/admins/<%= admin._id %>?_method=delete"
+                                                                data-title="Delete Admin"
+                                                                data-description="Are you sure you want to delete?"><i
+                                                                    class="fa fa-trash-alt mr-1"> </i>Delete
+                                                        </button>
+                                                        <% } %>
+                                                    <% } %>
+                                                    <% if(checkPermissions(user, "user-management.admins.password") == true) { %>
+                                                        <a class="btn mr-2 btn-success "
+                                                            href="/admins/<%= admin._id %>/change-password"
+                                                            role="button"><i
+                                                                    class="fa fa-key mr-1"></i>Change Password
+                                                        </a>
+                                                    <% } %>
+                                                </td>
+                                            <% } %>
+                                            
+                                        </tr>
+                                    <% });
+                                    } else { %>
+                                        <tr>
+                                                <td colspan="6" style="text-align:center;">
+                                                    No Records found.
+                                                </td>
+                                        </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <% if(docs.length > 0){ %>
+                                <%- include('../partials/pagination', {passedPageTab:11}) %>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+    <meta name="description" content="iwi -  CMS Panel" />
+    <meta name="author" content="iwi ekbana Private Limited" />
+    <meta name="keywords"
+          content="myplace,iwi,admin,dashboard,panel,bootstrap admin template,bootstrap dashboard,dashboard,themeforest admin dashboard,themeforest admin,themeforest dashboard,themeforest admin panel,themeforest admin template,themeforest admin dashboard,cool admin,it dashboard,admin design,dash templates,saas dashboard,dmin ui design" />
+    <meta name="google" content="notranslate">
+    <link rel="icon" href="/backend/assets/img/template/icons&logo/logo-mini.svg" type="image/x-icon" />
+    <title><%= cmsTitle %></title>
+    <link href="/backend/assets/css/style.css" rel="stylesheet" />
+    <link href="/backend/assets/css/colors/default.css" rel="stylesheet" />
+    <link href="/backend/assets/css/template.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/public/css/system.css">
+    <script src="/backend/assets/plugins/jquery/jquery.min.js" defer></script>
+    <script src="/backend/assets/plugins/bootstrap/js/bootstrap.min.js" defer></script>
+</head>
+
+<body class="main-body leftmenu">
+<div class="page main-signin-wrapper">
+    <!-- Row -->
+    <div class="row signpages text-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="row row-sm">
+                    <div class="col-lg-6 col-xl-5 d-none d-lg-block text-center bg-primary details">
+                        <div class="margin__sigin">
+                            <img src="/backend/assets/img/template/icons&logo/logo-mini.svg" class="header-brand-img"
+                                 alt="logo">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-xl-7 col-xs-12 col-sm-12 login_form">
+                        <div class="container-fluid">
+                            <div class="row row-sm">
+                                <div class="card-body mt-2 mb-2">
+                                    <img src="/backend/assets/img/template/icons&logo/logo-mini.svg" class="d-lg-none header-brand-img text-left mb-4 " style="width: 100px; margin: 0 auto;"
+                                 alt="logo">
+                                    <div class="clearfix"></div>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <%- include('../partials/messages')  %>
+                                        </div>
+                                    </div>
+
+                                    <form action="/forgot-password" method="post" id="loginForm">
+                                        <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                                        <h5 class="text-left mb-2">Forgot Password of Your Account</h5>
+                                        <p class="mb-4 text-muted tx-13 ml-0 text-left">
+                                            Forgot Password
+                                        </p>
+                                        <div class="position-relative form-group">
+                                            <label for="email" class="mandatory">Email</label>
+                                            <input name="email" value="<%= inputData && inputData.email ? inputData.email: '' %>" id="email" placeholder="Email" type="email" class="form-control" required>
+                                        </div>
+
+                                            <div class="float-left"><a href="/login" class="btn ripple btn-main-primary btn-block">Sign In</a></div>
+                                            <div class="float-right">
+                                                <button class="btn ripple btn-main-primary btn-block" id="submitFormBtn">Recover Password</button>
+                                            </div>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Row -->
+</div>
+</body>
+</html>

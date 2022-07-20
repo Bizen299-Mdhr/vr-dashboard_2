@@ -1,0 +1,18 @@
+.ext-pghead {
+    margin-bottom: 10px;
+}
+
+select.select2.selectBrokerSearch + span > span > span {
+    > span.select2-selection__arrow > b {
+        display: none;
+    }
+
+    > span {
+        color: #495057 !important;
+    }
+}
+
+
+select:disabled.select2.selectBrokerSearch + span > span > span {
+    background-color: rgb(29, 27, 27) !important;
+}

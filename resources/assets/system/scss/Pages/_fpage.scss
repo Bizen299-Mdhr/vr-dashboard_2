@@ -1,0 +1,60 @@
+.f-butn button {
+    width: 140px; 
+}
+
+.sec-tablef th {
+    background-color: #b0b0dc !important;
+    color: #fff !important;
+}
+
+.check-it input{
+    height: 15px;
+    margin-top: 10px;
+} 
+
+.inner__c2{
+    border: 1px solid lightgray;
+    width: 50%;
+    padding: 2px 15px;
+    background-color: #b0b0dc !important;
+    &::after{
+        width: 0;
+        height: 0;
+        border-top: 14px solid transparent;
+        border-bottom: 14px solid transparent;
+        border-left: 14px solid #b0b0dc;
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -14px;
+    }
+}
+.inner__c2-sub{
+    border: 1px solid lightgray;
+    width: 50%;
+    padding: 2px 15px;
+    background-color: lightgray !important;
+    &::after{
+        width: 0;
+        height: 0;
+        border-top: 14px solid transparent;
+        border-bottom: 14px solid transparent;
+        border-left: 14px solid #d3d3d3;
+        content: "";
+        position: absolute;
+        top: -1px;
+        right: -14px;
+    }
+}
+
+select.select2.selectWithSearch + span > span > span {
+
+    > span {
+        color: #495057 !important;
+    }
+}
+
+
+// select:disabled.select2.selectWithSearch + span > span > span {
+//     background-color: rgb(211,211,211) !important;
+// }

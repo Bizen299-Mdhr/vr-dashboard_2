@@ -1,0 +1,9 @@
+
+/* Bootstrap core CSS */
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css";
+
+/* Icons Fontawesome */
+/* @import "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"; */
+@import "https://use.fontawesome.com/releases/v5.9.0/css/all.css";
+/* Custom Styles */
+@import "common.css";

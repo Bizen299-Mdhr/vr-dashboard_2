@@ -1,0 +1,102 @@
+<div class="main-content side-content pt-5">
+    <div class="container-fluid">
+        <div class="inner-body">
+            <!-- Page Header -->
+            <div class="page-header sticky-header">
+                <div>
+                    <h2 class="main-content-title tx-24 mg-b-5"><%= pageTitle %></h2>
+                    <%- include('../partials/breadcrumb') %>
+                </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Row -->
+        </div>
+        <!-- End Row -->
+    </div>
+    
+    <div class="container-fluid">
+        <div class="inner-body sticky-row">
+            <div class="mb-2 mt-2">
+                <%- include('../partials/messages')  %>
+            </div>
+            <!-- Row -->
+            <%- include('../partials/basic-search-form') %>
+            <div class="row row-sm">
+                <div class="col-lg-12">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div class="table-responsive border">
+                                <table class="table text__bold text-nowrap text-md-nowrap table-striped mg-b-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Name></th>
+                                        <th>Value</th>
+                                        <!-- <% if(checkPermissions(user, "email-templates.email-templates..edit") == true || checkPermissions(user, "email-templates.email-templates..delete") == true ) { %>
+                                            <th>Action></th>
+                                        <% } %> -->
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%
+                                    if(docs.length > 0){
+                                    docs.forEach(function(config) {
+                                    %>
+
+                                        <tr style="height: 50px;">
+                                            <td style="padding-left: 10px;">
+                                                <%= config.name %><br>
+                                                <% if(config.help_text){ %>
+                                                (<%= config.help_text %>)
+                                                <% } %>
+                                            </td>
+                                            <td>
+                                            <form action="<%-url+'/'+config.id %>?_method=PUT" method="post" id="form" enctype="multipart/form-data">
+                                                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                                                <div class="input-group">
+                                                <% if(config.type == "checkbox"){ %>
+                                                    <input onclick="submit()" name="checkbox" type="checkbox" <% if(config.value == 'true'){%> checked <%}%>>
+                                                <% }else{ %>
+                                                    <input autocomplete="off" type="<%= config.type ? config.type : 'text' %>" class="form-control <%= config.name === 'Null Field'|| config.name === 'Assessment Gdrive Folder' || config.name === 'Assessment Gdrive Path' ? '' : 'onlynum' %>" onchange="submit()"
+                                                    <% if(checkPermissions(user, "configs.configs.edit") !== true ) {%>
+                                                        disabled="" 
+                                                    <%}%>
+                                                    name="value" class="form-control" value="<%= config.value ? config.value : nil %>" required>
+                                                    <div class="input-group-append">
+                                                        <span class="input-group-text" id="basic-addon2"><%= config.attribute %></span>
+                                                      </div>
+                                                    </div>
+                                                <% } %>
+                                                
+                                                
+                                            </form>
+                                                
+                                            </td>
+                                        </tr>
+
+                                    <% });
+                                    }else{
+                                    %>
+                                        <tr>
+                                            <td colspan="4" style="text-align:center; height: 50px;">
+                                                No Records found.
+                                            </td>
+                                        </tr>
+                                    <% } %>
+
+                                    </tbody>
+                                </table>
+                                <% if(docs.length > 0){ %>
+                                    <div style="padding-left: 10px;">
+                                        <%- include('../partials/pagination')  %>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+
+</div>

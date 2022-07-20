@@ -1,0 +1,51 @@
+<script src="/backend/assets/plugins/bootstrap/js/popper.min.js"></script>
+<script src="/backend/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="/backend/assets/plugins/select2/js/select2.min.js" ></script>
+<script src="/backend/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="/backend/assets/plugins/toast/jquery.toast.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+<!-- Internal Jquery-Ui js-->
+<script src="/backend/assets/plugins/jquery-ui/ui/widgets/datepicker.js" defer></script>
+
+<!--Bootstrap-datepicker js-->
+<script src="/backend/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.js" defer></script>
+
+<script src="/js/system.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="/backend/assets/plugins/daterangepicker-master/moment.min.js" defer></script>
+<script src="/backend/assets/plugins/daterangepicker-master/daterangepicker.js" defer></script>
+<script src="/backend/assets/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js" defer></script>
+
+<script>
+        $( document ).ready(function() {
+            $.ajaxSetup({
+                headers: {
+                    'CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    'XSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        });
+        
+        $(document).ajaxError(function (event, jqXHR,) {
+            if (jqXHR.status === 401) {
+                window.location.href = "/login"
+            }
+        });
+
+        let success = JSON.parse(`<%- JSON.stringify(typeof success_msg_toast !== "undefined" ? success_msg_toast : "") %>`); 
+        if(success.length >0 ){
+            $.toast({
+            heading: 'success',
+            text: success[0],
+            showHideTransition: 'plain',
+            icon: 'success',
+            position: 'top-right',
+        });
+    }
+</script>
+
+

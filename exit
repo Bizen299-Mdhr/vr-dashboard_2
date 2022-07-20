@@ -1,0 +1,250 @@
+[33mcommit f1a07c5f0348776afb2c656a9e2683d012abfdbd[m[33m ([m[1;36mHEAD -> [m[1;32mbroker_module[m[33m, [m[1;31morigin/broker_module[m[33m)[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 17:53:45 2021 +0545
+
+    D-8 pages updated
+
+[33mcommit 28140015be824cb4ba37b2f90fef7a3116dff95f[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 17:53:19 2021 +0545
+
+    register route and controller added and service updated to fetch data
+
+[33mcommit c241b4f720916f7c17b58d0ddea1dd48f15d4352[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 17:52:48 2021 +0545
+
+    added association between ankenkanri and contract
+
+[33mcommit dd4acf5dbda2be0d8a13b67c1cd2383b17eb12a3[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 14:15:55 2021 +0545
+
+    view pages of D-8 partioned
+
+[33mcommit 2ecca4462c657d0552d2c5f7c5119cbb5ffa3b37[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 14:15:25 2021 +0545
+
+    D-8 controller and service
+
+[33mcommit baa054e08703deb7db85ae358703b65dd3f3046e[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 14:15:02 2021 +0545
+
+    permission, routes, controller and service (Basic) for D-8
+
+[33mcommit 2bdc7f7fc8cc2df8cbe52b0abbbb01fb944a923b[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 13:23:37 2021 +0545
+
+    migration and model of contract_settlement
+
+[33mcommit 24c4b017b303d991afb48f27ef330d765d2a91a2[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 13:02:55 2021 +0545
+
+    migration and model of contract
+
+[33mcommit 9e66d1f0514ec4f65f0d4c752383bedb07897aee[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 11:51:39 2021 +0545
+
+    migration and model of contract details
+
+[33mcommit 0103779cd584b7e7153775cc5ffcffc8e02f4d94[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Wed Nov 17 11:35:10 2021 +0545
+
+    migration and model of contract_customer_detail
+
+[33mcommit 7e622374a2c1a1ab43432e28b7ace771fb14ae6b[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Tue Nov 16 21:41:01 2021 +0545
+
+    D-6 complemeted formula, validation
+
+[33mcommit 2ebd6728571e12f9e64659c9d9e1199d8500a90c[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Mon Nov 15 18:02:33 2021 +0545
+
+    D-6 management settlement fee formulas partial imp
+
+[33mcommit 04edc81f6108303d59a121c335ec549218d0397c[m
+Merge: 78ca2f61 e3898499
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Mon Nov 15 16:47:01 2021 +0545
+
+    merged rohan for company info migration and model
+
+[33mcommit 78ca2f61a6fd98256c80d0e2deb0bdc9e8279f1c[m
+Merge: 1e76cbea 0629b217
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Mon Nov 15 16:44:25 2021 +0545
+
+    Merge branch 'broker_module' of repo.ekbana.info:iwi/iwi-test-project into broker_module
+
+[33mcommit 1e76cbead4e8105dfd6f5b32eb7f0278c8c0250b[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Mon Nov 15 16:43:19 2021 +0545
+
+    D-6 page study and formula implementation
+
+[33mcommit e3898499fbc81af34eea0d513c3b1c8f66e2a7c6[m[33m ([m[1;31morigin/d-pages-rohan[m[33m)[m
+Author: Rohan Maharjan <rohanmaharjan012@gmail.com>
+Date:   Mon Nov 15 16:41:14 2021 +0545
+
+    mgmt company info migration and model
+
+[33mcommit 4ab4814a1be52798afa4a56d235908a0af447070[m
+Author: Rohan Maharjan <rohanmaharjan012@gmail.com>
+Date:   Mon Nov 15 16:35:59 2021 +0545
+
+    build yarn
+
+[33mcommit 6ee2fa01ecdfa0621cbef0ed8838ef45e3d7c3c7[m
+Merge: b09c5cae 71f684ef
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Mon Nov 15 10:17:19 2021 +0545
+
+    merge broker_module branch with dev
+
+[33mcommit 71f684ef9df520f43183b8386d53f24f38b67b8e[m[33m ([m[1;31morigin/dev[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mRemodeling[m[33m)[m
+Merge: eca1c470 99c9fae6
+Author: Ek-macmini <ek-macmini@Ek-macminis-Mac-mini.local>
+Date:   Fri Nov 12 18:46:23 2021 +0545
+
+    Remodeling Isuue fixes
+
+[33mcommit 99c9fae61391cfa9d5cfb8524e700d46e822f79e[m
+Author: Ek-macmini <ek-macmini@Ek-macminis-Mac-mini.local>
+Date:   Fri Nov 12 18:44:51 2021 +0545
+
+    Remodeling Isuue fixes
+
+[33mcommit 83e2a0a1c8bea7b55e314b363ba52eae4b9c9293[m
+Merge: 78b9aba1 5cae0066
+Author: Ek-macmini <ek-macmini@Ek-macminis-Mac-mini.local>
+Date:   Fri Nov 12 18:25:54 2021 +0545
+
+    Merge branch 'Remodeling' of repo.ekbana.info:iwi/iwi-test-project into Remodeling
+
+[33mcommit 5cae006671ebe7cceb70a82ca8fb390df64a2c61[m[33m ([m[1;31morigin/Remodeling[m[33m)[m
+Merge: cf691909 7912f79a
+Author: Bijendra Manandhar <bijendra.manandhar@ekbana.info>
+Date:   Fri Nov 12 18:25:04 2021 +0545
+
+    [updated] : remodeling access Stations
+
+[33mcommit cf69190943e7b6b2389ae3f53c8d1e296f8f73e3[m
+Merge: 73673aca ccced400
+Author: Bijendra Manandhar <bijendra.manandhar@ekbana.info>
+Date:   Fri Nov 12 18:20:50 2021 +0545
+
+    [updated] : remodeling access Stations
+
+[33mcommit 7912f79a2e027004746227f39f1b9a64e8020ed9[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Fri Nov 12 17:30:51 2021 +0545
+
+    checked value for parsing and displaying
+
+[33mcommit df63a8796eef81d3b18168e903805e5677ad1324[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Fri Nov 12 17:30:10 2021 +0545
+
+    input check error fixed
+
+[33mcommit 92a5ed280ccf31cf62f371cd490963a76f5e0ff0[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Fri Nov 12 17:27:59 2021 +0545
+
+    merge E-3 pages
+
+[33mcommit eca1c470ebe9be929e373fa704e7f3c7e5d1ff53[m
+Merge: 78b9aba1 d479f4be
+Author: Ek-macmini <ek-macmini@Ek-macminis-Mac-mini.local>
+Date:   Fri Nov 12 17:07:47 2021 +0545
+
+    script changes
+
+[33mcommit 78b9aba111cf576617b1d9fef85ef7d48b69810b[m
+Merge: 36bfc0bc 61c9de88
+Author: Ek-macmini <ek-macmini@Ek-macminis-Mac-mini.local>
+Date:   Fri Nov 12 17:02:21 2021 +0545
+
+    Merge branch 'Remodeling' of repo.ekbana.info:iwi/iwi-test-project into Remodeling
+
+[33mcommit 61c9de8880b260f2e78840f7df8d913313335822[m
+Merge: c918ec39 c4612d7c
+Author: Rohan Maharjan <rohanmaharjan012@gmail.com>
+Date:   Fri Nov 12 17:01:33 2021 +0545
+
+    Remodeling rohan part partially completed
+
+[33mcommit c918ec3999db47693a54f67f789618bc6a79da4c[m
+Author: Rohan Maharjan <rohanmaharjan012@gmail.com>
+Date:   Fri Nov 12 16:55:42 2021 +0545
+
+    lint fixes
+
+[33mcommit 36bfc0bc3903cd59f64b1b6d5f1c3591fc86e16c[m
+Merge: 5167e7b1 0364fa1e
+Author: Ek-macmini <ek-macmini@Ek-macminis-Mac-mini.local>
+Date:   Fri Nov 12 16:45:45 2021 +0545
+
+    minor changes
+
+[33mcommit c4612d7cd2191d188e88f4f9d6098329fb9719c1[m
+Merge: 0e7dcf1d 2b7239eb
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Fri Nov 12 16:37:13 2021 +0545
+
+    Merge branch 'Remodeling' of repo.ekbana.info:iwi/iwi-test-project into Remodeling
+
+[33mcommit 0e7dcf1dc9e6f68c7ca1b32cceee9b9de2603b3f[m
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Fri Nov 12 16:36:25 2021 +0545
+
+    notification display updated
+
+[33mcommit 2b7239eba2464c7c7b0db4b52812fd8bae3f43bb[m
+Author: Sanjay Raut <sanjay.raut@ekbana.info>
+Date:   Fri Nov 12 16:34:45 2021 +0545
+
+    Apartment sheet attribute issue
+
+[33mcommit 7d9ce393ea9c0a5d277acfa3fb33697ecbcd040a[m
+Author: Sanjay Raut <sanjay.raut@ekbana.info>
+Date:   Fri Nov 12 16:22:47 2021 +0545
+
+    Has Internet design issue
+
+[33mcommit cc40c84ab16923a0a9d4f9d6db806e0164857ea2[m
+Author: Sanjay Raut <sanjay.raut@ekbana.info>
+Date:   Fri Nov 12 16:19:35 2021 +0545
+
+    Issue fixes
+
+[33mcommit 7b33f3ef5fc65e26e9acafcc4291544372c1b1a4[m
+Merge: 1fe8088d 0364fa1e
+Author: Sanjay Raut <sanjay.raut@ekbana.info>
+Date:   Fri Nov 12 16:18:25 2021 +0545
+
+    Merge branch 'Remodeling' of repo.ekbana.info:iwi/iwi-test-project into Remodeling
+
+[33mcommit 1fe8088d0328b3e00296785b9f07a845359720bb[m
+Author: Sanjay Raut <sanjay.raut@ekbana.info>
+Date:   Fri Nov 12 16:18:10 2021 +0545
+
+    Form issue fixes
+
+[33mcommit 0364fa1e481b1de25d582ce2b96356d9df7f1e04[m
+Merge: eea2613a acae7603
+Author: Sarad Subedi <subedisarad27@gmail.com>
+Date:   Fri Nov 12 16:06:05 2021 +0545
+
+    Merge branch 'Remodeling' of repo.ekbana.info:iwi/iwi-test-project into Remodeling
+
+[33mcommit eea2613acb6a6451d0998aa2e2e19bb7bbcefb8a[m
+Merge: eb392f3f ccce

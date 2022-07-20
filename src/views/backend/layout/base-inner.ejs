@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<%- include('../partials/page-header') %>
+<body class="main-body leftmenu">
+<div class="page" id="app">
+    <input type="hidden" name="lang" value="<%= typeof(session.selectedLanguage) !== 'undefined' ? session.selectedLanguage :'en' %>">
+    <%- include('../partials/global-loader') %>
+    <%- include('../partials/sidebar') %>
+    <%- include('../partials/header') %>
+    <%- include('../partials/mobile-header') %>
+    <%- include(innerPage) %>
+    <%- include('../partials/delete-confirm')  %>
+    <%- include('../partials/footer')  %>
+    <%- include('../partials/sidebar-menu')  %>
+</div>
+<a href="#top" id="back-to-top"><i class="fe fe-arrow-up"></i></a>
+<%- include('../partials/scripts')  %>
+</body>
+</html>

@@ -1,0 +1,96 @@
+.selected {
+    background-color: rgba(88, 77, 190, 0.4) !important;
+}
+
+/*
+    Clearable text inputs
+*/
+.clearable{
+    background: #fff url(http://i.stack.imgur.com/mJotv.gif) no-repeat right -10px center;
+    border: 1px solid #999;
+    padding: 3px 18px 3px 4px; /* Use the same right padding (18) in jQ! */
+    border-radius: 3px;
+    transition: background 0.4s;
+}
+.clearable.x  { background-position: right 5px center; } /* (jQ) Show icon */
+.clearable.onX{ cursor: pointer; } /* (jQ) hover cursor style */
+.clearable::-ms-clear {display: none; width:0; height:0;} /* Remove IE default X */
+
+.cat-row:hover {
+    background: #b9b6b6 !important;
+    cursor: pointer;
+}
+.active-cat-row {
+    background: #a9a9f5 !important;
+}
+
+
+/*the container must be positioned relative:*/
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+
+
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    /*position the autocomplete items to be the same width as the container:*/
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+    background-color: #e9e9e9;
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+    background-color: DodgerBlue !important;
+    color: #ffffff;
+}
+
+.select2-container.select2-container-disabled .select2-choice {
+    background-color: #ddd;
+    border-color: #a8a8a8;
+
+}
+
+
+select[readonly].select2-hidden-accessible + .select2-container {
+    pointer-events: none;
+    touch-action: none;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container .select2-selection {
+    background-color: #f6f6ff;
+    box-shadow: none;
+}
+
+select[readonly].select2-hidden-accessible + .select2-container .select2-selection__arrow,
+select[readonly].select2-hidden-accessible + .select2-container .select2-selection__clear {
+    display: none;
+    background-color: #f6f6ff;
+}
+.text-underline{
+    text-decoration: underline!important;
+}
+
+.link-url{
+    background-color: #cccccc;
+    padding:4px;
+    border-radius: 4px;
+    height: 30px;
+}

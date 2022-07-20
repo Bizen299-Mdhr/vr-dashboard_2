@@ -1,0 +1,72 @@
+<div class="main-content side-content pt-5">
+    <div class="container-fluid">
+        <div class="inner-body">
+            <!-- Page Header -->
+            <div class="page-header sticky-header">
+                <div>
+                    <h2 class="main-content-title tx-24 mg-b-5"><%= pageTitle %></h2>
+                    <%- include('../partials/breadcrumb') %>
+                </div>
+            </div>
+            <!-- End Page Header -->
+            <!-- Row -->
+        </div>
+        <!-- End Row -->
+    </div>
+
+    <div class="container-fluid">
+        <div class="inner-body sticky-row">
+            <div class="mt-2 mb-2">
+                <%- include('../partials/messages')  %>
+            </div>
+            <%- include('includes/search-form')  %>
+            <!-- Row -->
+            <div class="row row-sm">
+                <div class="col-lg-12">
+                    <div class="card custom-card">
+                        <div class="card-body">
+                            <div class="table-responsive border">
+                                <table class="table text__bold text-nowrap text-md-nowrap table-striped mg-b-0">
+                                    <thead>
+                                    <tr>
+                                        <th>SN</th>
+                                        <th>Admin Name</th>
+                                        <th>Ip address</th>
+                                        <th>Login Date Time</th>
+                                        <th>Logout Date Time</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <% if(docs.length > 0){
+                                        sn = (pageNum-1) * pageLimit;
+                                    docs.forEach(function(item) { %>
+                                        <tr>
+                                            <td><%= sn += 1 %></td>
+                                            <td><%= item.admins ?  item?.admins?.display_name : '' %></td>
+                                            <td><%= item.login_ip_address ? item.login_ip_address : nil %></td>
+                                            <td><%= item.login_date_time ? formatDate(item.login_date_time,"YYYY/MM/DD HH:mm:ss") : nil %></td>
+                                            <td><%= item.logout_date_time ? formatDate(item.logout_date_time,"YYYY/MM/DD HH:mm:ss") : nil %></td>
+                                        </tr>
+                                    <% });
+                                    } else{ %>
+                                        <tr>                                          
+                                                <td colspan="5" style="text-align:center;">
+                                                    No Records found
+                                                </td>
+                                        </tr>
+                                    <% } %>
+                                    </tbody>
+                                </table>
+                                <% if(docs.length > 0){ %>
+                                    <%- include('../partials/pagination')  %>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Row -->
+        </div>
+    </div>
+
+</div>

@@ -1,0 +1,32 @@
+.image-tag-wrapper {
+  z-index: 5;
+  position: relative;
+}
+
+.image-tag-wrapper .tagdiv {
+  position: absolute;
+  background-color: rgba(110, 108, 108, 0.473);
+  color: rgb(0, 0, 0);
+  z-index: 10;
+  cursor: default;
+  padding:0 10px;
+}
+
+.image-tag-wrapper .tagform-wrapper {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgb(10, 10, 10);
+  width: 200;
+  z-index: 10;
+  cursor: default;
+  padding:10px;
+}
+
+.image-tag-wrapper .tagform-wrapper a {
+  color: rgb(19, 18, 18);
+}
+
+.image-tag-wrapper.enabled {
+  cursor: crosshair;
+  display: inline-block;
+}
