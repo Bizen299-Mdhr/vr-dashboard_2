@@ -61,7 +61,7 @@ config.modulePermissions = {
     }
 };
 config.moduleIcons = {
-    "home": "fa fa-tachometer-alt",
+    "home": "fa fa-tachometer",
     "admin-roles": "fa fa-universal-access",
     "languages": "fa fa-language",
     "email-templates": "fa fa-envelope",

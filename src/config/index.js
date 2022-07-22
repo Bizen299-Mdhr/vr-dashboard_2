@@ -2,7 +2,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 let config = {
-    cmsTitle : process.env.CMSTITLE || "VR-Dashbord",
+    cmsTitle : process.env.CMSTITLE || "Monkey Muzic",
     nodeEnv : process.env.ENV_NODE || 'development',
     port : process.env.PORT || 3000,
     cmsUrl : process.env.CMSURL || 'http://localhost:3000/',
