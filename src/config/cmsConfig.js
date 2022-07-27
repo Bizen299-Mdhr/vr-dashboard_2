@@ -4,7 +4,6 @@ config.modules = {
     "user-management": "User Management",
     "email-templates": "Email Template",
     "configs": "Configuration",
-    "ip-access": "IP Access Control",
     "login-logs": "Login Logs"
 };
 
@@ -19,9 +18,6 @@ config.modulePages = {
     "email-templates": {"email-templates": "Email Template"},
     "configs": {
         "configs": "Configuration"
-    },
-    "ip-access": {
-        "ip-access": "Ip Access Control"
     },
     "login-logs": {
         "login-logs": "Login Logs"
@@ -51,11 +47,6 @@ config.modulePermissions = {
         "configs.configs.view": "View Configs",
         "configs.configs.edit": "Edit Config"
     },
-    "ip-access": {
-        "ip-access.ip-access.view": "View IP-Access",
-        "ip-access.ip-access.create": "Create IP-Access",
-        "ip-access.ip-access.delete": "Delete IP-Access"
-    },
     "login-logs": {
         "login-logs.login-logs.view": "View Login Logs"
     }
@@ -67,7 +58,6 @@ config.moduleIcons = {
     "email-templates": "fa fa-envelope",
     "master-data": "fa fa-object-group",
     "configs": "fa fa-cog",
-    "ip-access": "fa fa-server",
     "login-logs": "fa fa-history"
 };
 

@@ -125,12 +125,6 @@ class AdminController extends Controller {
 
     async changePassword(req, res) {
         try {
-            const errors = this.validate(req);
-            if (!errors.isEmpty()) {
-                req.flash('errors', errors.mapped());
-                logCrmEvents(req, "Event", "error", {error: errors.mapped()});
-                return res.redirect('back');
-            }
             let showResetPassword = false;
             if(req.body.show_reset_password){
                 showResetPassword = true;

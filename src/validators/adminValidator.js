@@ -191,7 +191,6 @@ let changePasswordValidation = checkSchema({
         custom: {
             options: (value, {req}) => {
                 required("Password", value);
-                alphaNumeric("Password", value);
                 between("Password", value, getConfigData(req,"Minimum Password Length"), 20);
                 return true;
             }

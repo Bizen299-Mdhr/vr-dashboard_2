@@ -1,41 +1,4 @@
-/*
-Template: Muzik - Responsive Bootstrap 4 Admin Dashboard Template
-Author: iqonicthemes.in
-Design and Developed by: iqonicthemes.in
-NOTE: This file contains the styling for responsive Template.
-*/
 
-/*----------------------------------------------
-Index Of Script
-------------------------------------------------
-
-:: Tooltip
-:: Sidebar Widget
-:: Magnific Popup
-:: Ripple Effect
-:: Page Loader
-:: Owl Carousel
-:: Select input
-:: Search input
-:: Scrollbar
-:: Counter
-:: slick
-:: Progress Bar
-:: Page Menu
-:: Page Loader
-:: Page Menu
-:: Wow Animation
-:: Mail Inbox
-:: Chat
-:: Todo
-:: Form Validation
-:: Sidebar Widget
-:: Flatpicker
-:: active music
-
-------------------------------------------------
-Index Of Script
-----------------------------------------------*/
 
 (function(jQuery) {
 
@@ -563,3 +526,63 @@ Index Of Script
 
 
 })(jQuery);
+
+$(function () {
+    $("form").submit(function (event) {
+        $('[type="submit"], form ').attr('disabled', 'disabled');
+    });
+
+    $("#confirmDeleteModal").on("show.bs.modal", function (e) {
+        let o = $(e.relatedTarget), t = o.data("href"), d = o.data("title") || "Confirm Delete",
+            a = o.data("description") || "Are you sure you want to delete?";
+        $("#confirmDeleteModal form").attr("action", t), $("#confirmDeleteModal  .modal-title").text(d), $("#confirmDeleteModal  .deleteDescription").text(a);
+    }), $("#name").keyup(function () {
+        let e = $(this).val();
+        e = (e = e.toLowerCase()).replace(/\s+/g, "-"), $("#slug").val(e);
+    }), $(".module").change(function () {
+        let e = $(this).data("module"), o = $("." + e);
+        $(this).prop("checked") ? o.find(".permission").prop("checked", !0) : o.find(".permission").prop("checked", !1);
+    }), $(".permission").change(function () {
+        let e = $(this).data("module"), o = $("." + e);
+        $("." + e).find(".permission:checked").length === o.length ? $(".module[data-module='" + e + "']").prop("checked", !0) : $(".module[data-module='" + e + "']").prop("checked", !1);
+    });
+    let mainPermissions = $(".module");
+    if (mainPermissions.length > 0) {
+        for (let i = mainPermissions.length - 1; i >= 0; i--) {
+            let permission = mainPermissions[i];
+            let moduleName = $(permission).data("module");
+            let subPermissions = $("." + moduleName + " input.permission").length;
+            let checkedSubPermissions = $("." + moduleName + " input.permission:checked").length;
+            if (subPermissions == checkedSubPermissions) {
+                $(permission).prop("checked", true);
+            }
+        }
+    }
+    let e = function () {
+        let e = $("input[name=password_method]:checked").val();
+        "is_password" === e ? ($("#passwordField").removeClass("d-none"), $("#password").attr("required", "required")) : "is_activation_link" === e && ($("#passwordField").addClass("d-none"), $("#password").removeAttr("required"));
+    };
+    e(), $(".passwordMethodRadio").on("click", function () {
+        e();
+    });
+    const emailBody = document.querySelector("#email_body");
+    if (emailBody !== null) {
+        ClassicEditor.create(emailBody).then(e => {
+        }).catch(e => {
+        });
+    }
+
+    function tog(v) {
+        return v ? "addClass" : "removeClass";
+    }
+
+    $(document).on("input", ".clearable", function () {
+        $(this)[tog(this.value)]("x");
+    }).on("mousemove", ".x", function (e) {
+        $(this)[tog(this.offsetWidth - 18 < e.clientX - this.getBoundingClientRect().left)]("onX");
+    }).on("touchstart click", ".onX", function (ev) {
+        ev.preventDefault();
+        $(this).removeClass("x onX").val("").change();
+    });
+
+});
