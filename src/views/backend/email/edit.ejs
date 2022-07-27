@@ -1,124 +1,130 @@
-<!-- Main Content-->
-<div class="main-content side-content pt-5">
+<div id="content-page" class="content-page">
     <div class="container-fluid">
-        <div class="inner-body">
-            <form action="/email-templates/<%= data._id %>?_method=PUT" method="post">
-                <!-- Page Header -->
-                <div class="page-header sticky-header">
-                    <div>
-                        <h2 class="main-content-title tx-24 mg-b-5">
-                            <%= pageTitle %>
-                        </h2>
-                        <%- include('../partials/breadcrumb') %>
-                    </div>
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-icon-text my-2 mr-2 main-save-btn" type="submit">
-                            Save
-                        </button>
+        <div class="row">
+            <div class="col-sm-12 ">
+                <%- include('../partials/messages') %>
 
-                        <a href="/email-templates" role="button" class="btn btn-white btn-icon-text my-2 mr-2 main-cancel-btn">
-                                Cancel
-                        </a>
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">
+                                    <%= pageTitle %>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <form action="/email-templates/<%= data._id %>?_method=PUT" method="post">
+                                <div class="row row-sm">
+                                    <div class="col-lg-12">
+                                            <div class="card custom-card">
+                                                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                                                <div class="card-body">
+                                                    <div class="inner__card_b1">
+                                                        <div class="row align-items-baseline mt-3">
+                                                            <div class="col-lg-12">
+                                                                <div class="inner__border">
+                                                                    <div
+                                                                        class="form-group form-check d-flex align-items-baseline">
+                                                                        <p class="inner__card cke_required">
+                                                                            <b>
+                                                                                Title
+                                                                            </b>
+                                                                            <span style="color:red;">*</span>
+                                                                        </p>
+                                                                        <input type="text" class="form-control"
+                                                                            id="title" value="<%= data.title %>"
+                                                                            name="title" maxlength="50" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                    </div>
-                </div>
-                <!-- End Page Header -->
-                <!-- Row -->
-                <div class="row row-sm">
-                    <div class="col-lg-12">
-                        <%- include('../partials/messages')  %>
-                            <div class="card custom-card">
-                                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
-                                <div class="card-body">
-                                    <div class="inner__card_b1">
-                                        <div class="row align-items-baseline mt-3">
-                                            <div class="col-lg-12">
-                                                <div class="inner__border">
-                                                    <div class="form-group form-check d-flex align-items-baseline">
-                                                        <p class="inner__card cke_required">
-                                                            <b>
-                                                                Title
-                                                            </b>
-                                                            <span style="color:red;">*</span>
-                                                        </p>
-                                                        <input type="text" class="form-control" id="title"
-                                                            value="<%= data.title %>" name="title" maxlength="50"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                        </div>
 
-                                        </div>
+                                                        <div class="row align-items-baseline ">
+                                                            <div class="col-lg-12">
+                                                                <div class="inner__border">
+                                                                    <div
+                                                                        class="form-group form-check d-flex align-items-baseline">
+                                                                        <p class="inner__card">
+                                                                            <b>
+                                                                                Code
+                                                                            </b>
+                                                                            <span style="color:red;">*</span>
+                                                                        </p>
+                                                                        <input type="text" class="form-control"
+                                                                            id="code" maxlength="50"
+                                                                            value="<%= data.code %>" name="code"
+                                                                            readonly>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                        <div class="row align-items-baseline ">
-                                            <div class="col-lg-12">
-                                                <div class="inner__border">
-                                                    <div class="form-group form-check d-flex align-items-baseline">
-                                                        <p class="inner__card">
-                                                            <b>
-                                                                Code
-                                                            </b>
-                                                            <span style="color:red;">*</span>
-                                                        </p>
-                                                        <input type="text" class="form-control" id="code" maxlength="50"
-                                                            value="<%= data.code %>" name="code" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
+                                                        </div>
 
 
-                                        <div class="row align-items-baseline ">
-                                            <div class="col-lg-12">
-                                                <div class="inner__border">
-                                                    <div class="form-group form-check d-flex align-items-baseline">
-                                                        <p class="inner__card">
-                                                            <b>
-                                                                Subject
-                                                            </b>
-                                                            <span style="color:red;">*</span>
-                                                        </p>
-                                                        <input type="text" class="form-control" id="subject"
-                                                            value="<%= data.subject %>" name="subject" maxlength="50"
-                                                            required>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                        <div class="row align-items-baseline ">
+                                                            <div class="col-lg-12">
+                                                                <div class="inner__border">
+                                                                    <div
+                                                                        class="form-group form-check d-flex align-items-baseline">
+                                                                        <p class="inner__card">
+                                                                            <b>
+                                                                                Subject
+                                                                            </b>
+                                                                            <span style="color:red;">*</span>
+                                                                        </p>
+                                                                        <input type="text" class="form-control"
+                                                                            id="subject" value="<%= data.subject %>"
+                                                                            name="subject" maxlength="50" required>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
-                                        </div>
-                                        <div class="row align-items-baseline ">
+                                                        </div>
+                                                        <div class="row align-items-baseline ">
 
-                                            <div class="col-lg-12">
-                                                <div class="inner__border">
-                                                    <div class=" form-check d-flex align-items-baseline">
-                                                        <p class="inner__card">
-                                                            <b>
-                                                                Body
-                                                            </b>
-                                                            <span style="color:red;">*</span>
-                                                        </p>
-                                                        <div class="ext-textarea">
-                                                            <textarea class="form-control tinymce" name="body" type="text"
-                                                            id="email_body"><%= data.body %></textarea>
+                                                            <div class="col-lg-12">
+                                                                <div class="inner__border">
+                                                                    <div
+                                                                        class=" form-check ">
+                                                                        <p class="inner__card">
+                                                                            <b>
+                                                                                Body
+                                                                            </b>
+                                                                            <span style="color:red;">*</span>
+                                                                        </p>
+                                                                        <div class="ext-textarea">
+                                                                            <textarea class="form-control tinymce"
+                                                                                name="body" type="text"
+                                                                                id="email_body"><%= data.body %></textarea>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    
                                                 </div>
+                                                
                                             </div>
-                                        </div>
+                                            <div class="form-group">
+                                
+                                                <button class="btn btn-primary" type="submit">
+                                                    Save
+                                                </button>
+                                            
+                                                <button class="btn iq-bg-danger" type="button">
+                                                    <a href="/email-templates" role="button">
+                                                        Cancel
+                                                    </a>
+                                                </button>
+                                            </div>  
                                     </div>
                                 </div>
-                            </div>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </form>
+            </div>
         </div>
-        <!-- End Row -->
     </div>
 </div>
-<!-- End Main Content-->
-<!-- <style>
-    .ck-content {
-        height: 500px !important;
-    }
-</style> -->
