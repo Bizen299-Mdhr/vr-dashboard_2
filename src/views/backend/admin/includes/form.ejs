@@ -1,0 +1,180 @@
+<div class="form-row">
+    <div class="col-md-6 mb-3">
+        <label for="first_name">First name</label> <span style="color:red;">*</span>
+        <input type="text" class="form-control  " name="first_name" id="first_name"
+            value="<%= inputData && inputData.first_name ? inputData.first_name : '' %>"
+            required>
+        <div class="invalid-feedback">
+            Please set First Name
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="last_name">Last name</label>
+        <span style="color:red;">*</span>
+        <input type="text" class="form-control " name="last_name"
+            value="<%= inputData && inputData.last_name ? inputData.last_name : '' %>"
+            id="last_name" required>
+        <div class="invalid-feedback">
+            Please set Last Name
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="email">Email</label>
+        <span style="color:red;">*</span>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend">@</span>
+            </div>
+
+            <input type="email" class="form-control  " name="email" id="email"
+                value="<%= inputData && inputData.email ? inputData.email : '' %>"
+                required>
+            <div class="invalid-feedback">
+                Please Set valid Email.
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="username">Username</label> <span style="color:red;">*</span>
+        <input type="text" class="form-control  " name="username" id="username"
+            value="<%= inputData && inputData.username ? inputData.username : '' %>"
+            required>
+        <div class="invalid-feedback">
+            Please provide Username.
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="contact_number">Telephone No</label>
+        <span style="color:red;">*</span>
+        <div class="invalid-feedback">
+            Please valid Telephone Number.
+        </div>
+
+        <input type="tel" class="form-control  " onkeypress='return isNumberKey(event)'
+            id="contact_number" name="contact_number" maxlength="13"
+            value="<%= inputData && inputData.contact_number ? inputData.contact_number : '' %>"
+            required>
+
+    </div>
+    <div class="col-md-6 mb-3">
+        <label for="mobile_num">Mobile No</label>
+        <input type="tel" class="form-control  " name="mobile_num" id="mobile_num"
+            onkeypress='return isNumberKey(event)' maxlength="13"
+            value="<%= inputData && inputData.mobile_num ? inputData.mobile_num : '' %>">
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="fax">Fax</label>
+        <input type="tel" class="form-control  onlynumIncludeDash" name="fax"
+            maxlength="13" id="fax"
+            value="<%= inputData && inputData.fax ? inputData.fax : '' %>">
+    </div>
+
+
+
+
+
+
+    <div class="col-md-6 mb-3">
+        <label for="image">Image</label>
+        <input class="form-control " type="file" id="image" name="image"
+            accept="image/png, image/jpeg, image/jpg">
+    </div>
+
+
+    <div class="col-md-6 mb-3">
+        <label for="fax">Admin Roles </label>
+        <span style="color:red;">*</span>
+        <select class="form-control  " multiple name="role_id" required>
+            <% roles.forEach(function(role) { %>
+                <option value="<%= role.id %>" <% if(typeof(inputData) !=="undefined" &&
+                    inputData.role_id &&
+                    inputData.role_id.toString().includes(role.id)){ %>
+                    selected
+                    <% } %>
+                        > <%= role.name %>
+                </option>
+                <% }); %>
+        </select>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="status">Status</label>
+        <div class="custom-control custom-switch">
+            <div>
+                <label class="radio-inline" style="margin-right: 25px;">
+                    <input name="status" type="radio" value="active" >
+                    Active
+                </label>
+                <label class="radio-inline" style="margin-right: 25px;">
+                    <input name="status" type="radio" value="inactive" >
+                    Inactive
+                </label>
+                <label class="radio-inline">
+                    <input name="status" type="radio" value="blocked">
+                    Blocked
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="remarks">Remarks</label>
+        <textarea name="remarks" id="remarks" class="form-control "
+            style="height: 60px;"><%= inputData && inputData.remarks ? inputData.remarks : '' %></textarea>
+    </div>
+
+    <div class="col-md-6 mb-3">
+        <label for="password_method"> Password Method</label>
+
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="password_method" name="password_method"
+                value="is_password" class="custom-control-input passwordMethodRadio">
+            <label class="custom-control-label" for="password_method"> Set
+                Password</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="is_activation_link" name="password_method"
+                value="is_activation_link"
+                class="custom-control-input passwordMethodRadio">
+            <label class="custom-control-label" for="is_activation_link"> Send
+                Activation Link</label>
+        </div>
+        <input type="password" class="form-control " id="passwordField" name="password"
+            value="<%= inputData && inputData.password ? inputData.password: '' %>"
+            minlength="<%= getCmsConfig(configData,'Minimum Password Length') %>"
+            required>
+    </div>
+
+
+
+
+
+
+
+</div>
+<div class="form-group">
+    <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck"
+            required>
+        <label class="form-check-label" for="invalidCheck">
+            Agree to terms and conditions
+        </label>
+        <div class="invalid-feedback">
+            You must agree before submitting.
+        </div>
+    </div>
+</div>
+<div class="form-group">
+
+    <button class="btn btn-primary" type="submit">
+        Save
+    </button>
+
+    <button class="btn iq-bg-danger" type="button">
+        <a href="/admins" role="button">
+            Cancel
+        </a>
+    </button>
+</div>
