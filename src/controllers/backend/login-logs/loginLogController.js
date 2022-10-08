@@ -5,7 +5,7 @@ class LoginLogController extends Controller {
         this.service = opts.loginLogService;
         this.title = 'Login Logs';
         this.view = '../login-logs';
-        this.url = '/login-logs';
+        this.url = '/system/login-logs';
         this.module = 'login-logs.login-logs.';
     }
 }

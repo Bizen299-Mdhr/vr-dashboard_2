@@ -6,7 +6,7 @@ class IpAccessController extends Controller {
         this.service = opts.ipAccessService;
         this.title = 'IP Access Control';
         this.view = '../ip-access';
-        this.url = '/ip-access';
+        this.url = '/system/ip-access';
         this.module = 'ip-access.ip-access.';
     }
     async add(req, res) {

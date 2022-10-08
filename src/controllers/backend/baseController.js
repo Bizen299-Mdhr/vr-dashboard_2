@@ -35,7 +35,7 @@ class BaseController {
         } catch (error) {
             console.log(error);
             req.flash('error_msg', error.message);
-            return res.redirect('/home');
+            return res.redirect('/system/home');
         }
     }
 
@@ -168,7 +168,7 @@ class BaseController {
     dashboardBreadCrumb() {
         return {
             title: "Dashboard",
-            link: "/home"
+            link: "/system/home"
         };
     }
 

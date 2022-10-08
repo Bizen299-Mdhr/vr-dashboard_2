@@ -10,7 +10,7 @@ class AdminController extends Controller {
         this.roleService = opts.roleService;
         this.title = 'Admins';
         this.view = '../admin';
-        this.url = '/admins';
+        this.url = '/system/admins';
         this.module = 'user-management.admins';
     }
 

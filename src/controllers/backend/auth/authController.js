@@ -16,7 +16,7 @@ class AuthController {
 
     async login(req, res) {
         if (req.session.user) {
-            return res.redirect('/home');
+            return res.redirect('/system/home');
         }
         let loginCount = 0;
         let remainingTime = 0;
@@ -44,12 +44,12 @@ class AuthController {
         await this.container.dispose();
         await req.session.destroy();
         logCrmEvents(req, "Event", "success", {message: "Logged Out"});
-        return res.redirect('/login');
+        return res.redirect('/system/login');
     }
 
     async forgotPasswordView(req, res) {
         if (req.session.user) {
-            return res.redirect('/home');
+            return res.redirect('/system/home');
         }
         logCrmEvents(req, "Page Visit", "success", {message: "Forgot Password Page"});
         return res.render('auth/forgot', {layout: false});
@@ -59,11 +59,11 @@ class AuthController {
         let user = await this.service.findOne({where: {email: req.body.email}});
         if(user && user?.status !== "active"){
             req.flash('error_msg', 'Your account is in in-active state.');
-            return res.redirect('/forgot-password');
+            return res.redirect('/system/forgot-password');
         }
         if (user === null) {
             req.flash('success_msg', 'Password reset link is sent to your email.');
-            return res.redirect('/forgot-password');
+            return res.redirect('/system/forgot-password');
         }
         try {
             let token = randtoken.generate(10);
@@ -88,16 +88,16 @@ class AuthController {
 
 
             req.flash('success_msg', 'Password reset link is sent to your email.');
-            return res.redirect('/forgot-password');
+            return res.redirect('/system/forgot-password');
         } catch (e) {
             req.flash('error_msg', e.message);
-            return res.redirect('/forgot-password');
+            return res.redirect('/system/forgot-password');
         }
     }
 
     async resetPasswordView(req, res) {
         if (req.session.user) {
-            return res.redirect('/home');
+            return res.redirect('/system/home');
         }
         let token = req.params.token;
         try {
@@ -108,11 +108,11 @@ class AuthController {
                 return res.render('auth/resetPassword', {layout: false, token: req.params.token});
             } else {
                 req.flash('error_msg', 'Reset link is invalid or expired.');
-                return res.redirect("/login");
+                return res.redirect("/system/login");
             }
         } catch (e) {
             req.flash('error_msg', e.message);
-            return res.redirect("/login");
+            return res.redirect("/system/login");
         }
     }
 
@@ -132,7 +132,7 @@ class AuthController {
 
             if (user && user.reset_password_token !== token) {
                 req.flash('error_msg', 'Invalid Token');
-                let url = '/login';
+                let url = '/system/login';
                 if(req.body.force_reset){
                     url = "force/reset-password";
                 }
@@ -143,9 +143,9 @@ class AuthController {
             if (user && user.reset_password_expires !== null && currentDate > user.reset_password_expires) {
                 req.flash('error_msg', 'Reset link is invalid or expired.');
                 req.flash('error_msg', 'Invalid Token');
-                let url = '/login';
+                let url = '/system/login';
                 if(req.body.force_reset){
-                    url = "/force/reset-password";
+                    url = "/system/force/reset-password";
                 }
                 await trx.rollback();
                 return res.redirect(url);
@@ -156,7 +156,7 @@ class AuthController {
                 req.flash('error_msg', 'Current entered Password has been used already.Please enter new password!');
                 let url = '/reset-password/' + token;
                 if(req.body.force_reset){
-                    url = "/force/reset-password";
+                    url = "/system/force/reset-password";
                 }
                 await trx.rollback();
                 return res.redirect(url);
@@ -189,18 +189,18 @@ class AuthController {
             req.flash('success_msg', 'Password reset successful');
             logCrmEvents(req, "Event", "success", {message: "Password reset successful"});
             await trx.commit();
-            return res.redirect('/login');
+            return res.redirect('/system/login');
         } catch (e) {
             console.log('e: ', e);
             await trx.rollback();
             req.flash('error_msg', e.message);
-            return res.redirect("/login");
+            return res.redirect("/system/login");
         }
     }
 
     async forceResetPasswordView(req, res) {
         if (!req.session.user) {
-            return res.redirect('/login');
+            return res.redirect('/system/login');
         }
         try {
             let token = randtoken.generate(10);
@@ -215,18 +215,18 @@ class AuthController {
             return res.render('auth/resetPassword', {layout: false, userToken, forceReset});
         } catch (e) {
             req.flash('error_msg', e.message);
-            return res.redirect("/login");
+            return res.redirect("/system/login");
         }
     }
 
     async optVerificationView(req, res) {
         if (!req.session.user) {
-            return res.redirect('/login');
+            return res.redirect('/system/login');
         }
         try {
             const check = await authService.refresh2FA(req);
             if (check) {
-                return res.redirect('/home');
+                return res.redirect('/system/home');
             }
 
             const otpCode = randomValueBase64(6);
@@ -258,7 +258,7 @@ class AuthController {
             return res.render('auth/otpVerification', {layout: false});
         } catch (e) {
             req.flash('error_msg', e.message);
-            return res.redirect("/otp-verification");
+            return res.redirect("/system/otp-verification");
         }
     }
 
@@ -268,12 +268,12 @@ class AuthController {
             const user = await this.service.findOne({where: {'otp_code': req.body.otp_code}});
             if (!user) {
                 req.flash('error_msg', 'Invalid Otp Code.');
-                return res.redirect("/otp-verification");
+                return res.redirect("/system/otp-verification");
             }
 
             if (user && user.otp_code_expiration !== null && currentDate > user.otp_code_expiration) {
                 req.flash('error_msg', 'OTP code has been expired.');
-                return res.redirect("/otp-verification");
+                return res.redirect("/system/otp-verification");
             }
 
             await this.service.findOneAndUpdate({where: {'otp_code': req.body.otp_code}}, {
@@ -281,10 +281,10 @@ class AuthController {
                 otp_code_expiration: null
             });
             req.session.user.otp_code = null;
-            return res.redirect("/home");
+            return res.redirect("/system/home");
         } catch (e) {
             req.flash('error_msg', e.message);
-            return res.redirect("/otp-verification");
+            return res.redirect("/system/otp-verification");
         }
     }
 
@@ -311,10 +311,10 @@ class AuthController {
 
             logCrmEvents(req, "Event", "success", {message: "Otp Resent."});
             req.flash('success_msg', 'Otp Code Resent Successfully.');
-            return res.redirect("/otp-verification");
+            return res.redirect("/system/otp-verification");
         } catch (e) {
             req.flash('error_msg', e.message);
-            return res.redirect("/otp-verification");
+            return res.redirect("/system/otp-verification");
         }
     }
 }

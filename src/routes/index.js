@@ -19,9 +19,9 @@ module.exports = (app, passport) => {
     
     app.use(APIPREFIX, apiRoutes);
 
-    app.get('/', [authenticateUser.guest], authController.login);
-    app.get('/login', [authenticateUser.guest], authController.login);
-    app.post('/login',async (req, res, next) => {
+    app.get('/system', [authenticateUser.guest], authController.login);
+    app.get('/system/login', [authenticateUser.guest], authController.login);
+    app.post('/system/login',async (req, res, next) => {
         await passport.authenticate('local', async (err, user, info) => {
             if (user) {
                 await Promise.all([
@@ -29,33 +29,37 @@ module.exports = (app, passport) => {
                     authService.clearResetPasswordData(req)
                 ]);
                 logCrmEvents(req, "Event", "success", { message: "Login Successful" });
-                return res.redirect('/home');
+                return res.redirect('/system/home');
             } else {
                 let msg = info && info.message ? info.message : 'Incorrect Email/Password';
                 logCrmEvents(req, "Event", "error", { message: msg }, { error: err });
                 req.flash('error_msg', msg);
-                return res.redirect('/login');
+                return res.redirect('/system/login');
             }
         })(req, res, next);
     });
-    app.get('/otp-verification', authController.optVerificationView);
-    app.post('/otp-verification', [otpValidator], authController.optVerification);
-    app.get('/resend-otp', authController.resendOtp);
-    app.get('/forgot-password', authController.forgotPasswordView);
-    app.post('/forgot-password',[forgotAdminPasswordValidation], authController.forgotPassword);
-    app.get('/force/reset-password', authController.forceResetPasswordView);
-    app.get('/reset-password/:token', authController.resetPasswordView);
-    app.post('/reset-password/:token', [resetAdminPasswordValidation], authController.resetPassword);
-    app.get('/logout', [authenticateUser.isLoggedIn], authController.logout);
-    app.get('/home', [authenticateUser.isLoggedIn,sessionUserPermissions], dashboardController.index);
-    app.use('/admin-roles', [authenticateUser.isLoggedIn,sessionUserPermissions], adminRoles);
-    app.use('/admins', [authenticateUser.isLoggedIn,sessionUserPermissions], admins);
-    app.use('/email-templates', [authenticateUser.isLoggedIn,sessionUserPermissions], email);
-    app.use('/configs', [authenticateUser.isLoggedIn,sessionUserPermissions], config);
-    app.use('/ip-access', [authenticateUser.isLoggedIn,sessionUserPermissions], ipAccess);
-    app.use('/login-logs', [authenticateUser.isLoggedIn,sessionUserPermissions], loginLogs);
+
+    app.get('/system/home', [authenticateUser.isLoggedIn,sessionUserPermissions], dashboardController.index);
+    app.get('/system/otp-verification', authController.optVerificationView);
+    app.post('/system/otp-verification', [otpValidator], authController.optVerification);
+    app.get('/system/resend-otp', authController.resendOtp);
+    app.get('/system/forgot-password', authController.forgotPasswordView);
+    app.post('/system/forgot-password',[forgotAdminPasswordValidation], authController.forgotPassword);
+    app.get('/system/force/reset-password', authController.forceResetPasswordView);
+    app.get('/system/reset-password/:token', authController.resetPasswordView);
+    app.post('/system/reset-password/:token', [resetAdminPasswordValidation], authController.resetPassword);
+    app.get('/system/logout', [authenticateUser.isLoggedIn], authController.logout);
+    app.get('/system/home', [authenticateUser.isLoggedIn,sessionUserPermissions], dashboardController.index);
+    app.use('/system/admin-roles', [authenticateUser.isLoggedIn,sessionUserPermissions], adminRoles);
+    app.use('/system/admins', [authenticateUser.isLoggedIn,sessionUserPermissions], admins);
+    app.use('/system/email-templates', [authenticateUser.isLoggedIn,sessionUserPermissions], email);
+    app.use('/system/configs', [authenticateUser.isLoggedIn,sessionUserPermissions], config);
+    app.use('/system/ip-access', [authenticateUser.isLoggedIn,sessionUserPermissions], ipAccess);
+    app.use('/system/login-logs', [authenticateUser.isLoggedIn,sessionUserPermissions], loginLogs);
+
+
+    app.get('/', [authenticateUser.guest], authController.login);
    
-    app.use(APIPREFIX, apiRoutes);
 
     app.get('*', function (req, res) {
         res.status(404);

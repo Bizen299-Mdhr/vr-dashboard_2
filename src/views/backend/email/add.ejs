@@ -4,7 +4,7 @@
         <div class="inner-body">
 
             <!-- Page Header -->
-            <form action="/email-templates" method="post">
+            <form action="/system/email-templates" method="post">
                 <input type="hidden" name="_csrf" value="<%-csrfToken%>">
                 <div class="page-header sticky-header">
                     <div>
@@ -18,7 +18,7 @@
                             <%= translateLanguage('Save', session.translationdata,module) %>
                         </button>
 
-                        <a href="/email-templates" role="button">
+                        <a href="/system/email-templates" role="button">
                             <button class="btn main-cancel-btn my-2 mr-2">
                                 <%= translateLanguage('Cancel', session.translationdata,module) %>
                             </button>

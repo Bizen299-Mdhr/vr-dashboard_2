@@ -25,7 +25,7 @@ try {
                     // If there is no error, rateLimiterRedis promise rejected with number of ms before next request allowed
                     const secs = Math.round(redisError.msBeforeNext / 1000) || 1;
                     req.flash('error_msg', 'Retry-After', String(secs));
-                    return res.redirect('/login');
+                    return res.redirect('/system/login');
                 }
             });
     };  

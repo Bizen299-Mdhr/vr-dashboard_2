@@ -1,7 +1,7 @@
 <div class="iq-sidebar">
    <div class="iq-sidebar-logo d-flex justify-content-between">
       <a href="index.html" class="header-logo">
-         <img src="/backend/assets/img/monkey-music-png.png" class="img-fluid rounded-normal" alt="">
+         <img src="/backend/assets/img/cv-resume-portfolio.webp" class="img-fluid rounded-normal" alt="">
          <div class="logo-title">
             <span class="text-primary text-uppercase"><%=cmsTitle%></span>
          </div>
@@ -30,7 +30,7 @@
                      <ul  <% if(match_url == '/'+modulePermission.id || collapsed_in=='in') {%> class="iq-submenu collapse show"<% } else { %> class="iq-submenu collapse " <% } %> id="<%= modulePermission.id %>" data-parent="#iq-sidebar-toggle">
                         <% for (var subPage in modulePermission.subPages) { %>
                             <li class="nav-sub-item <% if(match_url == '/'+subPage) { %> active active-menu <% } %>">
-                                <a class="nav-sub-link text-nowrap" href="/<%=  subPage %>">
+                                <a class="nav-sub-link text-nowrap" href="/system/<%=  subPage %>">
                                        <%= modulePermission?.subPages?.[subPage] %>
                                 </a>
                             </li>
@@ -42,7 +42,7 @@
                   <% }else { %>
                      <li
                         class="iq-waves-effect <% if(match_url == '/'+modulePermission.id ) { %> active <% } else { %> remove-active <% } %>">
-                        <a href="/<%= modulePermission.id %>" class="nav-link">
+                        <a href="/system/<%= modulePermission.id %>" class="nav-link">
                            <i class=" <%= modulePermission.icon %>"></i>
                            <span class="sidemenu-label text-nowrap">
                               <%= modulePermission?.title %>

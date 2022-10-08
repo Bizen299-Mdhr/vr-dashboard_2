@@ -43,7 +43,7 @@
                                             <%- include('../partials/messages')  %>
                                         </div>
                                     </div>
-                                    <form action="/otp-verification" method="post" id="otp-verification">
+                                    <form action="/system/otp-verification" method="post" id="otp-verification">
                                         <input type="hidden" name="_csrf" value="<%- csrfToken %>">
                                         <h5 class="text-left mb-2">Otp-Verification</h5>
                                         <p class="mb-4 text-muted tx-13 ml-0 text-left">
@@ -57,8 +57,8 @@
                                             >
                                         </div>
 
-                                            <div class="float-left"><a href="/resend-otp" class="btn ripple btn-main-primary btn-block">Re-send</a></div>
-                                            <div class="float-left" style="margin-left: 5px;"><a href="/logout" class="btn ripple main-cancel-btn btn-block">Cancel</a></div>
+                                            <div class="float-left"><a href="/system/resend-otp" class="btn ripple btn-main-primary btn-block">Re-send</a></div>
+                                            <div class="float-left" style="margin-left: 5px;"><a href="/system/logout" class="btn ripple main-cancel-btn btn-block">Cancel</a></div>
                                             <div class="float-right">
                                                 <button class="btn ripple btn-primary btn-block" id="submitFormBtn">Submit</button>
                                             </div>

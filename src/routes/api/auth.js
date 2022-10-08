@@ -8,8 +8,8 @@ const {validate} = require("@middleware");
 const {tokenValidator} = require("@validators");
 const passport = require('passport');
 
-router.post('/login', [tokenValidator, validate], oauth.token);
+router.post('/system/login', [tokenValidator, validate], oauth.token);
 router.post('/refresh-token', [tokenValidator, validate], oauth.token);
-router.post('/logout',  [passport.authenticate('bearer', {session: false})], authController.logout);
+router.post('/system/logout',  [passport.authenticate('bearer', {session: false})], authController.logout);
 
 module.exports = router;

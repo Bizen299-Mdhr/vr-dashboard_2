@@ -538,8 +538,8 @@ a.text-primary:hover {
 
 .sign-in-page {
   position: relative;
-  background: url(../img/login/login-2.gif) scroll;
-  background-size: contain;
+  background: url(../img/login/login1.jpeg) ;
+  background-size: cover;
 }
 
 .sign-in-page .height-self-center {

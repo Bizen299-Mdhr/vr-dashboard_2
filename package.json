@@ -124,6 +124,7 @@
         "sequelize": "^6.6.5",
         "sequelize-cli": "^6.2.0",
         "sequelize-paginate": "^1.1.6",
+        "spotify-web-api-node": "^5.0.2",
         "uniqid": "^5.0.3",
         "useragent": "^2.3.0"
     },

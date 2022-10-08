@@ -9,7 +9,7 @@ let twoFA = async (req, res, next) => {
         if(await authService.refresh2FA(req)){
             return next();
         }
-        return res.redirect('/otp-verification');
+        return res.redirect('/system/otp-verification');
     }
 };
 
@@ -18,13 +18,13 @@ let checkPasswordResetAndExpiration = async (req, res, next) => {
         return next();
     }else{
         if(!req.session.user.password_resetted || req.session.user.show_reset_password){
-            return res.redirect("/force/reset-password");
+            return res.redirect("/system/force/reset-password");
         }else if(getConfigData(req,"Password Expiration") && getConfigData(req,"Password Expiration") !== ""){
             const passwordResettedDate = req.session.user.password_resetted_date;
             const passwordExpirationDays = getConfigData(req,"Password Expiration");
             const expirationDate = moment(passwordResettedDate, "YYYY-MM-DD").add(passwordExpirationDays, "days");
             if(moment() >= expirationDate){
-                return res.redirect("/force/reset-password");
+                return res.redirect("/system/force/reset-password");
             }else{
                 return next();
             }

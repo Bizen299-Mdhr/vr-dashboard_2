@@ -175,7 +175,7 @@ th {}
 loading
 ------------------------------------------------*/
 #loading {
-  background: var(--iq-white) url(../img/monkey-music-png.png) no-repeat scroll center center;
+  background: var(--iq-white) url(../img/loder/loder2.gif) no-repeat  center center;
   height: 100%;
   width: 100%;
   background-size: 20%;

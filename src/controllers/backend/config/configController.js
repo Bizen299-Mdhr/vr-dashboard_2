@@ -6,7 +6,7 @@ class ConfigController extends Controller {
         this.service = opts.configService;
         this.title = 'Configurations';
         this.view = '../configs';
-        this.url = '/configs';
+        this.url = '/system/configs';
         this.module = 'configs.configs.';
     }
 

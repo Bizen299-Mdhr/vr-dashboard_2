@@ -10,7 +10,7 @@ class RoleController extends Controller {
         this.adminService = opts.adminService;
         this.title = 'Admin Roles';
         this.view = '../admin-roles';
-        this.url = '/admin-roles';
+        this.url = '/system/admin-roles';
         this.module = 'admins.roles.';
     }
 
@@ -83,7 +83,7 @@ class RoleController extends Controller {
 
             if (countUsers > 0 || countUserRolesData > 0) {
                 req.flash('error_msg', 'In order to delete role you need to delete all associated employees.');
-                return res.redirect('/admin-roles');
+                return res.redirect('/system/admin-roles');
             }
             await this.service.delete(req.params.id);
             req.flash('success_msg', 'ADmin Role deleted successfully');

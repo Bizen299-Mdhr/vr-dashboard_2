@@ -5,7 +5,7 @@ class EmailTemplateController extends Controller {
         this.service = opts.emailTemplateService;
         this.title = 'Email Template';
         this.view = '../email';
-        this.url = '/email-templates';
+        this.url = '/system/email-templates';
         this.module = 'email-templates.email-templates.';
     }
 }

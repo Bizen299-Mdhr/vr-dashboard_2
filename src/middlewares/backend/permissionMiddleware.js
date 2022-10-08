@@ -14,10 +14,10 @@ module.exports = {
                         return next();
                     }
                     req.flash('error_msg', "You don't have permission to view this page.");
-                    return res.redirect('/home');
+                    return res.redirect('/system/home');
                 }
             }
-            return res.redirect('/home');
+            return res.redirect('/system/home');
         };
     },
     sessionUserPermissions: async function (req, res, next) {
