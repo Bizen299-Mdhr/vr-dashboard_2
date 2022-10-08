@@ -6,6 +6,7 @@ const {logCrmEvents} = require('../helpers');
 const { container } = require("@container");
 const authController = container.resolve('authController');
 const dashboardController = container.resolve('dashboardController');
+const homeController = container.resolve('homeController');
 const adminRoles = require('./roles');
 const admins = require('./admins');
 const email = require('./email');
@@ -58,7 +59,7 @@ module.exports = (app, passport) => {
     app.use('/system/login-logs', [authenticateUser.isLoggedIn,sessionUserPermissions], loginLogs);
 
 
-    app.get('/', [authenticateUser.guest], authController.login);
+    app.get('/', homeController.index);
    
 
     app.get('*', function (req, res) {
