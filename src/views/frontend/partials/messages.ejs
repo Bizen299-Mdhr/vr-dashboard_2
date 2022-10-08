@@ -1,0 +1,36 @@
+<% if (error_msg && error_msg.length > 0) { %>
+    <div class="alert alert-danger alert-dismissible" id="errorMessage">
+        <span><%- error_msg %></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+<% } else if (success_msg && success_msg.length > 0) { %>
+    <div class="alert alert-success alert-dismissible" id="successMessage">
+        <span><%- success_msg %></span>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+<% } else if (errors && errors.length > 0) { %>
+    <div class="alert alert-danger alert-dismissible" id="errorMessage">
+        <% errors.forEach(function(err, key){
+        if (err && err.msg) { %>
+            <span>- <%- error.msg %></span><br>
+        <% } else if (err && Object.keys(err).length > 0) {
+                for (var key in err) {
+        if (err.hasOwnProperty(key)) { %>
+            <span>- <%- err[key]['msg'] %></span><br>
+        <% }
+        }
+        }
+        }); %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!-- For advance error in checkContractInput Case -->
+<% } %>
+
