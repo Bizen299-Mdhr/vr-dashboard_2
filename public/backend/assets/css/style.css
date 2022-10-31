@@ -4940,6 +4940,10 @@ fieldset[disabled] .btn {
 #top-tabbar-vertical li#personal i {
   background: var(--iq-light-primary);
   color: var(--iq-primary);
+
+}#top-tabbar-vertical li#homepage i {
+  background: var(--iq-light-primary);
+  color: var(--iq-primary);
 }
 
 #top-tabbar-vertical li#contact i {
@@ -4979,6 +4983,10 @@ fieldset[disabled] .btn {
 }
 
 #top-tabbar-vertical #personal.active a {
+  background: var(--iq-light-primary);
+}
+
+#top-tabbar-vertical #homepage.active a {
   background: var(--iq-light-primary);
 }
 

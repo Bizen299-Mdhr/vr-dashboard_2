@@ -24,7 +24,7 @@
                <%if (modulePermission.enableDropdown) { %>
                   <li  data-match = "<%- match_url  %>" class=" <% if(modulePermission.subPages[match_url.replace('/','')]) { %> active <% }%>">
                      <a href="#<%= modulePermission?.id %>" class="iq-waves-effect" data-toggle="collapse" aria-expanded="<% if(typeof (previousUrl) !== 'undefined' && match_url !== '/'+modulePermission.id) { %>false <% }else{ %> true <% }%>"><span
-                           class="ripple rippleEffect"></span><i class="las la-home iq-arrow-left"></i><span>
+                           class="ripple rippleEffect"></span><i class="<%= modulePermission.icon %>"></i><span>
                            <%= modulePermission?.title %>
                         </span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
                      <ul  <% if(match_url == '/'+modulePermission.id || collapsed_in=='in') {%> class="iq-submenu collapse show"<% } else { %> class="iq-submenu collapse " <% } %> id="<%= modulePermission.id %>" data-parent="#iq-sidebar-toggle">

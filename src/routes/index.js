@@ -13,6 +13,7 @@ const email = require('./email');
 const config = require('./configs');
 const ipAccess = require('./ip-access');
 const loginLogs = require('./login-logs');
+const homePage = require('./home-page');
 
 const {APIPREFIX} = require("@constant");
 const apiRoutes = require('./api/index');
@@ -57,6 +58,7 @@ module.exports = (app, passport) => {
     app.use('/system/configs', [authenticateUser.isLoggedIn,sessionUserPermissions], config);
     app.use('/system/ip-access', [authenticateUser.isLoggedIn,sessionUserPermissions], ipAccess);
     app.use('/system/login-logs', [authenticateUser.isLoggedIn,sessionUserPermissions], loginLogs);
+    app.use('/system/home-page', [authenticateUser.isLoggedIn,sessionUserPermissions], homePage);
 
 
     app.get('/', homeController.index);
@@ -65,7 +67,8 @@ module.exports = (app, passport) => {
     app.get('*', function (req, res) {
         res.status(404);
         res.render('error/404', {
-            layout: false
+            layout: false,
+            pageTitle: '400'
         });
     });
 };
