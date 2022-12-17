@@ -162,7 +162,11 @@ class BaseService {
         return result;
     }
 
-    upsert(values, query) {
+    async upsert(values, query) {
+        let count = await this.model.count(query);
+        if (count === 0) {
+            return this.model.create(values);
+        }
         return this.model
             .findOne(query)
             .then(function (obj) {

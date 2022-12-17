@@ -1,11 +1,11 @@
 const Controller = require('@baseController');
 const SpotifyWebApi = require('spotify-web-api-node');
-var spotifyApi = new SpotifyWebApi({
+let spotifyApi = new SpotifyWebApi({
    
     clientId: '3cb4cfc950424f95b185b2df8ad66303',
     clientSecret: 'cbf7e70e5c4340ac8fca836f8f5e628a',
     redirectUri: 'http://127.0.0.1:8081/callback'
-  });
+});
 
 class DashboardController extends Controller {
     constructor(opts) {
@@ -54,8 +54,7 @@ class DashboardController extends Controller {
         }
     }
 
-    async spotifyCallback(req, res) {
-        console.log(req.query);
+    async spotifyCallback(req) {
         let code= req.query.code;
         console.log('code: ', code);
         let data = await spotifyApi.authorizationCodeGrant(code);
@@ -68,20 +67,20 @@ class DashboardController extends Controller {
             country: 'SE',
             locale: 'sv_SE'
         })
-        .then(function(data) {
-          console.log(data.body.categories.items[2]);
-        }, function(err) {
-          console.log("Something went wrong!", err);
-        });
+            .then(function(data) {
+                console.log(data.body.categories.items[2]);
+            }, function(err) {
+                console.log("Something went wrong!", err);
+            });
 
         // res.send(JSON.stringify(req.query));
-//  spotifyApi.setAccessToken('BQDjf1Xrp3aRysVKoX91dRTf8rVoxUeHHr0n7iDpGuQFNrF03SsXv5XZ2g1VQ6ATaDCl1kSXMbc7VB3unNEZcwXOu5XWer9bg7wwVjRfgrx0jaH2JrAI0aXbfO49GtEDdFwc9bzK2ztbJRpuFaMN54StRe_8as5F_A3UV9_k25xgZGKa9vJVbySrbZ44pmxAtPtlAic');
-//  spotifyApi.getFeaturedPlaylists({ limit : 3, offset: 1, country: 'SE', locale: 'sv_SE', timestamp:'2014-10-23T09:00:00' })
-//  .then(function(data) {
-//    console.log(data.body);
-//  }, function(err) {
-//    console.log("Something went wrong!", err);
-//  });
+        //  spotifyApi.setAccessToken('BQDjf1Xrp3aRysVKoX91dRTf8rVoxUeHHr0n7iDpGuQFNrF03SsXv5XZ2g1VQ6ATaDCl1kSXMbc7VB3unNEZcwXOu5XWer9bg7wwVjRfgrx0jaH2JrAI0aXbfO49GtEDdFwc9bzK2ztbJRpuFaMN54StRe_8as5F_A3UV9_k25xgZGKa9vJVbySrbZ44pmxAtPtlAic');
+        //  spotifyApi.getFeaturedPlaylists({ limit : 3, offset: 1, country: 'SE', locale: 'sv_SE', timestamp:'2014-10-23T09:00:00' })
+        //  .then(function(data) {
+        //    console.log(data.body);
+        //  }, function(err) {
+        //    console.log("Something went wrong!", err);
+        //  });
     }
 
    

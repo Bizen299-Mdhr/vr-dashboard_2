@@ -11,7 +11,7 @@
                                 </h4>
                             </div>
                             <% if(checkPermissions(user, "user-management.admins.create" )==true) { %>
-                                <a class="btn main-pg-btn btn-icon-text mr-2 pull-right" href="/admins/create"
+                                <a class="btn main-pg-btn btn-icon-text mr-2 pull-right" href="/system/admins/create"
                                     role="button"><i class="fa fa-plus"></i> Add New
                                 </a>
                                 <% } %>
@@ -101,7 +101,7 @@
                                                         <% if(checkPermissions(user, "user-management.admins.edit"
                                                             )==true) { %>
                                                             <a class="btn btn-white mr-2"
-                                                                href="/admins/<%= admin._id %>" role="button"><i
+                                                                href="/system/admins/<%= admin._id %>" role="button"><i
                                                                     class="fa fa-edit"> </i> Edit</a>
                                                             <% } %>
                                                                 <% if(checkPermissions(user, "user-management.admins.delete"
@@ -111,7 +111,7 @@
                                                                             class="btn btn-danger mr-2 btn-delete confirm-delete"
                                                                             data-toggle="modal"
                                                                             data-target="#confirmDeleteModal"
-                                                                            data-href="/admins/<%= admin._id %>?_method=delete"
+                                                                            data-href="/system/admins/<%= admin._id %>?_method=delete"
                                                                             data-title="Delete Admin"
                                                                             data-description="Are you sure you want to delete?"><i
                                                                                 class="fa fa-trash-alt mr-1"> </i>Delete
@@ -121,7 +121,7 @@
                                                                                 <% if(checkPermissions(user, "user-management.admins.password"
                                                                                     )==true) { %>
                                                                                     <a class="btn mr-2 btn-success "
-                                                                                        href="/admins/<%= admin._id %>/change-password"
+                                                                                        href="/system/admins/<%= admin._id %>/change-password"
                                                                                         role="button"><i
                                                                                             class="fa fa-key mr-1"></i>Change
                                                                                         Password

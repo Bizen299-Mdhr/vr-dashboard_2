@@ -13,8 +13,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <form action="/system/home-page%>?_method=PUT" class="form " method="post"
-                                enctype="multipart/form-data">
+                            <form action="/system/home-page%>?_method=PUT" class="form " method="post" enctype="multipart/form-data">
                                 <input type="hidden" name="_csrf" value="<%-csrfToken%>">
                                 <div class="form-row">
                                     <div class="col-md-6 mb-3">
@@ -27,7 +26,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-3">
-                                        <label for="last_name">Middle name</label>
+                                        <label for="middle_name">Middle name</label>
                                         <input type="text" class="form-control " name="middle_name"
                                             value="<%= inputData && inputData.middle_name ? inputData.middle_name : admin?.middle_name %>"
                                             id="middle_name">
@@ -49,7 +48,7 @@
                                     <div class="col-md-6 mb-3">
                                         <label for="facebook_url">Facebook url</label>
                                         <span style="color:red;">*</span>
-                                        <input type="text" class="form-control " name="last_name"
+                                        <input type="text" class="form-control " name="facebook_url"
                                             value="<%= inputData && inputData.facebook_url ? inputData.facebook_url : admin?.facebook_url %>"
                                             id="facebook_url">
                                         <div class="invalid-feedback">
@@ -60,11 +59,22 @@
                                     <div class="col-md-6 mb-3">
                                         <label for="twitter_url">Twitter url</label>
                                         <span style="color:red;">*</span>
-                                        <input type="text" class="form-control " name="last_name"
+                                        <input type="text" class="form-control " name="twitter_url"
                                             value="<%= inputData && inputData.twitter_url ? inputData.twitter_url : admin?.twitter_url %>"
                                             id="twitter_url">
                                         <div class="invalid-feedback">
                                             Please set Twitter 
+                                        </div>
+                                    </div> 
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="linkedin_url">Linkedin url</label>
+                                        <span style="color:red;">*</span>
+                                        <input type="text" class="form-control " name="linkedin_url"
+                                            value="<%= inputData && inputData.linkedin_url ? inputData.linkedin_url : admin?.linkedin_url %>"
+                                            id="linkedin_url">
+                                        <div class="invalid-feedback">
+                                            Please set Linkedin url 
                                         </div>
                                     </div>
 
@@ -84,12 +94,6 @@
 
                                     <button class="btn btn-primary" type="submit">
                                         Save
-                                    </button>
-
-                                    <button class="btn iq-bg-danger" type="button">
-                                        <a href="/system/admins" role="button">
-                                            Cancel
-                                        </a>
                                     </button>
                                 </div>
                             </form>

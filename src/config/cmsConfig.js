@@ -29,7 +29,7 @@ config.modulePages = {
         "resume": "Resume",
         "protfolio": "Protfolio",
         "blog": "blog",
-        "contact-info": "Contact Information",
+        "contact-info": "Contact Information"
     }
 };
 config.modulePermissions = {
@@ -96,7 +96,7 @@ config.moduleIcons = {
     "email-templates": "fa fa-envelope",
     "master-data": "fa fa-object-group",
     "configs": "fa fa-cog",
-    "login-logs": "fa fa-history",
+    "login-logs": "fa fa-history"
 
 };
 

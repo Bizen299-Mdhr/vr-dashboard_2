@@ -17,7 +17,11 @@
         "docker:prod": "docker-compose --file docker-compose.yml --file docker-compose.prod.yml --compatibility up --build",
         "migrate": "npx sequelize db:migrate",
         "seed": "npx sequelize db:seed:all",
-        "test": "jest"
+        "test": "jest",
+        "make:migration" : "npx sequelize-cli migration:create --name",
+        "make:seeder" : "npx sequelize-cli seed:generate --name",
+        "migrate:undo" : "npx sequelize-cli db:migrate:undo",
+        "migrate:undo:all" : "npx sequelize-cli db:migrate:undo:all"
     },
     "husky": {
         "hooks": {
