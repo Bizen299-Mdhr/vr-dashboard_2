@@ -94,3 +94,7 @@ select[readonly].select2-hidden-accessible + .select2-container .select2-selecti
     border-radius: 4px;
     height: 30px;
 }
+
+.addremoveRowBtn{
+    cursor: pointer !important;
+}

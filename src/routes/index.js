@@ -14,6 +14,7 @@ const config = require('./configs');
 const ipAccess = require('./ip-access');
 const loginLogs = require('./login-logs');
 const homePage = require('./home-page');
+const aboutPage = require('./about-page');
 
 const {APIPREFIX} = require("@constant");
 const apiRoutes = require('./api/index');
@@ -59,6 +60,7 @@ module.exports = (app, passport) => {
     app.use('/system/ip-access', [authenticateUser.isLoggedIn,sessionUserPermissions], ipAccess);
     app.use('/system/login-logs', [authenticateUser.isLoggedIn,sessionUserPermissions], loginLogs);
     app.use('/system/home-page', [authenticateUser.isLoggedIn,sessionUserPermissions], homePage);
+    app.use('/system/about-page', [authenticateUser.isLoggedIn,sessionUserPermissions], aboutPage);
 
 
     app.get('/', homeController.index);

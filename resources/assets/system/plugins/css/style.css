@@ -73912,6 +73912,10 @@ body {
         .deleteMultipleButton{
             display: none;
         }
+        .addremoveRowBtn{
+            cursor: pointer !important;
+        }
+    
           
           /* Asmita Sharma changes ends*/          
 /* ###### ie css ###### */

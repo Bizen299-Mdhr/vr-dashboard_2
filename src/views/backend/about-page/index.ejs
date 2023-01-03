@@ -1,0 +1,287 @@
+<div id="content-page" class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <%- include('../partials/messages') %>
+
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">
+                                    <%= pageTitle %>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <form action="/system/about-page%>?_method=PUT" class="form " method="post"
+                                enctype="multipart/form-data">
+                                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Page Head Title</label> <span style="color:red;">*</span>
+                                        <input type="text" class="form-control  " name="title" id="title"
+                                            value="<%= inputData && inputData.title ? inputData.title : admin?.title %>"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Please set Page Head Title
+                                        </div>
+                                    </div>    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="your image">Profile About Image</label>
+                                        <input class="form-control " type="file" id="image" name="image"
+                                            accept="image/png, image/jpeg, image/jpg">
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="image_title_info">Profile About Information</label>
+                                        <textarea class="form-control "
+                                            name="image_title_info"><%= inputData && inputData.image_title_info ? inputData.image_title_info : admin?.image_title_info %></textarea>
+                                        <div class="invalid-feedback">
+                                            Please set Profile About Information
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="section_one_title">Section One Title</label>
+                                        <span style="color:red;">*</span>
+                                        <input type="text" class="form-control " name="section_one_title"
+                                            value="<%= inputData && inputData.section_one_title ? inputData.section_one_title : admin?.section_one_title %>"
+                                            id="section_one_title">
+                                        <div class="invalid-feedback">
+                                            Please set Section One Title
+                                        </div>
+                                    </div>
+
+                                    <table class="section_one_table table " id="section_one_detail">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Title</th>
+                                                <th scope="col" colspan="2">Detail</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if(admin?.section_one_detail !=null){
+                                                 admin?.section_one_detail.forEach(function(subsectionone,key) { %>
+                                            <tr >
+                                                <td><input name="section_one_detail_row[${key}][title]" value="<%= subsectionone?.title %>"
+                                                        class="form-control ">
+                                                </td>
+                                                <td><input name="section_one_detail_row[${key}][detail]" value="<%= subsectionone?.detail %>"
+                                                        class="form-control "></td>
+
+                                                <td>
+                                                    <div
+                                                        class="inner__table__signs removeSectionOneRow addremoveRowBtn ">
+                                                        <i class="fas fa-minus"> Remove</i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <% });} else { %>
+                                                <tr >
+                                                    <td><input name="section_one_detail_row[1][title]" 
+                                                            class="form-control ">
+                                                    </td>
+                                                    <td><input name="section_one_detail_row[1][detail]" 
+                                                            class="form-control "></td>
+    
+                                                    <td>
+                                                        <div
+                                                            class="inner__table__signs removeSectionOneRow addremoveRowBtn ">
+                                                            <i class="fas fa-minus"> Remove</i>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <%}%>    
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="d-flex flex-wrap justify-content-end addremoveRowBtn">
+                                                        <div class="inner__table__signs addSectionOneRow ">
+                                                            <i class="fas fa-plus"> Add row</i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+
+                                    </table>
+
+
+
+                                    <div class="col-md-12 mb-3">
+                                        <label for="section_two_title">Section Two Title</label>
+                                        <span style="color:red;">*</span>
+                                        <input type="text" class="form-control " name="section_two_title"
+                                            value="<%= inputData && inputData.section_two_title ? inputData.section_two_title : admin?.section_two_title %>"
+                                            id="section_two_title">
+                                        <div class="invalid-feedback">
+                                            Please set Section Two Title
+                                        </div>
+                                    </div>
+
+                                    <table class="section_tow_table table" id="section_two_detail">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Title</th>
+                                                <th scope="col" colspan="2">Percentage</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td><input name="section_two_detail_row[1][title]"
+                                                        class="form-control ">
+                                                </td>
+                                                <td>
+
+                                                    <div class="range-input">
+                                                
+                                                        <input type="range" class="form-control myRange "  name="section_two_detail_row[1][detail]" min="0" max="100" value="50" >
+                                                        <span id="rangeValue">50%</span>
+                                                      </div>
+                                                    </td>
+
+                                                <td>
+                                                    <div
+                                                        class="inner__table__signs removeSectionOneRow addremoveRowBtn ">
+                                                        <i class="fas fa-minus"> Remove</i>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+
+
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <div class="d-flex flex-wrap justify-content-end addremoveRowBtn">
+                                                        <div class="inner__table__signs addSectionOneRow ">
+                                                            <i class="fas fa-plus"> Add row</i>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
+
+                                    </table>
+
+
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Section Three Title</label> <span style="color:red;">*</span>
+                                        <input type="text" class="form-control  " name="section_three_title" id="section_three_title"
+                                            value="<%= inputData && inputData.section_three_title ? inputData.section_three_title : admin?.section_three_title %>"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Please set section three title
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="your image">Sub Section Three Icon 1</label>
+                                        <input class="form-control " type="file" id="sub_section_three_icon1" name="sub_section_three_icon1"
+                                            accept="image/png, image/jpeg, image/jpg">
+                                    </div> 
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="your image">Sub Section Three Title</label>
+                                            <input type="text" class="form-control  " name="sub_section_three_title" id="sub_section_three_title"
+                                            value="<%= inputData && inputData.sub_section_three_title ? inputData.sub_section_three_title : admin?.sub_section_three_title %>"
+                                            required>
+                                    </div>      
+                                     <div class="col-md-12 mb-3">
+                                        <label for="your image">Sub Section Three Detail</label>
+                                        <textarea  required class="form-control  " name="sub_section_three_detail" id="sub_section_three_detail" cols="5" rows="4"><%= inputData && inputData.sub_section_three_detail ? inputData.sub_section_three_detail : admin?.sub_section_three_detail %></textarea>
+                                    </div>
+
+
+
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Section Four Title</label> <span style="color:red;">*</span>
+                                        <input type="text" class="form-control  " name="section_four_title" id="section_four_title"
+                                            value="<%= inputData && inputData.section_four_title ? inputData.section_four_title : admin?.section_four_title %>"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Please set section four title
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-3">
+                                        <label for="your image">Sub Section Four Icon 1</label>
+                                        <input class="form-control " type="file" id="sub_section_four_icon1" name="sub_section_four_icon1"
+                                            accept="image/png, image/jpeg, image/jpg">
+                                    </div> 
+                                    
+                                    <div class="col-md-6 mb-3">
+                                        <label for="your image">Sub Section Four Title</label>
+                                            <input type="text" class="form-control  " name="sub_section_four_title" id="sub_section_four_title"
+                                            value="<%= inputData && inputData.sub_section_four_title ? inputData.sub_section_four_title : admin?.sub_section_four_title %>"
+                                            required>
+                                    </div>      
+                                     <div class="col-md-12 mb-3">
+                                        <label for="your image">Sub Section Four Detail</label>
+                                        <textarea required class="form-control  " name="sub_section_four_detail" id="sub_section_four_detail" cols="5" rows="4"><%= inputData && inputData.sub_section_four_detail ? inputData.sub_section_four_detail : admin?.sub_section_four_detail %></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <button class="btn btn-primary" type="submit">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .range-input {
+      display: flex;
+      align-items: center;
+    }
+    .range-input label {
+      margin-right: 10px;
+    }
+  </style>
+
+<!-- <div class="d-none"> -->
+
+<!-- </div> -->
+<script>
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode != 46 && charCode != 45 && charCode > 31
+            && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+    $('body').on('change', '.myRange', function () {
+      var value = $(this).val();
+      var rangeValue =  $(this).closest('.range-input').find('#rangeValue').text(value + '%');
+    });
+
+    $('body').on('click', '.addSectionOneRow', function () {
+        var table = $(this).closest('table');
+        var tableId = table.attr('id');
+        let clone = $(`#${tableId} tbody tr:first`).clone();
+        clone.find('#rangeValue').text(50 + '%');
+        var table = $(`#${tableId} tbody`);
+        var rowCount = table.find('tr').length;
+        clone.find('td:first input').attr('name', `${tableId}_row[${rowCount + 1}][title]`).val('');
+        clone.find('td:eq(1) input').attr('name', `${tableId}_row[${rowCount + 1}][detail]`).val('');
+        $(`#${tableId} tbody`).append(clone);
+    });
+
+    $('body').on('click', '.removeSectionOneRow', function () {
+        var table = $(this).closest('table');
+        var tableId = table.attr('id');
+        var table = $(`#${tableId} tbody`);
+        var rowCount = table.find('tr').length;
+        if (rowCount > 1)
+            $(this).closest('tr').remove();
+    });
+</script>
+
+
+<!-- End Main Content-->

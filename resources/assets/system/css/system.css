@@ -1,7 +1,6 @@
 @import url(../plugins/css/custom.css);
 @import url(../plugins/css/template.css);
 @import url(../plugins/css/style.css);
-@import url(../plugins/css/euc.css);
 .table-responsive::-webkit-scrollbar {
   width: 6px;
   margin-left: 4px;
@@ -279,5 +278,9 @@
       min-height: 26px;
       line-height: 1;
       max-height: 29px; }
+
+      .addremoveRowBtn{
+        cursor: pointer !important;
+    }
 
 /*# sourceMappingURL=system.css.map */

@@ -25,7 +25,7 @@ config.modulePages = {
     },
     "frontend-management": {
         "home-page": "Home Page",
-        "about-me": "About Me",
+        "about-page": "About Page",
         "resume": "Resume",
         "protfolio": "Protfolio",
         "blog": "blog",
@@ -37,8 +37,8 @@ config.modulePermissions = {
         "frontend-management.home-page.view": "View Home Page",
         "frontend-management.home-page.edit": "Edit Home Page",
 
-        "frontend-management.about-me.view": "View About Me",
-        "frontend-management.about-me.edit": "Edit About Me",
+        "frontend-management.about-page.view": "View About Page",
+        "frontend-management.about-page.edit": "Edit About Page",
 
         "frontend-management.resume.view": "View Resume",
         "frontend-management.resume.edit": "Edit Resume",

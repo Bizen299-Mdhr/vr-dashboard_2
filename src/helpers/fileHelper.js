@@ -54,11 +54,11 @@ let self = module.exports = {
             return curDir;
         }, initDir);
     },
-    uplaodFileToPath: async (req, rootDir = 'public/backend', absDir) => {
-        if (req.files) {
+    uplaodFileToPath: async (req, rootDir = 'public/backend', absDir,inputName='image') => {
+        if (req.files && req.files[inputName]) {
             let dir = rootDir + absDir;
             self.mkDirByPathSync(dir);
-            let image = req.files.image;
+            let image = req.files[inputName];
             let fileName = image.name;
             let fileNameSplit = fileName.split(".");
             let updatedName = "";

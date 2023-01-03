@@ -5762,3 +5762,7 @@ input[type="range"]::-ms-fill-upper {
   align-items: center;
   justify-content: center;
 }
+
+.addremoveRowBtn{
+  cursor: pointer !important;
+}
