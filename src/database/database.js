@@ -1,7 +1,7 @@
 require("dotenv").config();
 const connectUrl = process.env.DBCONFIG;
 const Sequelize = require('sequelize'), postgres = new Sequelize(connectUrl, {
-    logging: false,
+    logging: true,
     dialect: 'postgres',
     connectionTimeout: 0,
     pool: {

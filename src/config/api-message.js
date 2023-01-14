@@ -1,10 +1,10 @@
 module.exports = {
-    INTERNAL_ERROR:"予期せぬエラーが発生しました。",
-    UNAUTHORIZED:"認証エラー",
-    TOKEN_NON_EXISTENT:"該当するトークン：<%content%> の有効期限が切れているか、存在しません。",
-    INCHARGE_NON_EXISTENT:"対応するユーザーID：<%content%> には担当のプロパティがありません。",
-    PROPERTY_NON_EXISTENT:"該当するプロパティマネジメント番号：<%content%> は存在しません。",
-    PROPERTY_ALREADY_LINKED:"該当するプロパティマネジメント番号：<%content%> は既にリンクされています。",
-    SYSTEM_ERROR:"何かがおかしい！",
-    NORMALY_ENDED:"正常に終了しました。"
+    INTERNAL_ERROR: "An unexpected error occurred.",
+    UNAUTHORIZED: "Authentication error",
+    TOKEN_NON_EXISTENT: "The corresponding token: <%content%> has expired or does not exist." ,
+    INCHARGE_NON_EXISTENT: "Corresponding user ID: <%content%> does not have the responsible property." ,
+    PROPERTY_NON_EXISTENT: "The corresponding property management number: <%content%> does not exist." ,
+    PROPERTY_ALREADY_LINKED: "The property management number: <%content%> is already linked." ,
+    SYSTEM_ERROR: "Something is wrong!" ,
+    NORMALY_ENDED: "Successfully completed."
 };

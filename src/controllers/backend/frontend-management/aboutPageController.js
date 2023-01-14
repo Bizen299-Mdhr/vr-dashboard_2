@@ -13,11 +13,13 @@ class aboutPageController extends Controller {
 
     async index(req, res) {
         try {
+     
             this.innerPage = this.view + '/index';
             const editPageData = {
                 admin: await this.service.find({ where: { id: 1 } })
             };
-            logCrmEvents(req, "Page Visit", "success", { message: 'Edit About Page' });
+
+            
             res.render('layout/base-inner', this.viewData(editPageData, this.module + 'edit', this.title));
         } catch (error) {
             req.flash('error_msg', error.message);

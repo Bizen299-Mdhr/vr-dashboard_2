@@ -9,19 +9,15 @@ class AboutService extends BaseService {
         ];
     }
     async updateAboutPageInfo(req) {
-        let profileImage ,subSectionThreeIcon,subSectionFourIcon= '';
+        let profileImage = '';
         if (req.files) {
-            console.log('req.files: ', req.files);
             profileImage = await uplaodFileToPath(req, 'public/backend', '/uploads/frontend/about-page/');
-            subSectionThreeIcon = await uplaodFileToPath(req, 'public/backend', '/uploads/frontend/about-page/','sub_section_three_icon1');
-            subSectionFourIcon = await uplaodFileToPath(req, 'public/backend', '/uploads/frontend/about-page/','sub_section_four_icon1');
         }
         let aboutInfo = this.parseAdminData(req.body);
         aboutInfo['image'] = profileImage;
-        aboutInfo['sub_section_three_icon1'] = subSectionThreeIcon;
-        aboutInfo['sub_section_four_icon1'] = subSectionFourIcon;
         await this.upsert(aboutInfo,{where: {'id':1}});
     }
+    
     parseAdminData(data) {
         let obj = data;
 
