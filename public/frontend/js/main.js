@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
     "use strict";
-
+    let homeinfoRemarks = $('#home-remarks').val();
     //// PRELOADER TRIGGER
     $(window).on('load', function () {
         $(".loading").animate({
@@ -35,7 +35,7 @@ $(document).ready(function () {
 
     // Typed JS TRIGGER
 	$(".home-page .middle-c h3 span").typed({
-		strings: [ "Software Developer","Web Application Developer"],
+		strings: [ homeinfoRemarks,"Web Application Developer"],
 		loop: true,
 		startDelay: 1e3,
 		backDelay: 3e5
@@ -62,7 +62,7 @@ $(document).ready(function () {
           "value":100,
           "density": {
             "enable": true,
-            "value_area": 800
+            "value_area": 700
           }
         },
         "color": {

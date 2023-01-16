@@ -31,6 +31,7 @@
 
                     <nav>
 
+
                         <!-- MENU -->
                         <ul id="navbar" role="tablist">
                             <li class="active">
@@ -67,16 +68,15 @@
 
                         <!-- SOCIAL ICONS -->
                         <div class="social text-center">
-
-                            <a href="index.html#" target="_blank">
+                            <a href="<%=homeInfo?.facebook_url%>" target="_blank">
                                 <i class="fa fa-facebook"></i>
                             </a>
 
-                            <a href="index.html#" target="_blank">
+                            <a href="<%=homeInfo?.twitter_url%>" target="_blank">
                                 <i class="fa fa-twitter"></i>
                             </a>
 
-                            <a href="index.html#" target="_blank">
+                            <a href="<%=homeInfo?.linkedin_url%>" target="_blank">
                                 <i class="fa fa-linkedin"></i>
                             </a>
 
@@ -99,8 +99,9 @@
                                 <div class="middle-c">
                                     <div class="middle-l text-center">
                                         <div class="m-content">
-                                            <h1>Bizen Manandhar</h1>
+                                            <h1><%= homeInfo?.first_name +' '+homeInfo?.middle_name+' '+homeInfo?.last_name %></h1>
                                             <h3><span></span></h3>
+                                            <input hidden id="home-remarks" value="<%= homeInfo?.remarks %>">
                                         </div>
                                     </div>
                                 </div>

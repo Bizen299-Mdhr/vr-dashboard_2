@@ -208,7 +208,6 @@ class AdminService extends BaseService {
                 let imageName = await uplaodFileToPath(req, 'public/backend', '/uploads/admins/');
                 updateData['image'] = imageName;
             }
-            console.log(updateData);
             let updatedUser = await admin.update(updateData, {where: {_id: req.params.id}, individualHooks: true, transaction: trx});
 
             if(updatedUser[1][0]._id !== MAINSUPERADMIN){

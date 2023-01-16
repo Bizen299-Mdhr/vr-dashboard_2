@@ -54,7 +54,7 @@ let self = module.exports = {
             return curDir;
         }, initDir);
     },
-    uplaodFileToPath: async (req, rootDir = 'public/backend', absDir,inputName='image') => {
+    uplaodFileToPath: async (req, rootDir = 'public/backend', absDir,inputName='image',renameFile=null) => {
         if (req.files && req.files[inputName]) {
             let dir = rootDir + absDir;
             self.mkDirByPathSync(dir);
@@ -77,7 +77,9 @@ let self = module.exports = {
             }
             fileName = updatedName + "-" + generateRandomString(5);
             fileName = fileName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase() + "." + ext;
-            
+            if(renameFile){
+                fileName=renameFile;
+            }
             // image.mv(dir + fileName, function (err) {
             //     if (err) {
             //         fileName = '';

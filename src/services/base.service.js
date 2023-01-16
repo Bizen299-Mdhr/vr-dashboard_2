@@ -131,7 +131,6 @@ class BaseService {
     }
 
     async findAndUpdate(id, data, trx = null) {
-        // console.log(    await this.checkExists({ _id: id }));
         // await this.checkExists({ _id: id });
         return await this.model.update(data, { where: { _id: id }, individualHooks: true, transaction: trx });
     }

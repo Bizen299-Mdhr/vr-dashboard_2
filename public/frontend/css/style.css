@@ -412,7 +412,7 @@ p,span,h1,h2,h3,h4,h5,a {
 }
 .home-background {
   position: relative;
-  background: url('../../../../img/bzn3.jpg') center center no-repeat;
+  background: url('../../backend/uploads/frontend/home-page/homebg.jpg') center center no-repeat;
   background-size: cover;
   width: 100%;
   height: 100%;

@@ -11,7 +11,7 @@ class HomeService extends BaseService {
     async updateHomePageInfo(req) {
         let imageName = '';
         if (req.files) {
-            imageName = await uplaodFileToPath(req, 'public/backend', '/uploads/frontend/home-page/');
+            imageName = await uplaodFileToPath(req, 'public/backend', '/uploads/frontend/home-page/','image','homebg.jpg');
         }
         let homeInfo = this.parseAdminData(req.body);
         homeInfo['image'] = imageName;

@@ -1867,7 +1867,6 @@
 
     $('body').on('click', '.addSectionOneRow', function () {
         var table = $(this).closest('table');
-        console.log(table);
         var tableId = table.attr('id');
         let clone = $(`#${tableId} tbody tr:first`).clone();
         clone.find('#rangeValue').text(50 + '%');
