@@ -1,0 +1,107 @@
+<div id="content-page" class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <%- include('../partials/messages') %>
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">
+                                    <%= pageTitle %>
+                                </h4>
+                            </div>
+                            <% if(checkPermissions(user, "frontend-management.blog.create" )==true) { %>
+                                <a class="btn main-pg-btn btn-icon-text mr-2 pull-right" href="/system/blog/create"
+                                    role="button"><i class="fa fa-plus"></i> Add New
+                                </a>
+                                <% } %>
+                        </div>
+                        <div class="iq-card-body">
+                            <div class="table-responsive">
+                               
+                                <table class="table text__bold text-nowrap text-md-nowrap table-striped mg-b-0">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                SN
+                                            </th>
+                                            <th>
+                                                Title
+                                                <%- orderAndSort(url, 'title' , query) %>
+                                            </th> 
+                                             <th>
+                                                type
+                                                <%- orderAndSort(url, 'type' , query) %>
+                                            </th>
+                                         
+                                            <% if(checkPermissions(user, "frontend-management.blog.edit" )==true ||
+                                                checkPermissions(user, "frontend-management.blog.delete" )==true) { %>
+                                                <th>Action</th>
+                                                <% } %>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if(docs.length> 0){
+                                            sn = (pageNum - 1) * pageLimit;
+                                            docs.forEach(function(blog) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= sn +=1 %>
+                                                </td>
+                                                <td>
+                                                    <%=   blog?.title ??  'Page title:-'+blog?.page_title + ' --Page sub title:-'+ blog?.page_sub_title %>
+                                                </td>
+                                                <td>
+                                                    <%=   blog?.type ?? '' %>
+                                                </td>
+                                               
+                                                <td>
+
+                                                    <form id="myform_<%= blog._id %>"
+                                                          action="/blog/<%= blog._id %>?_method=delete"
+                                                          method="post">
+                                                        <% if(checkPermissions(user, "frontend-management.blog.edit") == true ) { %>
+                                                            <a class="btn btn-white  my-2 mr-2"
+                                                               href="/system/blog/<%= blog._id %>"
+                                                               role="button">
+                                                                <i class="fa fa-edit"></i>
+                                                                <%= 'Edit' %>
+                                                            </a>
+                                                        <% } %>
+
+                                                        <input type="hidden" value="DELETE" name="method">
+                                                        <% if(checkPermissions(user, "frontend-management.blog.delete") == true ) { %>
+                                                            <button type="button"
+                                                                    class="btn btn-danger my-2 mr-2 btn-delete confirm-delete"
+                                                                    data-toggle="modal"
+                                                                    data-target="#confirmDeleteModal"
+                                                                    data-href="/system/blog/<%= blog._id %>?_method=delete"
+                                                                    data-title="<%= 'Delete blog' %>"
+                                                                    data-description=" <%= 'Are you sure you want to delete?' %>">
+                                                                <i class="fa fa-trash-alt"> </i>
+                                                                <%= 'Delete' %>
+                                                            </button>
+                                                        <% } %>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% }); } else { %>
+                                                <tr>
+                                                    <td colspan="6" style="text-align:center;">
+                                                        No Records found.
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <% if(docs.length> 0){ %>
+                                <%- include('../partials/pagination', {passedPageTab:11}) %>
+                                    <% } %>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
