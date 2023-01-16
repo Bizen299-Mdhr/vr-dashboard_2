@@ -38,6 +38,7 @@ class resumeController extends Controller {
             return res.redirect(this.url);
         } catch (error) {
             req.flash('error_msg', error.message);
+            req.flash('inputData', req.body);
             return res.redirect(this.url);
         }
     }

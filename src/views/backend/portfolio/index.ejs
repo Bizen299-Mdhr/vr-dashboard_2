@@ -1,9 +1,8 @@
 <div id="content-page" class="content-page">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-12 ">
+            <div class="col-sm-12">
                 <%- include('../partials/messages') %>
-
                     <div class="iq-card">
                         <div class="iq-card-header d-flex justify-content-between">
                             <div class="iq-header-title">
@@ -11,84 +10,107 @@
                                     <%= pageTitle %>
                                 </h4>
                             </div>
+                            <% if(checkPermissions(user, "frontend-management.portfolio.create" )==true) { %>
+                                <a class="btn main-pg-btn btn-icon-text mr-2 pull-right" href="/system/portfolio/create"
+                                    role="button"><i class="fa fa-plus"></i> Add New
+                                </a>
+                                <% } %>
                         </div>
                         <div class="iq-card-body">
-                            <form action="/system/portfolio" class="form " method="post">
-                                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <label for="title">Page Head Title</label> <span style="color:red;">*</span>
-                                        <input type="text" class="form-control  " name="page_title" id="page_title"
-                                            value="<%= inputData && inputData.page_title ? inputData.page_title : admin?.page_title %>"
-                                            required>
-                                        <div class="invalid-feedback">
-                                            Please set Page Head Title
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="title">Image Title</label> <span style="color:red;">*</span>
-                                        <input type="text" class="form-control  " name="image_title" id="image_title"
-                                            value="<%= inputData && inputData.image_title ? inputData.image_title : admin?.image_title %>"
-                                            required>
-                                        <div class="invalid-feedback">
-                                            Please set Image Title
-                                        </div>
-                                    </div>
+                            <div class="table-responsive">
+                               
+                                <table class="table text__bold text-nowrap text-md-nowrap table-striped mg-b-0">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                SN
+                                            </th>
+                                            <th>
+                                                Image Title
+                                                <%- orderAndSort(url, 'image_title' , query) %>
+                                            </th>
+                                            <th>
+                                                Tag
+                                                <%- orderAndSort(url, 'tag' , query) %>
+                                            </th>
+                                            <th>
+                                                Image
+                                                </th>
+                                               
+                                            <% if(checkPermissions(user, "frontend-management.portfolio.edit" )==true ||
+                                                checkPermissions(user, "frontend-management.portfolio.delete" )==true) { %>
+                                                <th>Action</th>
+                                                <% } %>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% if(docs.length> 0){
+                                            sn = (pageNum - 1) * pageLimit;
+                                            docs.forEach(function(admin) { %>
+                                            <tr>
+                                                <td>
+                                                    <%= sn +=1 %>
+                                                </td>
+                                                <td>
+                                                    <%=   admin?.image_title ??  'Page title:-'+admin?.page_title + ' --Page sub title:-'+ admin?.page_sub_title %>
+                                                </td>
+                                                <td>
+                                                    <span
+                                                                    class="text-uppercase statusBadge badge badge-secondary"> <%= admin.tag ? admin.tag : nil %></span>
+                                                </td>
 
-                                    <div class="col-md-12 mb-3">
-                                        <label for="title">Image Tag</label> <span style="color:red;">*</span>
-                                        <select class="form-control js-select2" name="tag" required>
+                                                <td style="overflow: hidden; width: 100px;">
+                                                    <%if(admin.image){%>
+                                                   <img src="/backend<%= admin.image ? admin.image : nil %>" style="max-width:100%; max-height:100%; object-fit:cover" alt="image">
+                                                   <%}%>
+                                                </td>
+                                                <td>
 
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please set Image Tag
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="title">Image </label> <span style="color:red;">*</span>
-                                        <input type="file" name="image" class="form-control " required>
-                                        <div class="invalid-feedback">
-                                            Please set Image
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12 mb-3">
-                                        <label for="title">Detail </label>
-                                        <textarea class="form-control "
-                                            name="detail"><%= inputData && inputData.detail ? inputData.detail : admin?.detail %></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-primary" type="submit">
-                                        Save
-                                    </button>
-                                </div>
-                            </form>
+                                                    <form id="myform_<%= admin._id %>"
+                                                          action="/portfolio/<%= admin._id %>?_method=delete"
+                                                          method="post">
+                                                        <% if(checkPermissions(user, "frontend-management.portfolio.edit") == true ) { %>
+                                                            <a class="btn btn-white  my-2 mr-2"
+                                                               href="/system/portfolio/<%= admin._id %>"
+                                                               role="button">
+                                                                <i class="fa fa-edit"></i>
+                                                                <%= 'Edit' %>
+                                                            </a>
+                                                        <% } %>
+
+                                                        <input type="hidden" value="DELETE" name="method">
+                                                        <% if(checkPermissions(user, "frontend-management.portfolio.delete") == true ) { %>
+                                                            <button type="button"
+                                                                    class="btn btn-danger my-2 mr-2 btn-delete confirm-delete"
+                                                                    data-toggle="modal"
+                                                                    data-target="#confirmDeleteModal"
+                                                                    data-href="/system/portfolio/<%= admin._id %>?_method=delete"
+                                                                    data-title="<%= 'Delete Portfolio' %>"
+                                                                    data-description=" <%= 'Are you sure you want to delete?' %>">
+                                                                <i class="fa fa-trash-alt"> </i>
+                                                                <%= 'Delete' %>
+                                                            </button>
+                                                        <% } %>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            <% }); } else { %>
+                                                <tr>
+                                                    <td colspan="6" style="text-align:center;">
+                                                        No Records found.
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <% if(docs.length> 0){ %>
+                                <%- include('../partials/pagination', {passedPageTab:11}) %>
+                                    <% } %>
                         </div>
                     </div>
             </div>
         </div>
     </div>
 </div>
-<style>
-    .range-input {
-        display: flex;
-        align-items: center;
-    }
-
-    .range-input label {
-        margin-right: 10px;
-    }
-
-    select {
-        font-family: fontAwesome
-    }
-
-    .removeSectionOneRow,
-    .addSectionOneRow {
-
-        font-size: 11px;
-        flex-wrap: nowrap;
-        white-space: nowrap;
-
-    }
-</style>

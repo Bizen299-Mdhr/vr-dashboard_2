@@ -46,31 +46,31 @@
                                                     <tr>
                                                         <td><input name="work_experience_detail_row[<%= key %>][title]"
                                                                 value="<%= subsectionone?.title %>"
-                                                                class="form-control ">
+                                                                class="form-control " required>
                                                         </td>
                                                         <td>
                                                             <input type="date"
                                                                 name="work_experience_detail_row[<%= key %>][start_date]"
                                                                 value="<%= formatDate(subsectionone?.start_date,'YYYY-MM-DD')  %>"
-                                                                class="form-control ">
+                                                                class="form-control " required>
                                                         </td>
                                                         <td>
                                                             <input  type="date"
                                                                 name="work_experience_detail_row[<%= key %>][end_date]"
                                                                 value="<%= formatDate(subsectionone?.end_date,'YYYY-MM-DD') %>"
-                                                                class="form-control ">
+                                                                class="form-control " required>
                                                         </td>
 
                                                         <td>
                                                             <textarea class="form-control "
-                                                                name="work_experience_detail_row[<%= key %>][detail]"><%= subsectionone?.detail %></textarea>
+                                                                name="work_experience_detail_row[<%= key %>][detail]" required><%= subsectionone?.detail %></textarea>
 
                                                         </td>
                                                         <td>
                                                             <input type="number"
                                                                 name="work_experience_detail_row[<%= key %>][position]"
                                                                 value="<%= subsectionone?.position %>"
-                                                                class="form-control col-5">
+                                                                class="form-control col-5" required>
                                                         </td>
                                                         <td hidden>
                                                             <input name="work_experience_detail_row[<%= key %>][type]"
@@ -83,29 +83,29 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    <% });} else { %>
+                                                    <% });} else if(!inputData) { %>
                                                         <tr>
                                                             <td><input name="work_experience_detail_row[0][title]"
-                                                                    class="form-control ">
+                                                                    class="form-control " required>
                                                             </td>
                                                             <td>
                                                                 <input type="date" name="work_experience_detail_row[0][start_date]"
-                                                                    class="form-control ">
+                                                                    class="form-control " required>
                                                             </td>
                                                             <td>
                                                                 <input type="date" name="work_experience_detail_row[0][end_date]"
-                                                                    class="form-control ">
+                                                                    class="form-control " required>
                                                             </td>
 
                                                             <td>
                                                                 <textarea class="form-control "
-                                                                    name="work_experience_detail_row[0][detail]"></textarea>
+                                                                    name="work_experience_detail_row[0][detail]" required></textarea>
 
                                                             </td>
                                                             <td>
                                                                 <input type="number"
                                                                     name="work_experience_detail_row[0][position]"
-                                                                    class="form-control col-5 ">
+                                                                    class="form-control col-5 " required>
                                                             </td>
                                                             <td hidden>
                                                                 <input name="work_experience_detail_row[0][type]"
@@ -119,7 +119,50 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        <%}%>
+                                                        <%}else{ %>
+                                                        <% inputData?.work_experience_detail_row?.forEach(function(subsectionone,key) {%>
+                                                            <tr>
+                                                                <td><input name="work_experience_detail_row[<%= key %>][title]"
+                                                                        value="<%= subsectionone?.title %>"
+                                                                        class="form-control " required>
+                                                                </td>
+                                                                <td>
+                                                                    <input type="date"
+                                                                        name="work_experience_detail_row[<%= key %>][start_date]"
+                                                                        value="<%= formatDate(subsectionone?.start_date,'YYYY-MM-DD')  %>"
+                                                                        class="form-control " required>
+                                                                </td>
+                                                                <td>
+                                                                    <input  type="date"
+                                                                        name="work_experience_detail_row[<%= key %>][end_date]"
+                                                                        value="<%= formatDate(subsectionone?.end_date,'YYYY-MM-DD') %>"
+                                                                        class="form-control " required>
+                                                                </td>
+        
+                                                                <td>
+                                                                    <textarea class="form-control "
+                                                                        name="work_experience_detail_row[<%= key %>][detail]" required><%= subsectionone?.detail %></textarea>
+        
+                                                                </td>
+                                                                <td>
+                                                                    <input type="number"
+                                                                        name="work_experience_detail_row[<%= key %>][position]"
+                                                                        value="<%= subsectionone?.position %>"
+                                                                        class="form-control col-5" required>
+                                                                </td>
+                                                                <td hidden>
+                                                                    <input name="work_experience_detail_row[<%= key %>][type]"
+                                                                        value="work-experience" class="form-control col-5">
+                                                                </td>
+        
+                                                                <td>
+                                                                    <div class=" removeSectionOneRow addremoveRowBtn ">
+                                                                        <i class="fas fa-minus"> Remove</i>
+                                                                    </div>
+                                                                </td>
+                                                            </tr>
+                                                            <%})%>
+                                                            <%}%>
                                             </tbody>
                                             <tfoot>
                                                 <tr>
@@ -191,29 +234,29 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                                    <% });} else { %>
+                                                    <% });} else if(!inputData) { %>
                                                         <tr>
                                                             <td><input name="education_detail_row[0][title]"
-                                                                    class="form-control ">
+                                                                    class="form-control " required>
                                                             </td>
                                                             <td>
                                                                 <input type="date" name="education_detail_row[0][start_date]"
-                                                                    class="form-control datepicker">
+                                                                    class="form-control datepicker" required>
                                                             </td>
                                                             <td>
                                                                 <input type="date" name="education_detail_row[0][end_date]"
-                                                                    class="form-control ">
+                                                                    class="form-control " required>
                                                             </td>
 
                                                             <td>
                                                                 <textarea class="form-control "
-                                                                    name="education_detail_row[0][detail]"></textarea>
+                                                                    name="education_detail_row[0][detail]" required></textarea>
 
                                                             </td>
                                                             <td>
                                                                 <input type="number"
                                                                     name="education_detail_row[0][position]"
-                                                                    class="form-control col-5 ">
+                                                                    class="form-control col-5 " required>
                                                             </td>
                                                             <td hidden>
                                                                 <input name="education_detail_row[0][type]"
@@ -227,7 +270,47 @@
                                                                 </div>
                                                             </td>
                                                         </tr>
-                                                        <%}%>
+                                                        <%} else{%>
+                                                            <% inputData?.education_detail_row?.forEach(function(education,key) {%>
+                                                                <tr>
+                                                                    <td><input name="education_detail_row[<%= key %>][title]"
+                                                                            value="<%= education?.title %>" class="form-control " required>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="date" name="education_detail_row[<%= key %>][start_date]"
+                                                                            value="<%= formatDate(education?.start_date,'YYYY-MM-DD') %>"
+                                                                            class="form-control datepicker " required>
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="date" name="education_detail_row[<%= key %>][end_date]"
+                                                                            value="<%= formatDate(education?.end_date,'YYYY-MM-DD') %>"
+                                                                            class="form-control " required>
+                                                                    </td>
+            
+                                                                    <td>
+                                                                        <textarea class="form-control "
+                                                                            name="education_detail_row[<%= key %>][detail]" required><%= education?.detail %></textarea>
+            
+                                                                    </td>
+                                                                    <td>
+                                                                        <input type="number"
+                                                                            name="education_detail_row[<%= key %>][position]"
+                                                                            value="<%= education?.position %>"
+                                                                            class="form-control col-5" required>
+                                                                    </td>
+                                                                    <td hidden>
+                                                                        <input name="education_detail_row[<%= key %>][type]"
+                                                                            value="education" class="form-control col-5">
+                                                                    </td>
+            
+                                                                    <td>
+                                                                        <div class=" removeSectionOneRow addremoveRowBtn ">
+                                                                            <i class="fas fa-minus"> Remove</i>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                    <%})%>
+                                                        <%} %>
                                             </tbody>
                                             <tfoot>
                                                 <tr>

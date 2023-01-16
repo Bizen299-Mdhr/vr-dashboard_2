@@ -42,8 +42,8 @@ class BaseController {
     async addView(req, res) {
         try {
             this.innerPage = this.view + '/add';
-            const data = await this.service.createPageData(req);
-            typeof data.breadcrumbs == "undefined" ? data.breadcrumbs = this.formBreadCrumb("Create") : data.breadcrumbs ?? null;
+            const data = await this.service.createPageData(req)??{};
+            typeof data?.breadcrumbs == "undefined" ? data.breadcrumbs = this.formBreadCrumb("Create") : data?.breadcrumbs ?? null;
             logCrmEvents(req, "Page Visit", "success", {message: this.title});
             return res.render('layout/base-inner', this.viewData(data, this.module + 'create', 'Add ' + this.title));
         } catch (error) {
@@ -78,6 +78,7 @@ class BaseController {
             logCrmEvents(req, "Page Visit", "success", {message: 'Edit' + this.title});
             return res.render('layout/base-inner', this.viewData(data, this.module + 'edit', 'Edit ' + this.title));
         } catch (error) {
+            console.log('error: ', error);
             req.flash('error_msg', error.message);
             return res.redirect(this.url);
         }

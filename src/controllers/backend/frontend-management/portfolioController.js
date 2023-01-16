@@ -14,19 +14,33 @@ class portfolioController extends Controller {
     async index(req, res) {
         try {
             this.innerPage = this.view + '/index';
-            const editPageData = {
-                admin: await this.service.find({ where: { id: 1 } })
-            };
-            res.render('layout/base-inner', this.viewData(editPageData, this.module + 'edit', this.title));
+            req.query.sort = req.query.sort ? req.query.sort:'ASC';
+            const data = await this.service.indexPageData(req);
+            data.breadcrumbs = this.indexBreadCrumb();
+            req.session.cancelUrl = req.originalUrl;
+            return res.render('layout/base-inner', this.viewData(data, this.module + 'view'));
         } catch (error) {
-            console.log(error);
             req.flash('error_msg', error.message);
             return res.redirect(this.url);
         }
     }
+
+    async add(req, res) {
+        try {
+            await this.service.create(req);
+            logCrmEvents(req, "Add " + this.title, "success", {message: this.title});
+            req.flash('success_msg', this.title + ' added successfully.');
+            return res.redirect(this.url);
+        } catch (error) {
+            req.flash('inputData', req.body);
+            req.flash('error_msg', error.message);
+            return res.redirect('back');
+        }
+    }
+
     async edit(req, res) {
         try {
-            await this.service.updateportfolioPageInfo(req);
+            await this.service.updatePortfolioInfo(req);
             logCrmEvents(req, "Event", "success", { message: this.title + " updated" });
             req.flash('success_msg', 'About page info updated Successfully.');
             return res.redirect(this.url);

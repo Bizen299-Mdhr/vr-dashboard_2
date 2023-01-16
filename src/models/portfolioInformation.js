@@ -1,4 +1,5 @@
 "use strict";
+const fs = require('fs');
 const sequelizePaginate = require('sequelize-paginate');
 
 module.exports = (sequelize, DataTypes) => {
@@ -15,6 +16,8 @@ module.exports = (sequelize, DataTypes) => {
             defaultValue: DataTypes.UUIDV4
         },
         page_title: {
+            type: DataTypes.STRING
+        }, page_sub_title: {
             type: DataTypes.STRING
         },
         image_title: {
@@ -49,10 +52,24 @@ module.exports = (sequelize, DataTypes) => {
     let modelOptions = {
         tableName: "portfolio_informations",
         createdAt: 'created_at',
-        updatedAt: 'updated_at'
+        updatedAt: 'updated_at',
+        hooks: {
+            beforeDestroy: deleteFile,
+            beforeUpdate: deleteFile
+        }
     };
 
     const resumeInformation = sequelize.define('portfolioInformation', modelDefinition, modelOptions);
     sequelizePaginate.paginate(resumeInformation);
     return resumeInformation;
 };
+
+function deleteFile(data) {
+    if (data.image) {
+        let rootDir = 'public/backend';
+        if (fs.existsSync(rootDir + data.image)) {
+            fs.unlinkSync(rootDir + data.image);
+            fs.rmSync(rootDir + data.image, { recursive: true, force: true });
+        }
+    }
+}
