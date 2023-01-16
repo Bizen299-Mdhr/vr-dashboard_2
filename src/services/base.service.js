@@ -87,9 +87,14 @@ class BaseService {
     }
 
     async find(query) {
-        return await this.model.findOne({
-            where: query.where
-        });
+        try {
+            return await this.model.findOne({
+                where: query.where
+            });
+        } catch (error) {
+            console.log(error);
+        }
+
     }
 
     async count(query) {
@@ -107,6 +112,13 @@ class BaseService {
     /* eslint-disable no-unused-vars */
     async create(data, sessionUser = null, trx = null) {
         return await this.model.create(data, { transaction: trx });
+    }
+    
+    async truncate() {
+        return this.model.destroy({
+            truncate: true,
+            restartIdentity: true
+        });
     }
 
     async bulkCreate(data, trx) {

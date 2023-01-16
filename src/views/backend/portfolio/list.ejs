@@ -1,0 +1,91 @@
+<div id="content-page" class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12">
+                <%- include('../partials/messages') %>
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">
+                                    <%= pageTitle %>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <div class="table-responsive">
+                                <table class="table text__bold text-nowrap text-md-nowrap table-striped mg-b-0">
+                                    <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th></th>
+                                        <th>Code</th>
+                                        <% if(checkPermissions(user, "frontend-management.portfolio.edit") == true || checkPermissions(user, "frontend-management.portfolio.delete") == true ) { %>
+                                            <th><%= 'Action' %></th>
+                                        <% } %>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <%
+                                    if(typeof docs !='undefined' && docs?.length > 0){
+                                    docs?.forEach(function(email) {
+                                    %>
+
+                                        <tr>
+                                            <td><%= email.title ? email.title : nil %></td>
+                                            <td><%= email.subject ? email.subject : nil %></td>
+                                            <td><%= email.code ? email.code : nil %></td>
+                                            <% if(checkPermissions(user, "frontend-management.portfolio.edit") == true || checkPermissions(user, "frontend-management.portfolio.delete") == true ) { %>
+                                                <td>
+
+                                                    <form id="myform_<%= email._id %>"
+                                                          action="/email-templates/<%= email._id %>?_method=delete"
+                                                          method="post">
+                                                        <% if(checkPermissions(user, "frontend-management.portfolio.edit") == true ) { %>
+                                                            <a class="btn btn-white  my-2 mr-2"
+                                                               href="/email-templates/<%= email._id %>"
+                                                               role="button">
+                                                                <i class="fa fa-edit"></i>
+                                                                <%= 'Edit' %>
+                                                            </a>
+                                                        <% } %>
+
+                                                        <input type="hidden" value="DELETE" name="method">
+                                                        <% if(checkPermissions(user, "frontend-management.portfolio.delete") == true ) { %>
+                                                            <button type="button"
+                                                                    class="btn btn-danger my-2 mr-2 btn-delete confirm-delete"
+                                                                    data-toggle="modal"
+                                                                    data-target="#confirmDeleteModal"
+                                                                    data-href="/email-templates/<%= email._id %>?_method=delete"
+                                                                    data-title="<%= 'Delete Email Template' %>"
+                                                                    data-description=" <%= 'Are you sure you want to delete?' %>">
+                                                                <i class="fa fa-trash-alt"> </i>
+                                                                <%= 'Delete' %>
+                                                            </button>
+                                                        <% } %>
+                                                    </form>
+                                                </td>
+                                            <% } %>
+                                        </tr>
+
+                                    <% });
+                                    }else{
+                                    %>
+                                        <tr>
+                                            <td colspan="4" style="text-align:center;">
+                                                No Records found.
+                                            </td>
+                                        </tr>
+                                    <% } %>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                            <% if(typeof docs !='undefined'  && docs?.length > 0){ %>
+                                <%- include('../partials/pagination')  %>
+                            <% } %>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>

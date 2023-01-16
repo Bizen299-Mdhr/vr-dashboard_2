@@ -1,12 +1,12 @@
 
 
-(function(jQuery) {
+(function (jQuery) {
 
 
 
     "use strict";
 
-    jQuery(document).ready(function() {
+    jQuery(document).ready(function () {
 
         /*---------------------------------------------------------------------
         Tooltip
@@ -34,8 +34,8 @@
                     break;
             }
         }
-        
-        
+
+
         /*---------------------------------------------------------------------
         Magnific Popup
         -----------------------------------------------------------------------*/
@@ -51,7 +51,7 @@
             },
             image: {
                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
-                titleSrc: function(item) {
+                titleSrc: function (item) {
                     return item.el.attr('title') + '<small>by Marsel Van Oosten</small>';
                 }
             }
@@ -69,7 +69,7 @@
         /*---------------------------------------------------------------------
         Ripple Effect
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', ".iq-waves-effect", function(e) {
+        jQuery(document).on('click', ".iq-waves-effect", function (e) {
             // Remove any old one
             jQuery('.ripple').remove();
             // Setup
@@ -103,15 +103,15 @@
             }).addClass("rippleEffect");
         });
 
-       /*---------------------------------------------------------------------
-        Sidebar Widget
-        -----------------------------------------------------------------------*/
-       
-        jQuery(document).on("click", '.iq-menu > li > a', function() {
+        /*---------------------------------------------------------------------
+         Sidebar Widget
+         -----------------------------------------------------------------------*/
+
+        jQuery(document).on("click", '.iq-menu > li > a', function () {
             jQuery('.iq-menu > li > a').parent().removeClass('active');
             jQuery(this).parent().addClass('active');
         });
-        
+
 
 
         /*---------------------------------------------------------------------
@@ -119,13 +119,13 @@
         -----------------------------------------------------------------------*/
         jQuery('.iq-accordion .iq-accordion-block .accordion-details').hide();
         jQuery('.iq-accordion .iq-accordion-block:first').addClass('accordion-active').children().slideDown('slow');
-        jQuery(document).on("click", '.iq-accordion .iq-accordion-block', function() {
+        jQuery(document).on("click", '.iq-accordion .iq-accordion-block', function () {
             if (jQuery(this).children('div.accordion-details ').is(':hidden')) {
                 jQuery('.iq-accordion .iq-accordion-block').removeClass('accordion-active').children('div.accordion-details ').slideUp('slow');
                 jQuery(this).toggleClass('accordion-active').children('div.accordion-details ').slideDown('slow');
             }
         });
-        
+
         /*---------------------------------------------------------------------
         Page Loader
         -----------------------------------------------------------------------*/
@@ -133,10 +133,10 @@
         jQuery("#loading").delay().fadeOut("");
 
 
-       /*---------------------------------------------------------------------
-       Owl Carousel
-       -----------------------------------------------------------------------*/
-        jQuery('.owl-carousel').each(function() {
+        /*---------------------------------------------------------------------
+        Owl Carousel
+        -----------------------------------------------------------------------*/
+        jQuery('.owl-carousel').each(function () {
             let jQuerycarousel = jQuery(this);
             jQuerycarousel.owlCarousel({
                 items: jQuerycarousel.data("items"),
@@ -186,7 +186,7 @@
         /*---------------------------------------------------------------------
         Search input
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', function(e) {
+        jQuery(document).on('click', function (e) {
             let myTargetElement = e.target;
             let selector, mainElement;
             if (jQuery(myTargetElement).hasClass('search-toggle') || jQuery(myTargetElement).parent().hasClass('search-toggle') || jQuery(myTargetElement).parent().parent().hasClass('search-toggle')) {
@@ -209,7 +209,7 @@
                 mainElement.toggleClass('active');
 
                 e.preventDefault();
-            } else if (jQuery(myTargetElement).is('.search-input')) {} else {
+            } else if (jQuery(myTargetElement).is('.search-input')) { } else {
                 jQuery('.navbar-list li').removeClass('iq-show');
                 jQuery('.navbar-list li .search-toggle').removeClass('active');
             }
@@ -220,11 +220,11 @@
         -----------------------------------------------------------------------*/
         let Scrollbar = window.Scrollbar;
         if (jQuery('#sidebar-scrollbar').length) {
-            Scrollbar.init(document.querySelector('#sidebar-scrollbar'), options);
+            Scrollbar.init(document.querySelector('#sidebar-scrollbar'));
         }
         let Scrollbar1 = window.Scrollbar;
         if (jQuery('#right-sidebar-scrollbar').length) {
-            Scrollbar1.init(document.querySelector('#right-sidebar-scrollbar'), options);
+            Scrollbar1.init(document.querySelector('#right-sidebar-scrollbar'));
         }
 
 
@@ -232,175 +232,175 @@
         /*---------------------------------------------------------------------
         Counter
         -----------------------------------------------------------------------*/
-        jQuery('.counter').counterUp({
-            delay: 10,
-            time: 1000
-        });
+        // jQuery('.counter').counterUp({
+        //     delay: 10,
+        //     time: 1000
+        // });
 
         /*---------------------------------------------------------------------
         slick
         -----------------------------------------------------------------------*/
-        jQuery('.slick-slider').slick({
-            centerMode: true,
-            centerPadding: '60px',
-            slidesToShow: 9,
-            slidesToScroll: 1,
-            focusOnSelect: true,
-            responsive: [{
-                breakpoint: 992,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '30',
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '15',
-                    slidesToShow: 1
-                }
-            }],
-            nextArrow: '<a href="#" class="ri-arrow-left-s-line left a-aerrow"></a>',
-            prevArrow: '<a href="#" class="ri-arrow-right-s-line right a-aerrow"></a>',
-        });
-        jQuery('.realeases-banner').slick({
-            slidesToShow: 5,
-            speed: 300,
-            arrows:false,
-            slidesToScroll: 1,
-            vertical: true,
-            verticalSwiping: true,
-            focusOnSelect: true,
-            responsive: [{
-                breakpoint: 992,
-                settings: {
-                    arrows: false,
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    verticalSwiping:false,
-                    slidesToShow:4
-                }
-            }],
-        });
+        // jQuery('.slick-slider').slick({
+        //     centerMode: true,
+        //     centerPadding: '60px',
+        //     slidesToShow: 9,
+        //     slidesToScroll: 1,
+        //     focusOnSelect: true,
+        //     responsive: [{
+        //         breakpoint: 992,
+        //         settings: {
+        //             arrows: false,
+        //             centerMode: true,
+        //             centerPadding: '30',
+        //             slidesToShow: 3
+        //         }
+        //     }, {
+        //         breakpoint: 480,
+        //         settings: {
+        //             arrows: false,
+        //             centerMode: true,
+        //             centerPadding: '15',
+        //             slidesToShow: 1
+        //         }
+        //     }],
+        //     nextArrow: '<a href="#" class="ri-arrow-left-s-line left a-aerrow"></a>',
+        //     prevArrow: '<a href="#" class="ri-arrow-right-s-line right a-aerrow"></a>',
+        // });
+        // jQuery('.realeases-banner').slick({
+        //     slidesToShow: 5,
+        //     speed: 300,
+        //     arrows:false,
+        //     slidesToScroll: 1,
+        //     vertical: true,
+        //     verticalSwiping: true,
+        //     focusOnSelect: true,
+        //     responsive: [{
+        //         breakpoint: 992,
+        //         settings: {
+        //             arrows: false,
+        //             slidesToShow: 3
+        //         }
+        //     }, {
+        //         breakpoint: 480,
+        //         settings: {
+        //             arrows: false,
+        //             verticalSwiping:false,
+        //             slidesToShow:4
+        //         }
+        //     }],
+        // });
 
-        jQuery('.feature-album').slick({
-            slidesToShow: 6,
-            speed: 300,
-            slidesToScroll: 1,
-            focusOnSelect: true,
-             appendArrows: $('#feature-album-slick-arrow'),
-            responsive: [{
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 4
-                }
-            },{
-                breakpoint: 992,
-                settings: {
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    autoplay:true,
-                    slidesToShow: 1
-                }
-            }],
-        });
+        //     jQuery('.feature-album').slick({
+        //         slidesToShow: 6,
+        //         speed: 300,
+        //         slidesToScroll: 1,
+        //         focusOnSelect: true,
+        //          appendArrows: $('#feature-album-slick-arrow'),
+        //         responsive: [{
+        //             breakpoint: 1200,
+        //             settings: {
+        //                 slidesToShow: 4
+        //             }
+        //         },{
+        //             breakpoint: 992,
+        //             settings: {
+        //                 slidesToShow: 3
+        //             }
+        //         }, {
+        //             breakpoint: 480,
+        //             settings: {
+        //                 arrows: false,
+        //                 autoplay:true,
+        //                 slidesToShow: 1
+        //             }
+        //         }],
+        //     });
 
-       jQuery('.feature-album-artist').slick({
-            slidesToShow: 6,
-            speed: 300,
-            slidesToScroll: 1,
-            appendArrows: $('#feature-album-artist-slick-arrow'),
-            focusOnSelect: true,
-            responsive: [{
-                breakpoint: 1200,
-                settings: {
-                    slidesToShow: 4
-                }
-            },{
-                breakpoint: 992,
-                settings: {
-                    arrows:true,
-                    slidesToShow: 3
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    arrows:false,
-                    autoplay:true,
-                    slidesToShow: 1
-                }
-            }],
-        });
+        //    jQuery('.feature-album-artist').slick({
+        //         slidesToShow: 6,
+        //         speed: 300,
+        //         slidesToScroll: 1,
+        //         appendArrows: $('#feature-album-artist-slick-arrow'),
+        //         focusOnSelect: true,
+        //         responsive: [{
+        //             breakpoint: 1200,
+        //             settings: {
+        //                 slidesToShow: 4
+        //             }
+        //         },{
+        //             breakpoint: 992,
+        //             settings: {
+        //                 arrows:true,
+        //                 slidesToShow: 3
+        //             }
+        //         }, {
+        //             breakpoint: 480,
+        //             settings: {
+        //                 arrows:false,
+        //                 autoplay:true,
+        //                 slidesToShow: 1
+        //             }
+        //         }],
+        //     });
 
-        jQuery('.hot-songs').slick({
-            slidesToShow: 2,
-            speed: 300,
-            appendArrows: $('#hot-song-slick-arrow'),
-            slidesToScroll: 1,
-            rows:3,
-            focusOnSelect: true,
-            responsive: [{
-                breakpoint: 992,
-                settings: {
-                    arrows: true,
-                    slidesToShow: 2
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    autoplay:true,
-                    slidesToShow: 1
-                }
-            }],
-        });
+        //     jQuery('.hot-songs').slick({
+        //         slidesToShow: 2,
+        //         speed: 300,
+        //         appendArrows: $('#hot-song-slick-arrow'),
+        //         slidesToScroll: 1,
+        //         rows:3,
+        //         focusOnSelect: true,
+        //         responsive: [{
+        //             breakpoint: 992,
+        //             settings: {
+        //                 arrows: true,
+        //                 slidesToShow: 2
+        //             }
+        //         }, {
+        //             breakpoint: 480,
+        //             settings: {
+        //                 arrows: false,
+        //                 autoplay:true,
+        //                 slidesToShow: 1
+        //             }
+        //         }],
+        //     });
 
-         jQuery('.hot-video').slick({
-            slidesToShow: 2,
-            speed: 300,
-            appendArrows: $('#hot-video-slick-arrow'),
-            slidesToScroll: 1,
-            focusOnSelect: true,
-            responsive: [{
-                breakpoint: 992,
-                settings: {
-                    arrows: true,
-                    slidesToShow: 2
-                }
-            }, {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    autoplay:true,
-                    slidesToShow: 1
-                }
-            }],
-        });
+        //      jQuery('.hot-video').slick({
+        //         slidesToShow: 2,
+        //         speed: 300,
+        //         appendArrows: $('#hot-video-slick-arrow'),
+        //         slidesToScroll: 1,
+        //         focusOnSelect: true,
+        //         responsive: [{
+        //             breakpoint: 992,
+        //             settings: {
+        //                 arrows: true,
+        //                 slidesToShow: 2
+        //             }
+        //         }, {
+        //             breakpoint: 480,
+        //             settings: {
+        //                 arrows: false,
+        //                 autoplay:true,
+        //                 slidesToShow: 1
+        //             }
+        //         }],
+        //     });
 
 
         /*---------------------------------------------------------------------
         Progress Bar
         -----------------------------------------------------------------------*/
-        jQuery('.iq-progress-bar > span').each(function() {
+        jQuery('.iq-progress-bar > span').each(function () {
             let progressBar = jQuery(this);
             let width = jQuery(this).data('percent');
             progressBar.css({
                 'transition': 'width 2s'
             });
 
-            setTimeout(function() {
-                progressBar.appear(function() {
+            setTimeout(function () {
+                progressBar.appear(function () {
                     progressBar.css('width', width + '%');
                 });
             }, 100);
@@ -410,41 +410,41 @@
         /*---------------------------------------------------------------------
         Page Menu
         -----------------------------------------------------------------------*/
-        jQuery(document).on('click', '.wrapper-menu', function() {
+        jQuery(document).on('click', '.wrapper-menu', function () {
             jQuery(this).toggleClass('open');
         });
 
-        jQuery(document).on('click', ".wrapper-menu", function() {
+        jQuery(document).on('click', ".wrapper-menu", function () {
             jQuery("body").toggleClass("sidebar-main");
         });
-        
+
 
 
         /*---------------------------------------------------------------------
         Wow Animation
         -----------------------------------------------------------------------*/
-        let wow = new WOW({
-            boxClass: 'wow',
-            animateClass: 'animated',
-            offset: 0,
-            mobile: false,
-            live: true
-        });
-        wow.init();
+        // let wow = new WOW({
+        //     boxClass: 'wow',
+        //     animateClass: 'animated',
+        //     offset: 0,
+        //     mobile: false,
+        //     live: true
+        // });
+        // wow.init();
 
 
-        
+
         /*---------------------------------------------------------------------
         Form Validation
         -----------------------------------------------------------------------*/
 
         // Example starter JavaScript for disabling form submissions if there are invalid fields
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation');
             // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
                     if (form.checkValidity() === false) {
                         event.preventDefault();
                         event.stopPropagation();
@@ -457,8 +457,8 @@
         /*---------------------------------------------------------------------
         Sidebar Widget
         -----------------------------------------------------------------------*/
-        jQuery(document).ready(function() {
-            jQuery().on('click', '.todo-task-lists li', function() {
+        jQuery(document).ready(function () {
+            jQuery().on('click', '.todo-task-lists li', function () {
                 if (jQuery(this).find('input:checkbox[name=todo-check]').is(":checked")) {
 
                     jQuery(this).find('input:checkbox[name=todo-check]').attr("checked", false);
@@ -467,11 +467,11 @@
                     jQuery(this).find('input:checkbox[name=todo-check]').attr("checked", true);
                     jQuery(this).addClass('active-task');
                 }
-               
+
             });
         });
 
-       
+
 
         /*------------------------------------------------------------------
         Flatpicker
@@ -485,39 +485,37 @@
         /*---------------------------------------------------------------------
            Datatables
         -----------------------------------------------------------------------*/
-        if(jQuery('.data-tables').length)
-        {
-          $('.data-tables').DataTable();
+        if (jQuery('.data-tables').length) {
+            $('.data-tables').DataTable();
         }
-        
+
         /*---------------------------------------------------------------------
            Scroll up menu
         -----------------------------------------------------------------------*/
         var position = $(window).scrollTop();
-        $(window).scroll(function() {
+        $(window).scroll(function () {
             var scroll = $(window).scrollTop();
             //  console.log(scroll);
-            
-            if(scroll < position) {
-                 $('.tab-menu-horizontal').addClass('menu-up');
-                 $('.tab-menu-horizontal').removeClass('menu-down');
-            } 
+
+            if (scroll < position) {
+                $('.tab-menu-horizontal').addClass('menu-up');
+                $('.tab-menu-horizontal').removeClass('menu-down');
+            }
             else {
                 $('.tab-menu-horizontal').addClass('menu-down');
                 $('.tab-menu-horizontal').removeClass('menu-up');
             }
-            if(scroll == 0)
-            {
+            if (scroll == 0) {
                 $('.tab-menu-horizontal').removeClass('menu-up');
                 $('.tab-menu-horizontal').removeClass('menu-down');
             }
             position = scroll;
         });
 
-    /*---------------------------------------------------------------------
-    active music
-    -----------------------------------------------------------------------*/
-    jQuery( 'ul.iq-song-slide li').on('click', function(){
+        /*---------------------------------------------------------------------
+        active music
+        -----------------------------------------------------------------------*/
+        jQuery('ul.iq-song-slide li').on('click', function () {
             jQuery('ul.iq-song-slide li').removeClass('active');
             jQuery(this).addClass('active');
         });
@@ -584,5 +582,24 @@ $(function () {
         ev.preventDefault();
         $(this).removeClass("x onX").val("").change();
     });
+
+});
+
+$(".js-select2").select2({
+    tags: true,
+    tokenSeparators: [','],
+    createTag: function (params) {
+        var term = $.trim(params.term);
+
+        if (term === '') {
+            return null;
+        }
+
+        return {
+            id: term.toUpperCase(),
+            text: term.toUpperCase(),
+            newTag: true // add additional parameters
+        }
+    }
 
 });

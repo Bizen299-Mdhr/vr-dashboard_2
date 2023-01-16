@@ -1,0 +1,94 @@
+<div id="content-page" class="content-page">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 ">
+                <%- include('../partials/messages') %>
+
+                    <div class="iq-card">
+                        <div class="iq-card-header d-flex justify-content-between">
+                            <div class="iq-header-title">
+                                <h4 class="card-title">
+                                    <%= pageTitle %>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="iq-card-body">
+                            <form action="/system/portfolio" class="form " method="post">
+                                <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Page Head Title</label> <span style="color:red;">*</span>
+                                        <input type="text" class="form-control  " name="page_title" id="page_title"
+                                            value="<%= inputData && inputData.page_title ? inputData.page_title : admin?.page_title %>"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Please set Page Head Title
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Image Title</label> <span style="color:red;">*</span>
+                                        <input type="text" class="form-control  " name="image_title" id="image_title"
+                                            value="<%= inputData && inputData.image_title ? inputData.image_title : admin?.image_title %>"
+                                            required>
+                                        <div class="invalid-feedback">
+                                            Please set Image Title
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Image Tag</label> <span style="color:red;">*</span>
+                                        <select class="form-control js-select2" name="tag" required>
+
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            Please set Image Tag
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Image </label> <span style="color:red;">*</span>
+                                        <input type="file" name="image" class="form-control " required>
+                                        <div class="invalid-feedback">
+                                            Please set Image
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="title">Detail </label>
+                                        <textarea class="form-control "
+                                            name="detail"><%= inputData && inputData.detail ? inputData.detail : admin?.detail %></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary" type="submit">
+                                        Save
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .range-input {
+        display: flex;
+        align-items: center;
+    }
+
+    .range-input label {
+        margin-right: 10px;
+    }
+
+    select {
+        font-family: fontAwesome
+    }
+
+    .removeSectionOneRow,
+    .addSectionOneRow {
+
+        font-size: 11px;
+        flex-wrap: nowrap;
+        white-space: nowrap;
+
+    }
+</style>

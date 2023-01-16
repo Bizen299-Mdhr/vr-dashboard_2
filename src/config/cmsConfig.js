@@ -27,7 +27,7 @@ config.modulePages = {
         "home-page": "Home Page",
         "about-page": "About Page",
         "resume": "Resume",
-        "protfolio": "Protfolio",
+        "portfolio": "Portfolio",
         "blog": "blog",
         "contact-info": "Contact Information"
     }
