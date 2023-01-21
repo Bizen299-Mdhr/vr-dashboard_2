@@ -1,0 +1,78 @@
+
+                    <!-- =========    RESUME PAGE START    ======== -->
+                    <section class="resume page-content tab-pane fade" id="resume">
+                        <div class="r-container">
+
+                            <!-- RESUME TITLE -->
+                            <div class="title">
+                                <h2><%= resumeInfoTitle?.page_title?.split(",")?.[0] %> <span><%= resumeInfoTitle?.page_title?.split(",")?.[1] %></span></h2>
+                            </div>
+
+
+                            <div class="education col-md-6">
+                                <div class="column-right">
+
+                                    <span class="icon"><i class="fa fa-book" aria-hidden="true"></i></span>
+
+                                    <!-- EDUCATION TIME LINE ITEM -->
+                                    <% if(resumeInfoEdu.docs?.length> 0){
+                                        resumeInfoEdu.docs?.forEach(function(edu) { %>
+                                    <div class="item">
+                                        <h6 class="sm-titl"><%= edu.title %></h6>
+                                        <span class="date"><%= formatDate(edu.end_date,'yyyy') %> </span>
+                                        <p><%-edu.detail%>
+                                        </p>
+                                    </div>
+                                    <%})}%>
+                                </div>
+                            </div>
+
+                            <div class="working col-md-6">
+                                <div class="column-left">
+
+                                    <span class="icon"><i class="fa fa-briefcase" aria-hidden="true"></i></span>
+                                    <% if(resumeInfoWork.docs?.length> 0){
+                                        resumeInfoWork.docs?.forEach(function(wrk) { %>
+                                    <div class="item">
+                                        <h6 class="sm-titl"><%= wrk.title %></h6>
+                                        <span class="date"><%= formatDate(wrk.start_date,'yyyy')%> - <%= formatDate(wrk.end_date,'yyyy') === formatDate(new Date(),'yyyy') ? 'Present': formatDate(wrk.end_date,'yyyy')%> </span>
+                                        <p><%-wrk.detail%>
+                                        </p>
+                                    </div>
+                                    <%})}%>
+                                </div>
+                            </div>
+
+                            <div class="clear"></div>
+                        </div>
+
+                        <!-- TESTIMONIALS -->
+                        <div class="testimonials">
+                            <div class="testimonials-overlay">
+                                <div class="owl-carousel owl-theme">
+
+                                    <!-- CLIENT ITEM -->
+                                    <div class="t-item">
+                                        <div class="testimonial-box col-md-8 col-xs-10">
+                                            <p>Get Rich And Die trying</p>
+                                            <!-- TESTIMONIAL NAME -->
+                                            <h3><span></span></h3>
+                                        </div>
+                                    </div>
+
+                                    <!-- CLIENT ITEM -->
+                                    <!-- <div class="t-item">
+                                        <div class="testimonial-box col-md-8 col-xs-10">
+                                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo
+                                                ligula eget dolor. Aenean massa. Cum sociis natoque penatibus. </p>
+                                             TESTIMONIAL NAME 
+                                            <h3>Frank Rouse<span>Designer @ Company</span></h3>
+                                        </div>
+                                    </div> -->
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                    <!-- =========    RESUME PAGE START    ======== -->

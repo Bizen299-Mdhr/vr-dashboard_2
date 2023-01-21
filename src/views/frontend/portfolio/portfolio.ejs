@@ -1,0 +1,88 @@
+<!-- =========    PORTFOLIO PAGE START    ======== -->
+<section class="page-content tab-pane fade" id="portfolio">
+    <div class="p-container">
+
+        <!-- PORTFOLIO TITLE -->
+        <div class="title">
+            <h2>
+                <%= portfolioTitles?.page_title %> <span>
+                        <%= portfolioTitles?.page_sub_title %>
+                    </span>
+            </h2>
+        </div>
+
+        <div class="works">
+            <!-- PORTFOLIO FILTER BUTTONS -->
+            <div class="block-filter tCenter">
+
+                <ul id="category" class="filter">
+                    <li><a data-filter="all"  class="active">all</a></li>
+                    <% if(portfolioWorkTags?.length> 0){
+                        portfolioWorkTags?.forEach(function(portfolioWorkTag) { %>
+                        <li><a data-filter="<%= portfolioWorkTag.tag%>"><%= portfolioWorkTag.tag%></a></li>
+                        <%})}%>
+                </ul>
+
+            </div>
+            <!-- END PORTFOLIO FILTER BUTTONS -->
+
+
+            <!-- PORTFOLIO CONTENT -->
+            <div class="portfolio-content">
+
+                <div class="work">
+                    <ul>
+                        <% if(portfolioWorks?.length> 0){
+                            portfolioWorks?.forEach(function(works) { %>
+
+                                <li class="col-md-4">
+                                    <div class="portfolio-caption <%= works.tag.toUpperCase() %>">
+                                        <a class="modal-image" href="#<%=works.id %>">
+                                            <!-- PORTFOLIO IMAGE -->
+                                            <img src="/backend<%=works.image %>" alt="<%=works.image_title %>" />
+        
+                                            <!-- PORTFOLIO TITLE -->
+                                            <div class="overlay">
+                                                <div class="info-content">
+                                                    <h4><%=works.image_title %></h4>
+                                                    <span><%=works.detail %></span>
+                                                </div>
+                                            </div>
+        
+                                            <!-- POPUP WHITE BOX -->
+                                            <div id="<%=works.id %>" class="white-popup mfp-hide">
+        
+                                                <!-- POPUP WHITE BOX IMAGE -->
+                                                <img src="/backend<%=works.image %>" alt="<%=works.image_title %>" />
+        
+                                                <div>
+                                                    <!-- POPUP WHITE BOX TITLE -->
+                                                    <h3><%=works.image_title %></h3>
+        
+                                                    <!-- POPUP WHITE BOX DESCRIPTION -->
+                                                    <p><%=works.detail %></p>
+                                                </div>
+                                            </div>
+                                            <!-- END POPUP WHITE BOX -->
+        
+                                        </a>
+                                    </div>
+                                </li>
+                                <%})}%>
+
+
+                     
+
+
+                    </ul>
+                </div>
+
+            </div>
+            <!-- END PORTFOLIO CONTENT -->
+
+
+        </div>
+        <div class="clear"></div>
+    </div>
+</section>
+<!-- =========    PORTFOLIO PAGE START    ======== -->

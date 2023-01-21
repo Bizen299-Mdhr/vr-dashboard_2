@@ -1,0 +1,50 @@
+
+                    <!-- =========    BLOG PAGE START    ======== -->
+                    <section class="page-content tab-pane fade" id="blog">
+                        <div class="p-container">
+
+                            <!-- BLOG PAGE TITLE -->
+                            <div class="title">
+                                <h2><%=blogInfoTitle?.page_title%> <span><%=blogInfoTitle.page_sub_title%></span></h2>
+                            </div>
+
+                            <% if(blogInfos.docs?.length> 0){
+                                blogInfos.docs?.forEach(function(blog) { %>
+                            <!-- Blog Post 1 -->
+                            <div class="blog-post-box">
+                                <div class="blog-post-box-img">
+                                    <div class="blog-post-box-img-container">
+                                        <!-- BLOG POST IMAGE -->
+                                        <img src="/backend<%= blog?.image%>" alt="<%= blog?.title%>">
+                                        <div>
+                                            <!-- BLOG POST LINK -->
+                                            <a href="#">
+                                                <i class="fa fa-long-arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="blog-post-box-content">
+                                    <!-- BLOG POST LINK -->
+                                    <a href="#">
+                                        <div>
+                                            <!-- BLOG POST TITLE -->
+                                            <h2><%= blog?.title%></h2>
+                                            <ul class="post-meta">
+                                                <li>
+                                                    <i class="fa fa-user-o"></i>
+                                                    <span><%= blog?.created_by%></span>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-calendar-o"></i>
+                                                    <span><%= formatDate(blog?.created_at,'YYYY-MM-DD')%></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <%})}%>
+                        </div>
+                    </section>
+                    <!-- =========    BLOG PAGE END    ======== -->

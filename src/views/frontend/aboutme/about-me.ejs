@@ -1,0 +1,130 @@
+<!-- =========    ABOUT PAGE START    ======== -->
+<section class="page-content tab-pane fade" id="about">
+    <div class="p-container">
+
+        <!-- ABOUT TITLE -->
+        <div class="title">
+            <h2>
+                <%= aboutInfo?.title?? 'ABOUT ME' %> <span></span>
+            </h2>
+        </div>
+
+        <!-- AVATAR IMAGE -->
+        <div class="col-md-3 about-img">
+            <img src="/backend<%=aboutInfo?.image%>" alt="avatar">
+        </div>
+
+        <!-- ABOUT CONTENT -->
+        <div class="col-md-7 about-content">
+            <h2>
+                <%=aboutInfo?.image_title_info%>
+            </h2>
+            <p></p>
+        </div>
+        <div class="clear"></div>
+
+        <!-- ABOUT INFO -->
+        <div class="info col-md-5">
+
+            <div class="small-title">
+                <h4>
+                    <%=aboutInfo?.section_one_title%>
+                </h4>
+            </div>
+
+            <ul>
+                <% if(aboutInfo?.section_one_detail.length> 0){
+                    aboutInfo?.section_one_detail.forEach(function(section_one) { %>
+                    <li class="col-md-12">
+                        <span class="i-title">
+                            <%=section_one?.title%>
+                        </span>
+                        <span class="value">
+                            <%=section_one?.detail%>
+                        </span>
+                    </li>
+                    <%})}%>
+            </ul>
+        </div>
+
+        <!-- ABOUT SKILLS -->
+        <div class="about-skills col-md-7">
+
+            <div class="small-title">
+                <h4>
+                    <%=aboutInfo?.section_two_title%>
+                </h4>
+            </div>
+
+            <ul>
+                <% if(aboutInfo?.section_two_detail.length> 0){
+                    aboutInfo?.section_two_detail.forEach(function(section_two) { %>
+                    <li>
+                        <span>
+                            <%=section_two?.title%>
+                        </span>
+                        <div class="progress">
+                            <div class="progress-bar" data-percent="<%=section_two?.detail%>"
+                                style="width: <%=section_two?.detail%>%;">
+                                <span>
+                                    <%=section_two?.detail%>%
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                    <%})}%>
+
+            </ul>
+
+        </div>
+
+
+        <!-- SERVICES -->
+        <div class="services col-md-12">
+
+            <div class="small-title">
+                <h4>
+                    <%=aboutInfo?.section_three_title%>
+                </h4>
+            </div>
+
+            <div class="clear"></div>
+            <ul>
+
+                <!-- SERVICE BOX 1 -->
+                <li class="col-md-6">
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <i class="fa <%=aboutInfo?.sub_section_three_icon1%>"></i>
+                        </div>
+                        <div class="service-content"  style="min-height: 331px;">
+                            <h3>
+                                <%=aboutInfo?.sub_section_three_title%>
+                            </h3>
+                            <%=aboutInfo?.sub_section_three_detail%>
+                        </div>
+                    </div>
+                </li>
+
+                <!-- SERVICE BOX 2 -->
+                <li class="col-md-6">
+                    <div class="service-box">
+                        <div class="service-icon">
+                            <i class="fa  <%=aboutInfo?.sub_section_four_icon1%>"></i>
+                        </div>
+                        <div class="service-content" style="min-height: 331px;">
+                            <h3>   <%=aboutInfo?.section_four_title%></h3>
+                            
+                            <p>
+                                <%=aboutInfo?.sub_section_four_detail%>
+                            </p>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+</section>
+<!-- =========    ABOUT PAGE START    ======== -->
