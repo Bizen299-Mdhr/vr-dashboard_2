@@ -34,6 +34,7 @@
                                             Please set Page Sub Title
                                         </div>
                                     </div>    
+                                    <%if(blogPageTitle._id != data._id){%>
                                     
                                     <div class="col-md-12 mb-3">
                                         <label for="title">Title</label> <span style="color:red;">*</span>
@@ -44,7 +45,17 @@
                                             Please set Title
                                         </div>
                                     </div>
-                                    <%if(blogPageTitle._id != data._id){%>
+                                    <div class="col-md-12 mb-3">
+                                        <label for="created_by">Created By / Refrence </label> <span style="color:red;">*</span>
+                                        <input type="text" class="form-control  " name="created_by" id="created_by"
+                                        value="<%= inputData && inputData.created_by ? inputData.created_by : data?.created_by %>"
+                                            required>
+                                            
+                                        <div class="invalid-feedback">
+                                            Please set Created By / Refrence
+                                        </div>
+                                    </div>
+                             
                                         <div class="col-md-12 mb-3">
                                             <label for="title">Image </label> 
                                             <input type="file" name="image" class="form-control " >

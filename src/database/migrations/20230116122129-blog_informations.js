@@ -26,6 +26,9 @@ module.exports = {
                 },  
                 type: {
                     type: Sequelize.STRING
+                }, 
+                created_by: {
+                    type: Sequelize.STRING
                 },
                 image: {
                     type: Sequelize.STRING

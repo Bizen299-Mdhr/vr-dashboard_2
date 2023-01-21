@@ -30,6 +30,9 @@ module.exports = (sequelize, DataTypes) => {
         type: {
             type: DataTypes.STRING
         },
+        created_by: {
+            type: DataTypes.STRING
+        },
         detail: {
             type: DataTypes.TEXT('long')
         },

@@ -80,11 +80,37 @@ let self = module.exports = {
             if(renameFile){
                 fileName=renameFile;
             }
-            // image.mv(dir + fileName, function (err) {
-            //     if (err) {
-            //         fileName = '';
-            //     }
-            // });
+            await promisifyUpload(image,dir + fileName);
+            fileName = absDir + fileName;
+            return fileName;
+        }
+    },
+    uplaodMultipleFileToPath: async (file, rootDir = 'public/backend', absDir,inputName='image',renameFile=null) => {
+        if (file) {
+            let dir = rootDir + absDir;
+            self.mkDirByPathSync(dir);
+            let image = file;
+            let fileName = image.name;
+            let fileNameSplit = fileName.split(".");
+            let updatedName = "";
+            let ext;
+            for (let i = 0; i < fileNameSplit.length; i++) {
+                let name = fileNameSplit[i];
+                if (i == (fileNameSplit.length - 1)) {
+                    ext = name;
+                } else {
+                    if (i == 0) {
+                        updatedName = name;
+                    } else {
+                        updatedName = updatedName + "-" + name;
+                    }
+                }
+            }
+            fileName = updatedName + "-" + generateRandomString(5);
+            fileName = fileName.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase() + "." + ext;
+            if(renameFile){
+                fileName=renameFile;
+            }
             await promisifyUpload(image,dir + fileName);
             fileName = absDir + fileName;
             return fileName;

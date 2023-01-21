@@ -15,6 +15,7 @@ class portfolioController extends Controller {
         try {
             this.innerPage = this.view + '/index';
             req.query.sort = req.query.sort ? req.query.sort:'ASC';
+            req.query.order = req.query.order ? req.query.order:'position';
             const data = await this.service.indexPageData(req);
             data.breadcrumbs = this.indexBreadCrumb();
             req.session.cancelUrl = req.originalUrl;
@@ -41,6 +42,17 @@ class portfolioController extends Controller {
     async edit(req, res) {
         try {
             await this.service.updatePortfolioInfo(req);
+            logCrmEvents(req, "Event", "success", { message: this.title + " updated" });
+            req.flash('success_msg', 'About page info updated Successfully.');
+            return res.redirect(this.url);
+        } catch (error) {
+            req.flash('error_msg', error.message);
+            return res.redirect(this.url);
+        }
+    }   
+    async updatePosition(req, res) {
+        try {
+            await this.service.updatePos({position: parseInt(req.body.position)},req.body.column);
             logCrmEvents(req, "Event", "success", { message: this.title + " updated" });
             req.flash('success_msg', 'About page info updated Successfully.');
             return res.redirect(this.url);
