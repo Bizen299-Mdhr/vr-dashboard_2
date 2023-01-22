@@ -19,6 +19,7 @@ mix.js("resources/assets/system/js/system.js", "public/js/")
 
 //ip-access
 mix.js("resources/assets/system/js/ip-access.js", "public/js/");
+mix.js("resources/assets/system/js/employee.js", "public/js/");
 
 
 

@@ -4,7 +4,7 @@ const passport = require('passport');
 const fileUpload = require('express-fileupload');
 const flash = require('connect-flash');
 const path = require('path');
-// const helmet = require('helmet');
+const helmet = require('helmet');
 // const morgan = require('morgan');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
@@ -31,6 +31,31 @@ redisClient.on('connect', function () {
 
 let expressLoader = {};
 expressLoader.init = async (app) => {
+    app.use(
+        helmet.contentSecurityPolicy(
+            {
+                useDefaults: true,
+                directives: {
+                    "script-src": [
+                        "'self'",  "'unsafe-inline'", "'unsafe-eval'",'*'
+                    ],
+                    imgSrc: ["'self'", "data:","*"],
+                    connectSrc: ["*"]
+                }
+            }),
+        helmet.hidePoweredBy(),
+        helmet.frameguard(
+            {
+                action: "sameorigin"
+            }),
+        helmet.xssFilter(),
+        helmet.noSniff(),
+        helmet.hsts(
+            {
+                maxAge: 15552000,
+                includeSubDomains: true
+            })
+    );
     app.use(compression());
     app.use(bodyParser.json({limit: '50mb'}));
     app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));

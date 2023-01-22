@@ -22,6 +22,7 @@ const contactInfo = require('./contact-info');
 
 const {APIPREFIX} = require("@constant");
 const apiRoutes = require('./api/index');
+const { throttle} = require("@middleware");
 module.exports = (app, passport) => {
     
     app.use(APIPREFIX, apiRoutes);
@@ -72,6 +73,7 @@ module.exports = (app, passport) => {
 
 
     app.get('/', homeController.index);
+    app.post('/system/send/email',[throttle({freeTries: 2, waitTime: 600})], homeController.sendEmail);
    
 
     app.get('*', function (req, res) {

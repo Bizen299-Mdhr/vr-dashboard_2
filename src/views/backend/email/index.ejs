@@ -38,11 +38,11 @@
                                                 <td>
 
                                                     <form id="myform_<%= email._id %>"
-                                                          action="/email-templates/<%= email._id %>?_method=delete"
+                                                          action="/system/email-templates/<%= email._id %>?_method=delete"
                                                           method="post">
                                                         <% if(checkPermissions(user, "email-templates.email-templates.edit") == true ) { %>
                                                             <a class="btn btn-white  my-2 mr-2"
-                                                               href="/email-templates/<%= email._id %>"
+                                                               href="/system/email-templates/<%= email._id %>"
                                                                role="button">
                                                                 <i class="fa fa-edit"></i>
                                                                 <%= 'Edit' %>
@@ -55,7 +55,7 @@
                                                                     class="btn btn-danger my-2 mr-2 btn-delete confirm-delete"
                                                                     data-toggle="modal"
                                                                     data-target="#confirmDeleteModal"
-                                                                    data-href="/email-templates/<%= email._id %>?_method=delete"
+                                                                    data-href="/system/email-templates/<%= email._id %>?_method=delete"
                                                                     data-title="<%= 'Delete Email Template' %>"
                                                                     data-description=" <%= 'Are you sure you want to delete?' %>">
                                                                 <i class="fa fa-trash-alt"> </i>

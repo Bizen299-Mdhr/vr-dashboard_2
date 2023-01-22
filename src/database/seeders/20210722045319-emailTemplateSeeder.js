@@ -1,6 +1,6 @@
 'use strict';
 require("module-alias/register");
-const {emailTemplate} = require('@models');
+const { emailTemplate } = require('@models');
 
 module.exports = {
     up: async () => {
@@ -221,12 +221,50 @@ module.exports = {
   </tbody>
   </table>                                         
               `
+            },
+            {
+                'title': 'Contact Email Notificaiton',
+                'code': 'contact_email',
+                'subject': 'Contact Email Notificaiton',
+                'body': `<table class="body" border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+      <tr>
+          <td>&nbsp;</td>
+          <td class="container">
+          <div class="content">
+          <table class="main"><!-- START MAIN CONTENT AREA -->
+                      <tbody>
+                      <tr>
+                          <td class="wrapper">
+                              <table border="0" cellspacing="0" cellpadding="0">
+                                  <tbody>
+                                  <tr>
+                                    <td>
+                                        <p>Dear Admin,</p>
+                                        <p>%message%</p>
+                                        <p>%user_email%</p>
+                                        br/>
+                                    </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                      </td>
+                      </tr>
+                  <!-- END MAIN CONTENT AREA -->
+              </tbody>
+          </table>
+          </td>
+          <td>&nbsp;</td>
+      </tr>
+  </tbody>
+  </table>                                         
+              `
             }
 
         ];
         for (const value of emailCode) {
             try {
-                let email = await emailTemplate.findOne({where: {code: value.code}});
+                let email = await emailTemplate.findOne({ where: { code: value.code } });
                 if (!email) {
                     const emailTemp = new emailTemplate(value);
                     await emailTemp.save();
@@ -238,7 +276,7 @@ module.exports = {
     },
 
     down: async () => {
-        await emailTemplate.destroy({truncate: true, restartIdentity: true});
+        await emailTemplate.destroy({ truncate: true, restartIdentity: true });
         return Promise.resolve();
     }
 };

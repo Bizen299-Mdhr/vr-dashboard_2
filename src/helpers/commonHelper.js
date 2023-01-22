@@ -330,6 +330,18 @@ function hasSuperAdminRole(user){
     return check;
 }
 
+function isApiRequestOrAjax(req){
+    let check = false;
+    const requestTypes = [
+        "application/json", "application/json; charset=utf-8"
+    ];
+
+    if(requestTypes.includes(req?.headers.accept) || requestTypes.includes(req?.headers?.["content-type"])|| req.xhr){
+        check = true;
+    }
+    return check;
+}
+
 module.exports = {
     distance,
     dateDiffIndays,
@@ -363,5 +375,6 @@ module.exports = {
     arrayFromJSONkeyValueArray, 
     viewsPath,
     hyphanize,
-    hasSuperAdminRole
+    hasSuperAdminRole,
+    isApiRequestOrAjax
 };

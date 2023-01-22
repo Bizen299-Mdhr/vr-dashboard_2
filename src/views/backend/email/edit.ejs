@@ -13,7 +13,7 @@
                             </div>
                         </div>
                         <div class="iq-card-body">
-                            <form action="/email-templates/<%= data._id %>?_method=PUT" method="post">
+                            <form action="/system/email-templates/<%= data._id %>?_method=PUT" method="post">
                                 <div class="row row-sm">
                                     <div class="col-lg-12">
                                             <div class="card custom-card">
@@ -94,7 +94,7 @@
                                                                             <span style="color:red;">*</span>
                                                                         </p>
                                                                         <div class="ext-textarea">
-                                                                            <textarea class="form-control tinymce"
+                                                                            <textarea class="form-control ckeditor"
                                                                                 name="body" type="text"
                                                                                 id="email_body"><%= data.body %></textarea>
                                                                         </div>
@@ -128,3 +128,6 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.ckeditor.com/4.20.1/standard/ckeditor.js"></script>
+<script>
+</script>

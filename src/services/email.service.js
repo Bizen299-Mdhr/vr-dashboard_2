@@ -24,9 +24,11 @@ class EmailService {
                 path.join(__dirname, "/../views/backend/email/send-mail.ejs"),
                 { body: template.body }
             );
-            console.log("templateHtml: ", templateHtml);
             let strHtml = templateHtml
                 .replace("%username%", data.username)
+                .replace("%name%", data.name)
+                .replace("%user_email%", data.user_email)
+                .replace("%message%", data.message)
                 .replace("%token%", data.token)
                 .replace("%otp_code%", data.otp_code)
                 .replace("%url%", data.url)
@@ -42,9 +44,7 @@ class EmailService {
                 auth: {
                     user: this.smtpUsername,
                     pass: this.smtpPassword
-                },
-                logger: true,
-                debug: true
+                }
             });
             // Specify the fields in the email.
             let mailOptions = {

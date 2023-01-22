@@ -28,6 +28,10 @@ let config = {
         public:'',
         private:''
     },
+    throttleConfig : {
+        freeTries: process.env.FREE_TRIES || 2,
+        waitTime : process.env.WAIT_TIME_IN_SEC || 600
+    },
     utcOffset:process.env.utcOffset || '+0545',
     redisTTL:process.env.SESSION_TIMEOUT_IN_SEC || 43200,
     cookieMaxAge:process.env.COOKIE_MAXAGE_IN_SEC || 43200

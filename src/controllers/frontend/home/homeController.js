@@ -1,4 +1,5 @@
 const Controller = require('@baseController');
+const {emitter} = require('@emitter');
 
 class HomeController extends Controller {
     constructor(opts) {
@@ -38,6 +39,20 @@ class HomeController extends Controller {
             req.flash('error_msg', error.message);
             return res.redirect('/system/home');
         }
+    }
+    async sendEmail(req, res){
+        emitter.emit('contact-user', {
+            email: process.env.ADMIN_DEFAULT_EMAIL,
+            user_email: req.body.email,
+            name: req.body.name,
+            code: 'contact_email',
+            message: req.body.message
+        });
+
+        return res.status(200).json({
+            statusCode : 200,
+            msg: `success`
+        });
     }
 }
 

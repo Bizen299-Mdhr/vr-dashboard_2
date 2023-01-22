@@ -563,12 +563,12 @@ $(function () {
     e(), $(".passwordMethodRadio").on("click", function () {
         e();
     });
-    const emailBody = document.querySelector("#email_body");
-    if (emailBody !== null) {
-        ClassicEditor.create(emailBody).then(e => {
-        }).catch(e => {
-        });
-    }
+    // const emailBody = document.querySelector("#email_body");
+    // if (emailBody !== null) {
+    //     ClassicEditor.create(emailBody).then(e => {
+    //     }).catch(e => {
+    //     });
+    // }
 
     function tog(v) {
         return v ? "addClass" : "removeClass";

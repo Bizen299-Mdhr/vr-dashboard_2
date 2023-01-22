@@ -758,10 +758,7 @@ p,span,h1,h2,h3,h4,h5,a {
 }
 
 /* 7.2 = TESTIMONIALS */
-.testimonials {
-  background: url('../../../../img/testimonials.jpg') center center no-repeat;
-  background-size: cover;
-}
+
 .testimonials-overlay {
   background: rgba(255,255,255,.8);
   padding: 50px;

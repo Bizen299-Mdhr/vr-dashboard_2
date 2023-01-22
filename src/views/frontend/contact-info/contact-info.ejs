@@ -1,69 +1,116 @@
-    <!-- =========    CONTACT PAGE START    ======== -->
-    <section class="page-content tab-pane fade" id="contact">
-        <div class="p-container">
+<!-- =========    CONTACT PAGE START    ======== -->
+<section class="page-content tab-pane fade" id="contact">
+    <div class="p-container">
 
-            <!-- BLOG PAGE TITLE -->
-            <div class="title">
-                <h2><%= contactTitles?.page_title%> <span><%=contactTitles?.page_sub_title%></span></h2>
-            </div>
+        <!-- BLOG PAGE TITLE -->
+        <div class="title">
+            <h2>
+                <%= contactTitles?.page_title%> <span>
+                        <%=contactTitles?.page_sub_title%>
+                    </span>
+            </h2>
+        </div>
 
-            <div class="form-col col-md-7">
-                <div class="contact-area">
+        <div class="form-col col-md-7">
+            <div class="contact-area">
 
-                    <form action="php/contact.php" method="POST" >
-
-                        <div class="form-group col-md-12">
-                            <input id="form_name" type="text" name="name" placeholder="Name *"
-                                required="required">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <input id="form_email" type="email" name="email" placeholder="Email *"
-                                required="required">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <textarea id="form_message" name="message" placeholder="Message *" rows="4"
-                                required="required" data-error="Message."></textarea>
-                        </div>
-                        <div class="clear"></div>
-                        <div class="form-group col-sm-12">
-                            <input type="submit" class="button disabled" value="Send Message">
-                        </div>
-
-                    </form>
-
-                </div>
-            </div>
-
-            <div class="info-col col-md-5">
-                <div class="contact-info">
-
-                    <div class="small-title">
-                        <h4><%= contactTitles?.sub_sectionone_title%></h4>
+                <form action="/system/send/email" method="POST" validate="" id="send-email">
+                    <input type="hidden" name="_csrf" value="<%-csrfToken%>">
+                    <div class="form-group col-md-12">
+                        <input type="text" id="name" name="name" placeholder="Name *" 
+                            required="required">
                     </div>
-                    <% if(contactTitles.section_one_detail?.length> 0){
-                        contactTitles.section_one_detail?.forEach(function(contactInfo) { %>
+                    <div class="form-group col-md-12">
+                        <input type="email" id="email" name="email" placeholder="Email *" 
+                            required="required">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <textarea name="message" id="message" placeholder="Message *" rows="4" required="required"
+                            data-error="Message."></textarea>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="form-group col-sm-12">
+                        <input type="submit" class="button disabled" value="Send Message">
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+        <div class="info-col col-md-5">
+            <div class="contact-info">
+
+                <div class="small-title">
+                    <h4>
+                        <%= contactTitles?.sub_sectionone_title%>
+                    </h4>
+                </div>
+                <% if(contactTitles.section_one_detail?.length> 0){
+                    contactTitles.section_one_detail?.forEach(function(contactInfo) { %>
                     <div class="item">
                         <i class="fa <%=contactInfo.icon%>"></i>
-                        <h6 class="sm-titl"><%=contactInfo.title%> :<br> <span><%=contactInfo.value%></span></h6>
+                        <h6 class="sm-titl">
+                            <%=contactInfo.title%> :<br> <span>
+                                    <%=contactInfo.value%>
+                                </span>
+                        </h6>
                     </div>
                     <%})}%>
 
-                    <!-- social Icon -->
-                    <div class="social-icon">
-                        <% if(contactTitles.section_two_detail?.length> 0){
-                            contactTitles.section_two_detail?.forEach(function(contactInfo2) { %>
-                        <a href="<%= contactInfo2.value%>" target="<%= contactInfo2.icon%>">
-                            <span><i class="fa <%= contactInfo2.icon%>" aria-hidden="true" ></i></span>
-                        </a>
-                        <%})}%>
-                      
-                    </div>
+                        <!-- social Icon -->
+                        <div class="social-icon">
+                            <% if(contactTitles.section_two_detail?.length> 0){
+                                contactTitles.section_two_detail?.forEach(function(contactInfo2) { %>
+                                <a href="<%= contactInfo2.value%>" target="<%= contactInfo2.icon%>">
+                                    <span><i class="fa <%= contactInfo2.icon%>" aria-hidden="true"></i></span>
+                                </a>
+                                <%})}%>
 
-                </div>
+                        </div>
+
             </div>
-
-
-            <div class="clear"></div>
         </div>
-    </section>
-    <!-- =========    CONTACT PAGE END    ======== -->
+
+
+        <div class="clear"></div>
+    </div>
+</section>
+
+<!-- =========    CONTACT PAGE END    ======== -->
+<script>
+    $("#send-email").submit(function (event) {
+        event.preventDefault();
+        var formData = {
+            name: $("#name").val(),
+            email: $("#email").val(),
+            message: $("#message").val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "/system/send/email",
+            data: formData,
+            success: function (response) {
+                if (response.statusCode == 200) {
+                    $.toast({
+                        heading: 'success',
+                        text: 'Email Send Successfully',
+                        showHideTransition: 'plain',
+                        icon: 'success',
+                        position: 'top-right',
+                    });
+                 
+                }
+            },    error: function (response) {
+                $.toast({
+                        heading: 'Error',
+                        text: response.responseJSON.errors.title,
+                        showHideTransition: 'plain',
+                        icon: 'error',
+                        position: 'top-right',
+                    });
+            }
+        });
+    });
+</script>
