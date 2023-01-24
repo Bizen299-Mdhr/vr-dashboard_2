@@ -18,6 +18,9 @@ module.exports = {
                 page_title: {
                     type: Sequelize.STRING
                 },
+                 page_sub_title: {
+                    type: Sequelize.STRING
+                },
                 image_title: {
                     type: Sequelize.STRING
                 },

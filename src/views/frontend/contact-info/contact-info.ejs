@@ -46,8 +46,8 @@
                         <%= contactTitles?.sub_sectionone_title%>
                     </h4>
                 </div>
-                <% if(contactTitles.section_one_detail?.length> 0){
-                    contactTitles.section_one_detail?.forEach(function(contactInfo) { %>
+                <% if(contactTitles?.section_one_detail?.length> 0){
+                    contactTitles?.section_one_detail?.forEach(function(contactInfo) { %>
                     <div class="item">
                         <i class="fa <%=contactInfo.icon%>"></i>
                         <h6 class="sm-titl">
@@ -60,7 +60,7 @@
 
                         <!-- social Icon -->
                         <div class="social-icon">
-                            <% if(contactTitles.section_two_detail?.length> 0){
+                            <% if(contactTitles?.section_two_detail?.length> 0){
                                 contactTitles.section_two_detail?.forEach(function(contactInfo2) { %>
                                 <a href="<%= contactInfo2.value%>" target="<%= contactInfo2.icon%>">
                                     <span><i class="fa <%= contactInfo2.icon%>" aria-hidden="true"></i></span>

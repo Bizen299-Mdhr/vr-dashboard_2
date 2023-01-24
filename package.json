@@ -21,7 +21,8 @@
         "make:migration": "npx sequelize-cli migration:create --name",
         "make:seeder": "npx sequelize-cli seed:generate --name",
         "migrate:undo": "npx sequelize-cli db:migrate:undo",
-        "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all"
+        "migrate:undo:all": "npx sequelize-cli db:migrate:undo:all",
+        "refresh:db":"npx sequelize-cli db:migrate:undo:all && yarn migrate && yarn seed"
     },
     "husky": {
         "hooks": {

@@ -1,8 +1,6 @@
 const redis = require("redis");
 const redisClient = redis.createClient({
-    host: process.env.REDIS_HOST,
-    password: process.env.REDIS_PASSWORD,
-    port: process.env.REDIS_PORT
+    url: process.env.REDIS_URL
 });
 
 const getRedisValue = (key) => {
