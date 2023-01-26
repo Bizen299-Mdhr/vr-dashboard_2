@@ -644,7 +644,7 @@ a.text-primary:hover {
 }
 
 .sign-in-page .form-control {
-  color: #9b1414;
+  color: white;
 }
 
 .sign-in-page .form-control:focus {
@@ -2870,7 +2870,7 @@ i.fa-step-backward {
 }
 
 .sign-in-from label {
-  color: black;
+  color: white;
 }
 
 .sign-in-from span {
