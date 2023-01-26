@@ -191,7 +191,6 @@ class AuthController {
             await trx.commit();
             return res.redirect('/system/login');
         } catch (e) {
-            console.log('e: ', e);
             await trx.rollback();
             req.flash('error_msg', e.message);
             return res.redirect("/system/login");

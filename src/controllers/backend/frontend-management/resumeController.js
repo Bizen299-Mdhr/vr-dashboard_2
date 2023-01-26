@@ -2,7 +2,6 @@ const Controller = require('@baseController');
 const { logCrmEvents } = require("@lib");
 class resumeController extends Controller {
     constructor(opts) {
-        console.log(opts);
         super(opts);
         this.service = opts.resumeService;
         this.title = 'Resume';
