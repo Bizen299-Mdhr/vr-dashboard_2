@@ -33,7 +33,6 @@ class BaseController {
             req.session.cancelUrl = req.originalUrl;
             return res.render('layout/base-inner', this.viewData(data, this.module+'view'));
         } catch (error) {
-            console.log(error);
             req.flash('error_msg', error.message);
             return res.redirect('/system/home');
         }
@@ -59,7 +58,6 @@ class BaseController {
             req.flash('success_msg', this.title + ' added successfully.');
             return res.redirect(this.url);
         } catch (error) {
-            console.log("🚀 ~ file: baseController.js ~ line 69 ~ Controller ~ add ~ error", error);
             req.flash('inputData', req.body);
             req.flash('error_msg', error.message);
             return res.redirect('back');
@@ -78,7 +76,6 @@ class BaseController {
             logCrmEvents(req, "Page Visit", "success", {message: 'Edit' + this.title});
             return res.render('layout/base-inner', this.viewData(data, this.module + 'edit', 'Edit ' + this.title));
         } catch (error) {
-            console.log('error: ', error);
             req.flash('error_msg', error.message);
             return res.redirect(this.url);
         }
@@ -101,7 +98,6 @@ class BaseController {
             req.flash('success_msg', this.title + ' updated successfully');
             return res.redirect(_id ? this.url+`/${_id}`:this.url);
         } catch (error) {
-            console.log(error,'here');
             req.flash('inputData', req.body);
             req.flash('error_msg', error.message);
             return res.redirect(this.url);
