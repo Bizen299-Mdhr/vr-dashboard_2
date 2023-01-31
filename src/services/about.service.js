@@ -10,11 +10,13 @@ class AboutService extends BaseService {
     }
     async updateAboutPageInfo(req) {
         let profileImage = '';
+        let aboutInfo = this.parseAdminData(req.body);
         if (req.files) {
             profileImage = await uplaodFileToPath(req, 'public/backend', '/uploads/frontend/about-page/','image','aboutme.jpg');
+            aboutInfo['image'] = profileImage;
         }
-        let aboutInfo = this.parseAdminData(req.body);
-        aboutInfo['image'] = profileImage;
+       
+       
         await this.upsert(aboutInfo,{where: {'id':1}});
     }
     
