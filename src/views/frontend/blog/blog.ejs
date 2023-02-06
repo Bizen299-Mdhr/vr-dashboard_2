@@ -45,8 +45,8 @@
                                 </div>
                             </div>
 
-                            <div class="modal fade" id="<%= blog?._id%>" tabindex="-1" role="dialog" aria-labelledby="<%= blog?._id%>Label" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
+                            <div class="modal fade blog-modal" id="<%= blog?._id%>" tabindex="-1" role="dialog" aria-labelledby="<%= blog?._id%>Label" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
                                   <div class="modal-content">
                                     <div class="modal-header">
                                       <h5 class="modal-title" id="<%= blog?._id%>lLabel"><%- blog?.title%></h5>
@@ -56,9 +56,6 @@
                                     </div>
                                     <div class="modal-body">
                                         <span><%- blog?.detail%></span>
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                   </div>
                                 </div>
