@@ -1,67 +1,77 @@
+<!-- =========    BLOG PAGE START    ======== -->
+<section class="page-content tab-pane fade" id="blog">
+    <div class="p-container">
 
-                    <!-- =========    BLOG PAGE START    ======== -->
-                    <section class="page-content tab-pane fade" id="blog">
-                        <div class="p-container">
+        <!-- BLOG PAGE TITLE -->
+        <div class="title">
+            <h2>
+                <%=blogInfoTitle?.page_title%> <span>
+                        <%=blogInfoTitle?.page_sub_title%>
+                    </span>
+            </h2>
+        </div>
 
-                            <!-- BLOG PAGE TITLE -->
-                            <div class="title">
-                                <h2><%=blogInfoTitle?.page_title%> <span><%=blogInfoTitle?.page_sub_title%></span></h2>
-                            </div>
-
-                            <% if(blogInfos.docs?.length> 0){
-                                blogInfos.docs?.forEach(function(blog) { %>
-                            <!-- Blog Post 1 -->
-                            <div class="blog-post-box">
-                                <div class="blog-post-box-img">
-                                    <div class="blog-post-box-img-container">
-                                        <!-- BLOG POST IMAGE -->
-                                        <img src="/backend<%= blog?.image%>" alt="<%= blog?.title%>">
-                                        <div>
-                                            <!-- BLOG POST LINK -->
-                                            <a href="#" data-toggle="modal" data-target="#<%= blog?._id%>">
-                                                <i class="fa fa-long-arrow-right"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="blog-post-box-content">
-                                    <!-- BLOG POST LINK -->
-                                    <a href="#" >
-                                        <div>
-                                            <!-- BLOG POST TITLE -->
-                                            <h2><%= blog?.title%></h2>
-                                            <ul class="post-meta">
-                                                <li>
-                                                    <i class="fa fa-user-o"></i>
-                                                    <span><%= blog?.created_by%></span>
-                                                </li>
-                                                <li>
-                                                    <i class="fa fa-calendar-o"></i>
-                                                    <span><%= formatDate(blog?.created_at,'YYYY-MM-DD')%></span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="modal fade blog-modal" id="<%= blog?._id%>" tabindex="-1" role="dialog" aria-labelledby="<%= blog?._id%>Label" aria-hidden="true">
-                                <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h5 class="modal-title" id="<%= blog?._id%>lLabel"><%- blog?.title%></h5>
-                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <span><%- blog?.detail%></span>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-
-                            <%})}%>
+        <% if(blogInfos.docs?.length> 0){
+            blogInfos.docs?.forEach(function(blog) { %>
+            <!-- Blog Post 1 -->
+            <div class="blog-post-box">
+                <div class="blog-post-box-img">
+                    <div class="blog-post-box-img-container">
+                        <!-- BLOG POST IMAGE -->
+                        <img src="/backend<%= blog?.image%>" alt="<%= blog?.title%>">
+                        <div>
+                            <!-- BLOG POST LINK -->
+                            <a href="#" data-toggle="modal" data-target="#<%= blog?._id%>">
+                                <i class="fa fa-long-arrow-right"></i>
+                            </a>
                         </div>
-                    </section>
-                    <!-- =========    BLOG PAGE END    ======== -->
+                    </div>
+                </div>
+                <div class="blog-post-box-content">
+                    <!-- BLOG POST LINK -->
+                    <a href="#">
+                        <div>
+                            <!-- BLOG POST TITLE -->
+                            <h2>
+                                <%= blog?.title%>
+                            </h2>
+                            <ul class="post-meta">
+                                <li>
+                                    <i class="fa fa-user-o"></i>
+                                    <span>
+                                        <%= blog?.created_by%>
+                                    </span>
+                                </li>
+                                <li>
+                                    <i class="fa fa-calendar-o"></i>
+                                    <span>
+                                        <%= formatDate(blog?.created_at,'YYYY-MM-DD')%>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="modal fade blog-modal" id="<%= blog?._id%>" tabindex="-1" role="dialog"
+                aria-labelledby="<%= blog?._id%>Label" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="<%= blog?._id%>lLabel"><%- blog?.title%></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <span><%- blog?.detail%></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <%})}%>
+    </div>
+</section>
+<!-- =========    BLOG PAGE END    ======== -->
