@@ -56,9 +56,11 @@ class PortfolioService extends BaseService {
     async create(req) {
         this.upsert({ page_title: req.body.page_title, page_sub_title: req.body.page_sub_title, tag: 'page_title_tag' }, { where: { tag: 'page_title_tag' } });
         let images = typeof req.files === 'object' && Array.isArray(req.files) ? req.files : [req.files];
+   
         if (images) {
             for (const file of images) {
-                for (const f of file.image) {
+                let fileImage = Array.isArray(file.image) ? file.image : [file.image];
+                for (const f of fileImage) {
                     let imageName = '';
                     imageName = await uplaodMultipleFileToPath(f, 'public/backend', '/uploads/frontend/portfolio/');
                     let portfolioData = this.parseAdminData(req.body);
