@@ -82,8 +82,10 @@
                                         <label for="image">Image</label>
                                         <input class="form-control " type="file" id="image" name="image"
                                             accept="image/png, image/jpeg, image/jpg">
+                                           
                                     </div>
-                                    <div class="col-md-6 mb-3">
+                                    <img src="/backend/uploads/frontend/home-page/homebg.jpg" class="img-thumbnail" width="20%"  alt="Responsive image">
+                                    <div class="col-md-12 mb-12">
                                         <label for="remarks">Remarks</label>
                                         <textarea name="remarks" id="remarks" class="form-control "
                                             style="height: 60px;"><%= inputData && inputData.remarks ? inputData.remarks : admin?.remarks %></textarea>
