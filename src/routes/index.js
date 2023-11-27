@@ -28,7 +28,7 @@ module.exports = (app, passport) => {
     app.use(APIPREFIX, apiRoutes);
 
     app.get('/system', [authenticateUser.guest], authController.login);
-    app.get('/system/login', [authenticateUser.guest], authController.login);
+    app.get('/system/login', [authenticateUser.guest ], authController.login);
     app.post('/system/login',async (req, res, next) => {
         await passport.authenticate('local', async (err, user, info) => {
             if (user) {
@@ -39,7 +39,7 @@ module.exports = (app, passport) => {
                 logCrmEvents(req, "Event", "success", { message: "Login Successful" });
                 return res.redirect('/system/home');
             } else {
-                let msg = info && info.message ? info.message : 'Incorrect Email/Password';
+                let msg = info?.message || 'Incorrect Email/Password';
                 logCrmEvents(req, "Event", "error", { message: msg }, { error: err });
                 req.flash('error_msg', msg);
                 return res.redirect('/system/login');
@@ -73,7 +73,7 @@ module.exports = (app, passport) => {
 
 
     app.get('/', homeController.index);
-    app.post('/system/send/email',[throttle({freeTries: 2, waitTime: 600})], homeController.sendEmail);
+    app.post('/system/send/email', homeController.sendEmail);
    
 
     app.get('*', function (req, res) {
