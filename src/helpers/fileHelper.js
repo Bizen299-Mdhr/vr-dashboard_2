@@ -86,6 +86,7 @@ let self = module.exports = {
         }
     },
     uplaodMultipleFileToPath: async (file, rootDir = 'public/backend', absDir,inputName='image',renameFile=null) => {
+        inputName;
         if (file) {
             let dir = rootDir + absDir;
             self.mkDirByPathSync(dir);

@@ -75,7 +75,7 @@ support@ica.edu.np</p>
 ','education','2023-02-12 12:34:51.073098+05:45','2023-02-12 12:34:51.073098+05:45');
 
 
-                `, {returning: true})
+                `, {returning: true});
             }
         });
     },
