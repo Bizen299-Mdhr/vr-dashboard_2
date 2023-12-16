@@ -3,6 +3,10 @@ require("dotenv").config();
 
 module.exports = {
     formatDate : (date, format) => {
+        if(date== null || date==''){
+            return null;
+        }
+
         let dateFormat = format || "YYYY-MM-DD HH:mm:ss";
         let dateTime = moment(new Date(date),dateFormat).format(dateFormat);
         if(process.env.UTC_STATUS === "TRUE"){
